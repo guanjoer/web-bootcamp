@@ -1,0 +1,48 @@
+/* Color picker: https://g.co/kgs/ZoF38Xo */
+body {
+	background-color: navajowhite;
+	text-align: center;
+	margin: 50px 0;
+}
+
+p {
+	color: rgb(40, 42, 44);
+}
+
+h1 {
+color: maroon;
+font-weight: 700;
+}
+
+/* p {
+border: 3px solid black;
+} */
+
+a {
+text-decoration: none;
+color: rgb(167, 1, 78);
+}
+
+a:hover {
+text-decoration: underline;
+}
+
+footer {
+	font-size: 20px;
+	font-family: 'sedan', serif;
+}
+
+/* footer 하단 고정 */
+
+/* #wrapper{
+	height: auto;
+	min-height: 100%;
+	padding-bottom: 0;
+  }
+  footer{
+	height: 0;
+	position : relative;
+	transform : translateY(-100%);
+  } */
+
+/* 여기까지 */

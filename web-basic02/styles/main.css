@@ -1,0 +1,84 @@
+
+h1,
+p {
+	font-family: 'sedan', serif;
+	/* font-style: italic; */
+}
+
+h1 {
+	font-weight: 700;
+	margin-bottom: 30px;
+	color: blueviolet;
+}
+
+img {
+	width: 100px;
+	height: 100px;
+	margin: 0;
+}
+
+main {
+	background-color: rgb(209, 122, 122);
+	width: 800px;
+	height: 600px;
+	border: 5px solid rgb(44, 44, 44);
+    border-radius: 30px;
+    padding: 30px;
+	margin: 0 auto 70px auto;
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+	margin-top: 50px;
+	background-color: rgb(167, 104, 195);
+}
+
+body {
+	background-color: rgb(246, 227, 240);
+	margin: 0;
+}
+
+span {
+	color: rgb(98, 4, 4);
+}
+
+a {
+	background-color: antiquewhite;
+	border-radius: 4px;
+	padding: 4px;
+	color: rgb(59, 13, 101);
+	font-weight: bold;
+}
+
+ul {
+	list-style: none;
+}
+
+span {
+	color: white;
+	font-weight: bold;
+}
+
+h2, p, li {
+	text-align: left;
+	color: white;
+}
+
+#pdf-summary {
+	background-color: rgb(197, 197, 47);
+	padding: 10px;
+	color: rgb(35, 34, 34);
+}
+
+#copyright {
+	text-align: center;
+	color: rgb(50, 48, 48);
+}
+
+
+.ls-highlight {
+	list-style: square;
+	color: rgb(244, 244, 133);
+}
+
+
+/* p:hover {
+text-decoration: underline;
+} */
