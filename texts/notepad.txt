@@ -19,5 +19,7 @@ CSS의 경우, 부모의 특성을 자식이 상속 받고, 하지만, 자식에
 # inline & block level
 인라인 레벨의 요소는 다른 요소에 영향을 미치고, 마진 top, bottom과 padding에 제한이 존재한다. 또한, header에 인라인 레벨의 요소가 존재하면, 전체가 영역으로 지정되지 않는다. 이러한 한계는, display: inline-block을 사용함으로써, 극복이 가능하다.
 
+inline level의 경우, text-aline: center 가 작동하지만, block level의 경우, 위 특성이 작동하지 않는다. 따라서, block level의 경우, margin의 left & right을 auto로 지정함으로써, 컨텐츠를 중앙으로 정렬시킬 수 있다.
+
 
 

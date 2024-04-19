@@ -1,20 +1,11 @@
-
-h1,
-p {
-	font-family: 'sedan', serif;
-	/* font-style: italic; */
+header {
+	padding: 30px;
 }
 
-h1 {
-	font-weight: 700;
-	margin-bottom: 30px;
-	color: blueviolet;
-}
-
-img {
-	width: 100px;
-	height: 100px;
+body {
+	background-color: rgb(246, 227, 240);
 	margin: 0;
+	font-family: "Roboto", sans-serif;
 }
 
 main {
@@ -30,8 +21,20 @@ main {
 	background-color: rgb(167, 104, 195);
 }
 
-body {
-	background-color: rgb(246, 227, 240);
+/* h1,
+p {
+	font-family: 'sedan', serif; 
+	font-style: italic;
+} */
+
+h1 {
+	font-weight: 700;
+	color: blueviolet;
+	font-size: 50px;
+}
+
+header img {
+	width: 200px;
 	margin: 0;
 }
 
