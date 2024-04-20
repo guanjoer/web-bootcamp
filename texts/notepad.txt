@@ -37,5 +37,13 @@ add = track the modified things of the (selected) files.
 
 staging area: located between working dir. and commit what i want to create.
 
+git remote add origin [repository url]
+git push -u origin +main(push files forced)
+
+# innitializing personal access token from github(windows)
+	git credential reject
+	host=github.com
+	protocol=https
+
 
 
