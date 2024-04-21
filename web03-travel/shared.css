@@ -56,3 +56,30 @@ header ul {
 header li {
 	margin-left: 10px;
 }
+
+/* About footer */
+#social-media {
+	/* background-color: rgb(77, 77,77); */
+	background: linear-gradient(70deg, rgb(37,37,40), rgb(40,45,45));
+	/* width: 100%; */
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	padding: 30px;
+}
+
+#social-media ul {
+	display: flex;
+	justify-content: center;
+}
+
+#social-media li {
+	width: 80px;
+	height: 80px;
+	margin: 0 50px;
+}
+
+#social-media img {
+	height: 100%;
+	width: 100%;
+}
