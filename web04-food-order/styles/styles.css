@@ -21,14 +21,70 @@ body {
 	font-weight: 800;
 }
 
-nav a {
+#main-header nav a {
 	font-size: 1.25rem;
 	text-decoration: none;
 	color: rgb(234, 193, 139);
 }
 
-nav a:hover {
+#main-header nav a:hover {
 	color: rgb(238, 213, 181);
+}
+
+.menu-btn {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 3rem;
+	height: 3rem;
+	display: none;
+}
+
+.menu-btn span {
+	width: 100%;
+	height: 3px;
+	background-color: white;
+}
+
+#side-drawer {
+	width: 100%;
+	height: 100%;
+	background-color: rgb(65, 62, 62);
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+#side-drawer:target {
+	display: block;
+}
+
+#side-drawer ul {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0;
+	padding: 4rem 1rem;
+}
+
+#side-drawer li {
+	margin: 1rem 0;
+}
+
+#side-drawer a {
+	text-decoration: none;
+	font-size: 2rem;
+	color: rgb(254, 190, 112);
+}
+
+#side-drawer header {
+	display: flex;
+	justify-content: flex-end;
+	height: 5rem;
+	align-items: center;
+	padding: 0 5%;
 }
 
 /* main part */
@@ -97,4 +153,43 @@ main h1 {
 
 .add-btn:hover {
 	background-color: rgb(239, 166, 78);
+}
+
+@media(max-width:48rem) {
+	#menus {
+		grid-template-columns: 1fr;
+	}
+
+	main h1 {
+		font-size: 1.5rem;
+		margin: 2rem 0 0 0;
+	}
+
+	#page-logo {
+		font-size: 1.5rem;
+	}
+
+	#main-header nav {
+		display: none;
+	}
+
+	#latest-products {
+		width: 80%;
+	}
+
+	#menus li {
+		width: 100%;
+	}
+
+	#menus img {
+		height: 15rem;
+	}
+
+	.menu-btn {
+		display: flex;
+	}
+
+	.food-item {
+		margin-bottom: 2rem;
+	}
 }

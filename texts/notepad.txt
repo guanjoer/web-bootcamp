@@ -55,4 +55,18 @@ git push -u origin +main(push files forced)
 
 플렉스박스와 그리드 비교 => https://academind.com/tutorials/css-grid-vs-flexbox/
 
+#mobile first
+@media(min-width: value) {}
 
+#Desktop first
+@media(max-width: value) {}
+
+#Units
+
+px: fixed value(not responsive)
+
+%, em : having cascading nature by parents
+But, % was inherited from parents's width & 
+em was inherited from parents's font-size
+
+rem : inherited from root elemnt(i.e. inherited from choice of User's font-size setting)
