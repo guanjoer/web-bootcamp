@@ -1,0 +1,100 @@
+body {
+	background-color: rgb(87, 85, 85);
+	font-family: "Open Sans", "sans-serif";
+	margin: 0;
+}
+
+#main-header {
+	display: flex;
+	justify-content: space-between;
+	background-color: rgb(62, 61, 61);
+	height: 5rem;
+	align-items: center;
+	padding: 0 5%;
+}
+
+
+#page-logo {
+	text-decoration: none;
+	font-size: 2.25rem;
+	color: rgb(218, 157, 78);
+	font-weight: 800;
+}
+
+nav a {
+	font-size: 1.25rem;
+	text-decoration: none;
+	color: rgb(234, 193, 139);
+}
+
+nav a:hover {
+	color: rgb(238, 213, 181);
+}
+
+/* main part */
+main h1 {
+	text-align: center;
+	color: rgb(231, 155, 57);
+	font-size: 3rem;
+}
+
+#latest-products {
+	width: 70%;
+	margin: 3rem auto;
+}
+
+#main-header ul {
+	display: flex;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#main-header li {
+	margin: 0 1rem;
+}
+
+#menus {
+	list-style: none;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	padding: 0;
+	margin: 0;
+	justify-items: center;
+}
+
+#menus li {
+	background-color: rgb(227, 210, 210);
+	border-radius: 8px;
+	width: 70%;
+	overflow: hidden;
+}
+
+
+#menus img {
+	height: 18.75rem;
+	width: 100%;
+	object-fit: cover;
+}
+
+.food-item-content {
+	padding: 1rem;
+    text-align: center;
+}
+
+.food-item-content h2 {
+	margin-top: 0;
+}
+
+.add-btn {
+	text-decoration: none;
+	background-color: rgb(236, 174, 97);
+	color: white;
+	border-radius: 4px;
+	padding: 0.5rem 1.25rem;
+}
+
+.add-btn:hover {
+	background-color: rgb(239, 166, 78);
+}

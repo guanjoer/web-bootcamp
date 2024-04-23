@@ -45,5 +45,14 @@ git push -u origin +main(push files forced)
 	host=github.com
 	protocol=https
 
+# More informations about CSS
+위치 속성에 대한 추가 정보
+=>https://academind.com/tutorials/the-position-property/
+
+플렉스박스 - 플렉스 컨테이너 => https://academind.com/tutorials/flexbox-basics-container/
+
+플렉스박스 - 플렉스 아이템 => https://academind.com/tutorials/flexbox-flex-items/
+
+플렉스박스와 그리드 비교 => https://academind.com/tutorials/css-grid-vs-flexbox/
 
 
