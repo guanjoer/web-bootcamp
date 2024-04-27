@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>HTML Forms</title>
+	<title>Contact Form</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -12,112 +12,72 @@
 </head>
 <body>
 	<header>
-		<h1>Demo Form</h1>
+		<h1>Contact Us</h1>
 	</header>
 
 	<main>
-		<form action="/web05-forms/" method="GET">
-		<section>
-			<h2>Personal Details</h2>
-			<ul>
-				<li>
-					<label for="user-name">Type your name</label>
-					<input type="text" name="user-name" id="user-name">
-				</li>
-				<li>
-					<label for="user-email">Type email address</label>
-					<input type="email" name="user-email" id="user-email">
-				</li>
-				<li>
-					<label for="user-pwd">Type your password</label>
-					<input type="password" name="user-pwd" id="user-pwd">
-				</li>
-			</ul>
-		</section>
+		<form action="/web05-forms/index.html" method="GET">
+			<section>
+				<h2 id="help">How can we help you?</h2>
+				<ul>
+					<li>
+						<label for="user-name">Name</label>
+						<input type="text" name="user-name" id="user-name" placeholder="Type your name" required>
+					</li>
+					<li>
+						<label for="user-email">E-Mail Address</label>
+						<input type="email" name="user-email" id="user-email" placeholder="Type your email address" required>
+					</li>
+					<li>
+						<label for="phone">Phone Number</label>
+						<input type="tel" name="phone" id="phone" placeholder="Type your phone number" required minlength="5">
+					</li>
+				</ul>
 
-		<section>
-			<h2>More Details</h2>
-			<ul>
-				<li>
-					<label for="user-age">Type your age</label>
-					<input type="number" name="user-age" id="user-age">
-				</li>
-				<li>
-					<label for="user-birthdate">Type your birthdate</label>
-					<input type="date" name="user-birthdate" id="user-birthdate">
-				</li>
-				<li>
-					<label for="favorite-color">What is your favorite color?</label>
-					<select id="favorite-color" name="favorite-color">
-						<option value="green">Green</option>
-						<option value="blue">Blue</option>
-						<option value="red">Red</option>
-					</select>
-				</li>
-			</ul>
-		</section>
+				<label for="message">Message</label>
+				<textarea name="message" id="message" rows="8" placeholder="Type anything you want" maxlength="1000"></textarea>
+			</section>
 
-		<section>
-			<label for="user-message">Type your message</label>
-			<textarea id="user-message"></textarea>
-		</section>
-			
-		<section>
-			<h2>Select verify of ID methods below</h2>
-			<ul>
-				<li>
-					<div class="form-control">
-						<input type="radio" id="verify-sms" name="verify" value="text-message">
-						<label for="verify-sms">Via Text Message (SMS)</label>
-					</div>
-				</li>
-				<li>
-					<div class="form-control">
-						<input type="radio" id="verify-phone-call" name="verify" value="phone-call">
-						<label for="verify-phone-call">Via Phone Call</label>
-					</div>
-				</li>
-				<li>
-					<div class="form-control">
-						<input type="radio" id="verify-email" name="verify" value="email">
-						<label for="verify-email">Via Email address</label>
-					</div>
-				</li>
-			</ul>
-		</section>
+			<section>
+				<label for="find">How did you find us?</label>
+				<select name="find" id="find" required>
+					<option value="web">Search for Web</option>
+					<option value="word-of-mouth">Word of Mouth</option>
+					<option value="ads">Click to Ads</option>
+					<option value="other">Other</option>
+				</select>
+			</section>
 
-		<section>
-			<h2>Contact as</h2>
-			<ul>
-				<li>
-					<div class="form-control">
-						<input type="checkbox" id="contact-email" name="contact" value="email">
-						<label for="contact-email">Contact me via email</label>
+			<section>
+				<h2>How should we reply?</h2>
+					<div class="radio-checkbox-control">
+						<input type="radio" id="reply-phone" name="reply" value="phone" required>
+						<label for="reply-phone">Call or Text me If I was missed the call</label>
 					</div>
-				</li>
-				<li>
-					<div class="form-control">
-						<input type="checkbox" id="contact-phone" name="contact" value="phone">
-						<label for="contact-phone">Contact me via phone</label>
+					<div class="radio-checkbox-control">
+						<input type="radio" id="reply-email" name="reply"  value="email" required>
+						<label for="reply-email">Send me an email</label>
 					</div>
-				</li>
-			</ul>
-		</section>
+					<div class="radio-checkbox-control">
+						<input type="radio" id="reply-none" name="reply" value="none" required>
+						<label for="reply-none">Don't reply</label>
+					</div>
+			</section>
 
-		<hr/>
+			<section>
+				<div class="radio-checkbox-control">
+					<input type="checkbox" id="terms" name="terms" required>
+					<label for="terms">Accept Terms</label>
+				</div>
+			</section>
 
-		<section>
-			<h2>Terms of Service</h2>
-			<div class="form-control">
-				<input type="checkbox" id="terms-of-service" name="terms-of-service">
-				<label for="terms-of-service">Are you agree to the terms?</label>
-			</div>
-		</section>
-		<section>
-			<button type="reset">Reset</button>
-			<button type="submit">Submit</button>
-		</section>
+			<section id="btn">
+				<button type="reset" id="btn-clear">Clear</button>
+				<button type="submit" id="btn-submit">Submit</button>
+			</section>
+
 		</form>
 	</main>
+	
 </body>
 </html>
