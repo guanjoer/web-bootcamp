@@ -70,3 +70,11 @@ But, % was inherited from parents's width &
 em was inherited from parents's font-size
 
 rem : inherited from root elemnt(i.e. inherited from choice of User's font-size setting)
+
+# Object, Property, Method
+Object is a like a container that can contain variables, functions.
+The function inside object, We called 'Methods';
+also, The variable inside object, We called 'Property';
+
+# True, False
+In the case of need boolean value like 'If statement's condition', if the value was empty string or number of 0, then the boolean is False.

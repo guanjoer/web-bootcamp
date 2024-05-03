@@ -1,0 +1,1 @@
+This page's features were contained that the text of remaining number will change through user's input & also the background color of input field, remaining number text will change if the each remaining number like greater than and equls to 10, less than 10, equls to 0.
