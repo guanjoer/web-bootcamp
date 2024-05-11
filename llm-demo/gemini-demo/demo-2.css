@@ -1,0 +1,7 @@
+.hero {
+	background-image: url("banner.jpg"); /* Replace with your background image path */
+	background-size: cover;
+	height: 400px;
+	color: white;
+  }
+  
