@@ -36,7 +36,8 @@ const cancleConfigBtn = document.getElementById('cancel-config-btn');
 const startGameBtn = document.getElementById('start-game-btn');
 const gameFields = document.querySelectorAll('#game-board li');
 
-editPlayer1Btn.addEventListener('click', openPlayerConfig);editPlayer2Btn.addEventListener('click', openPlayerConfig);
+editPlayer1Btn.addEventListener('click', openPlayerConfig);
+editPlayer2Btn.addEventListener('click', openPlayerConfig);
 
 cancleConfigBtn.addEventListener('click', closePlayerConfig);
 backdropElement.addEventListener('click', closePlayerConfig);

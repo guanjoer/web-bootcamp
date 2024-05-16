@@ -78,3 +78,6 @@ also, The variable inside object, We called 'Property';
 
 # True, False
 In the case of need boolean value like 'If statement's condition', if the value was empty string or number of 0, then the boolean is False.
+
+# Node Js - express pakage
+express is mainly use for routing request.
