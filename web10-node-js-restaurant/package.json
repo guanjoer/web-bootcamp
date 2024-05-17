@@ -1,0 +1,19 @@
+{
+  "name": "web10-node",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "MrGuanJo",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

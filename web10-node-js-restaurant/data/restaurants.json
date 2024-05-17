@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Area",
+    "address": "Seoul, street 1",
+    "cuisine": "korean",
+    "website": "https://korean-food-1.com",
+    "description": "It's amazing Food & Place!",
+    "id": "r1",
+    "date": "2024. 05. 01. 오후 05:39"
+  },
+  {
+    "name": "Veo",
+    "address": "Austrailia, street 2",
+    "cuisine": "austrailian",
+    "website": "https://austrailian-food-2.com",
+    "description": "It's amazing Food & Place!",
+    "id": "r2",
+    "date": "2024. 05. 07. 오후 05:39"
+  },
+  {
+    "name": "Relaxing",
+    "address": "Seoul, street 3",
+    "cuisine": "korean",
+    "website": "https://korean-food-3.com",
+    "description": "It's amazing! For Sure!",
+    "id": "a8801f27-2caf-4a82-81f3-2e980f7a5f68",
+    "date": "2024. 05. 10. 오후 05:39"
+  },
+  {
+    "name": "Unicorn",
+    "address": "Austrailia, street 4",
+    "cuisine": "austrailian",
+    "website": "https://austrailian-food-4.com",
+    "description": "It's amazing Food & Place!",
+    "id": "c2662b83-6f3b-4550-a46b-301389c13c46",
+    "date": "2024. 05. 11. 오후 05:39"
+  },
+  {
+    "name": "Gemini",
+    "address": "Seoul, street 5",
+    "cuisine": "korean",
+    "website": "https://korean-food-5.com",
+    "description": "It's amazing Food & Place!",
+    "id": "1003dd2d-59e9-4d0f-9290-35e6908f6651",
+    "date": "2024. 05. 17. 오후 05:39"
+  }
+]
