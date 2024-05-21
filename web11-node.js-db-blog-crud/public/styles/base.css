@@ -35,8 +35,8 @@ ul, ol {
 .btn {
   cursor: pointer;
   font: inherit;
-  background-color: rgb(89, 0, 255);
-  border: 1px solid rgb(89, 0, 255);
+  background-color: rgb(101 46 205);
+  border: 1px solid rgb(101 46 205);
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
@@ -64,7 +64,7 @@ ul, ol {
 
 #main-header {
   padding: 2rem 10%;
-  background-color: rgb(89, 0, 255);
+  background-color: rgb(101 46 205);
   display: flex;
   justify-content: space-between;
   align-items: center;
