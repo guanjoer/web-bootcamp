@@ -20,7 +20,7 @@ const upload = multer({storage: storageConfig});
 
 router.get('/', async function(req, res) {
   const users = await db.getDb().collection('users').find().toArray();
-  console.log(users);
+  // console.log(users);
 
   res.render('profiles', {users: users});
 });
@@ -33,8 +33,8 @@ router.post('/profiles', upload.single('image'), async function(req, res) {
   const uploadedImageFile = req.file;
   const userData = req.body;
 
-  console.log(uploadedImageFile);
-  console.log(userData);
+  // console.log(uploadedImageFile);
+  // console.log(userData);
 
   await db.getDb().collection('users').insertOne({
     name: userData.username,
