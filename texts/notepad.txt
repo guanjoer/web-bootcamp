@@ -163,4 +163,17 @@
 	Http request는 기본적으로 GET과 POST request가 존재하고, URL에 데이터가 표시되는, 즉 서버에서 브라우저로 데이터를 로드할 때, GET 요청을 url에 보내고, url에 대응되는 서버 측에서 해당 요청에 관한 응답으로 새 페이지를 반환한다. POST 요청의 경우, 브라우저 측에서 데이터를 입력 후, 해당 데이터를 서버 측(데이터베이스)에 저장할 때 사용하는 HTTP 메서드이다. 이 둘의 Request의 경우, 서버에서 응답으로 새 페이지를 로드(즉 모든 HTML코드를 전부 로드)한다는 것이다.
 
 	하지만, Ajax를 이용할 경우, JavaScript에서 Request 뿐만이 아닌, Response 또한 제어하여, 응답으로, 일부 데이터 조각만 업데이트 하여 보여줄 수 있다는 것이다. 즉 응답으로 새 페이지를 로드하여 HTML 코드를 전부 새로 가져오는 것이 아닌, 기존 HTML 코드에서 일부 HTML 코드의 업데이트만 일어나게끔 하는 것이 가능하다.
+
+# HTTP Methods
+
+	// Default Browser Http Methods
+
+		GET: Fetch some data(Enter a URL, Click a link, etc.)
+		POST: Store some data
+	
+	// JavaScript-driven Http requests
+
+		PUT: Replace or Update some data
+		PATCH: Update some data
+		DELETE: Delete some data
 	

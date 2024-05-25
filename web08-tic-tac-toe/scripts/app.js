@@ -20,7 +20,7 @@ const players = [
 	}
 ];
 
-// To Access HTML Element
+// To Access HTML Elements
 const playerConfigOverlay = document.getElementById('config-overlay');
 const backdropElement = document.getElementById('backdrop');
 const formElement = document.querySelector('form');
@@ -36,6 +36,8 @@ const cancleConfigBtn = document.getElementById('cancel-config-btn');
 const startGameBtn = document.getElementById('start-game-btn');
 const gameFields = document.querySelectorAll('#game-board li');
 
+
+// Events
 editPlayer1Btn.addEventListener('click', openPlayerConfig);
 editPlayer2Btn.addEventListener('click', openPlayerConfig);
 
