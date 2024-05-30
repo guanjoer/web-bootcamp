@@ -7,6 +7,7 @@ function getHome(req, res) {
 	res.render('welcome', { csrfToken: req.csrfToken() });
   };
 
+
 async function getAdmin(req, res) {
 if (!res.locals.isAuth) {
 	return res.status(401).render('401');
@@ -25,6 +26,7 @@ res.render('admin', {
 	csrfToken: req.csrfToken(),
 });
 };
+
 
 async function createPost(req, res) {
 	const enteredTitle = req.body.title;
@@ -52,6 +54,7 @@ async function createPost(req, res) {
 	res.redirect('/admin');
   };
 
+
   async function getSinglePost(req, res) {
 	const post = new Post(null, null, req.params.id);
 	await post.fetch();
@@ -71,6 +74,7 @@ async function createPost(req, res) {
 	  csrfToken: req.csrfToken(),
 	});
   };
+
 
   async function updatePost(req, res) {
 	const enteredTitle = req.body.title;
@@ -96,6 +100,7 @@ async function createPost(req, res) {
   
 	res.redirect('/admin');
   };
+  
 
   async function deletePost(req, res) {
   
