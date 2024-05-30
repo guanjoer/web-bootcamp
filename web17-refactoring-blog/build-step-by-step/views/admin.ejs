@@ -1,0 +1,40 @@
+<%- include('includes/head.ejs', {title: 'Login'})  %>
+<link rel="stylesheet" href="styles/forms.css">
+<link rel="stylesheet" href="styles/posts.css">
+</head>
+<body>
+	<%- include('includes/header.ejs') %>
+	<main>
+		<h1>Administrate Blog Posts</h1>
+		<p class="sub-title">Create a New Post</p>
+		<form action="/posts" method="POST">
+			<div class="form-control">
+			  <label for="title">Title</label>
+			  <input type="text" id="title" name="title" required>
+			</div>
+			<div class="form-control">
+			  <label for="content">Content</label>
+			  <textarea name="content" id="content" rows="10" required></textarea>
+			</div>
+			<button class="btn">Save</button>
+		  </form>
+	</main>
+
+	<article>
+		<p class="sub-title">All Blog Posts</p>
+		
+		<% if(!posts) { %>
+		<p>Could not find any posts. You need to first create some!</p>
+		<% }  %>
+
+		<ul>
+			<% for(const post of posts) { %>
+			<li>
+				<p id="post-title"><%= post.title %></p>
+				<p><%= post.content  %></p>
+			</li>
+			<% } %>
+		</ul>
+	</article>
+</body>
+</html>
