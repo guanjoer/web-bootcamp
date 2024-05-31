@@ -1,14 +1,15 @@
 const express = require('express');
 
 const blogController = require('../controllers/post-controller');
+const protectRouteMiddleware = require('../middlewares/auth-protection-middleware')
 
 const router = express.Router();
 
 router.get('/', blogController.getHome);
 
+router.use(protectRouteMiddleware);
 
 router.get('/admin', blogController.getAdmin);
-
 
 router.post('/posts', blogController.createPost);
 
