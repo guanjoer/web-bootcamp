@@ -7,6 +7,19 @@ function postIsValid(enteredTitle, enteredContent) {
 );
 };
 
+
+function userCredentialAreValid(email, confirmEmail, password) {
+	return (
+		email &&
+		confirmEmail &&
+		password &&
+		password.trim().length >= 6 &&
+		email === confirmEmail &&
+		email.includes('@')
+	);
+}
+
 module.exports = {
-	postIsValid: postIsValid
+	postIsValid: postIsValid,
+	userCredentialAreValid: userCredentialAreValid
 };

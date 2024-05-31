@@ -1,4 +1,4 @@
-const Post = require('../models/post');
+const Post = require('../models/post-model');
 const validationSession = require('../util/validation-session');
 const validation = require('../util/validation');
 const { connect } = require('../routes/auth');
