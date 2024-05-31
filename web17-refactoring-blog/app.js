@@ -6,6 +6,7 @@ const csrf = require('csurf');
 
 const sessionConfig = require('./config/session');
 const authMiddleWare = require('./middlewares/auth-middleware');
+const addCSRFTokenMiddleware = require('./middlewares/csrf-token-middleware');
 const db = require('./data/database');
 const authRoutes = require('./routes/auth');
 const blogRoutes = require('./routes/blog');
@@ -27,6 +28,7 @@ app.use(session(
   ));
 app.use(csrf());
 
+app.use(addCSRFTokenMiddleware);
 app.use(authMiddleWare);
 
 app.use(authRoutes);

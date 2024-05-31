@@ -4,7 +4,7 @@ const validation = require('../util/validation');
 const { connect } = require('../routes/auth');
 
 function getHome(req, res) {
-	res.render('welcome', { csrfToken: req.csrfToken() });
+	res.render('welcome');
   };
 
 
@@ -23,7 +23,6 @@ const sessionErrorData = validationSession.getSessionErrData(req, {
 res.render('admin', {
 	posts: posts,
 	inputData: sessionErrorData,
-	csrfToken: req.csrfToken(),
 });
 };
 
@@ -71,7 +70,6 @@ async function createPost(req, res) {
 	res.render('single-post', {
 	  post: post,
 	  inputData: sesseionErrorData,
-	  csrfToken: req.csrfToken(),
 	});
   };
 
