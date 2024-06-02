@@ -13,6 +13,7 @@ app.set('view engine', 'ejs'); // Template engine 중 view engine 사용 및 해
 app.set('views', path.join(__dirname, 'views')); // ejs엔진을 사용해 rendering 될 템플릿 파일은 ./views/ 에 존재.
 
 app.use(express.static('public')); // public/* 파일들을 정적파일로 브라우저에 제공
+app.use(express.urlencoded({extended: false})); // For attached Request datas in req.body
 
 app.use(authRoutes);
 
