@@ -1,0 +1,26 @@
+h1 {
+	color: var(--color-gray-500);
+	text-align: center;
+}
+
+form {
+	max-width: 35rem;
+	margin: var(--space-8) auto;
+	padding: var(--space-4);
+	background-color: #edf7ff;
+	border-radius: var(--border-radius-medium);
+	/* 인라인 요소만이 text-align 가능, block 요소는 margin: 0 auto; 를 통해서 가운데 정렬. */
+	text-align: center;
+	box-shadow: var(--shadow-medium);
+}
+
+form a {
+	color: #4856a7;
+
+}
+
+form a:hover,
+form a:active {
+	color: #d68c43;
+	text-decoration: underline;
+	}
