@@ -10,6 +10,7 @@
 	<main>
 		<h1>Create New Account</h1>
 		<form action="/signup" method="POST">
+			<input type="hidden" name="_csrf" value="<%= locals.csrfToken  %>">
 			<p>
 				<!-- Users 테이블 혹은 컬렉션 내 document의 email 값이 이미 존재하는지 체크 필요 -->
 				<!-- Ajax로 처리 -->
