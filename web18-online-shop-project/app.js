@@ -2,8 +2,10 @@ const path = require('path');
 
 const express = require('express');
 const csrf = require('csurf');
+const expressSession = require('express-session');
 
 const db = require('./data/database');
+const createSessionConfig = require('./config/session');
 const addCsrfTokenMiddleware = require('./middlewares/csrf-token');
 const errorHandlerMiddleware = require('./middlewares/error-handler');
 const authRoutes = require('./routes/auth.routes');
@@ -18,7 +20,7 @@ app.set('views', path.join(__dirname, 'views')); // ejs엔진을 사용해 rende
 app.use(express.static('public')); // public/* 파일들을 정적파일로 브라우저에 제공
 app.use(express.urlencoded({extended: false})); // For attached Request datas in req.body
 
-// Session 추가 필요.
+app.use(expressSession(createSessionConfig()));
 app.use(csrf());
 app.use(addCsrfTokenMiddleware);
 
