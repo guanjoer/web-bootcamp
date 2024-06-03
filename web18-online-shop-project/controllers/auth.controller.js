@@ -6,7 +6,7 @@ function getSignup(req, res) {
 	res.render('customer/auth/signup');
 };
 
-async function signup(req, res) {
+async function signup(req, res, next) {
 	const user = new User(
 		req.body.email,
 		req.body.password,
@@ -15,7 +15,12 @@ async function signup(req, res) {
 		req.body.address,
 		req.body.addressDetail);
 
-		await user.signup();
+		try {
+			await user.signup();
+		} catch (error) {
+			next(error); // Activate error handler middleware
+			return;
+		};
 
 		res.redirect('/login');
 };
@@ -24,9 +29,16 @@ function getLogin(req, res) {
 	res.render('customer/auth/login');
 };
 
-async function login(req, res) {
+async function login(req, res, next) {
 	const user = new User(req.body.email, req.body.password);
-	const existingUser = await user.getUserWithEmail();
+
+	let existingUser;
+	try {
+		 existingUser = await user.getUserWithEmail();
+	} catch (error) {
+		next(error);
+		return;		
+	};
 
 
 	// Check the entered email exists in the database. // i.e Validation test for email.
@@ -48,11 +60,17 @@ async function login(req, res) {
 	});
 };
 
+function logout(req, res) {
+	authUtil.destroyUserSession(req);
+	res.redirect('/login');
+};
+
 
 
 module.exports = {
 	getSignup: getSignup,
 	getLogin: getLogin,
 	signup:signup,
-	login: login
+	login: login,
+	logout: logout
 };
