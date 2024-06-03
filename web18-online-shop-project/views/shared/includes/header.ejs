@@ -3,6 +3,29 @@
 		<a href="/">GuanJo</a>
 	</div>
 	<nav>
-		...
+		<ul>
+			<% if(!locals.isAuthenticated) { %>
+				<li><a href="/">All products</a></li>
+			<% } %>
+
+			<% if(!locals.isAuthenticated) { %>
+				<li><a href="/signup">Sign up</a></li>
+			<% } %>
+
+			<% if(!locals.isAuthenticated) { %>
+				<li><a href="/login">Login</a></li>
+			<% } %>
+
+			<% if(locals.isAuthenticated) { %>
+				<li>
+					<button>Logout</button>
+				</li>
+			<% } %>
+
+			<% if(locals.isAuthenticated) { %>
+				<li>Welcome <%= locals.name %>!</li>
+			<% } %>
+
+		</ul>
 	</nav>
 </header>
