@@ -54,11 +54,69 @@ a {
 .nav-items {
 	display: flex;
 	align-items: center;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 100%;
 }
 
 .nav-items li {
 	margin: 0 var(--space-2);
 	font-size: 1.1rem;
+}
+
+.nav-items button {
+	cursor: pointer;
+	background: none;
+	border: none;
+	font-family: inherit;
+	font-size: 1.1rem;
+	font-weight: 550;
+	color: whitesmoke;
+	padding: var(--space-2) var(--space-4);
+	border-radius: var(--border-radius-small);
+}
+
+#mobile-menu {
+	position: fixed;
+	top: 5rem;
+	left: 0;
+	height: calc(100vh - 5rem); /* Main header 제외 화면 전체 높이*/
+	width: 100%;
+	background-color: rgba(45, 51, 71, 0.98);
+	display: none;
+	flex-direction: column;
+	align-items: center;
+}
+
+#mobile-menu nav {
+	height: 20rem;
+	width: 90%;
+	margin: var(--space-4) auto;
+}
+
+#mobile-menu nav a,
+#mobile-menu nav button {
+	color: whitesmoke;
+	font-size: 1.75rem;
+}
+
+/* mobile menu에 open 클래스가 존재할 때만 */
+#mobile-menu.open {
+	display: flex;
+}
+
+#greeting {
+	color: #cf7b3d;
+	font-size: 1rem;
+	font-weight: bold;
+	margin-right: 0;
+	cursor: grab;
+	display: none;
+}
+
+
+#greeting:active {
+	cursor: grabbing;
 }
 
 
@@ -84,6 +142,10 @@ a {
 		display: none;
 	}
 
+	.nav-items {
+		flex-direction: row;
+	}
+
 	.nav-items a {
 		padding: var(--space-2) var(--space-4);
 		border-radius: var(--border-radius-small);
@@ -93,6 +155,17 @@ a {
 	.nav-items a:active {
 		background-color: rgb(35 48 71);
 	}
+
+	.nav-items button:hover,
+	.nav-items button:active {
+		background-color: rgb(35 48 71);
+	}
+
+	#greeting {
+		display: block;
+	}
 }
+
+
 
 
