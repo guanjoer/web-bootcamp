@@ -27,8 +27,13 @@ function emailIsConfirmed(email, confirmEmail) {
 	return email === confirmEmail;
 }
 
+function passwordIsConfirmed(password, confirmPassword) {
+	return password === confirmPassword;
+}
+
 
 module.exports = {
 	userDetailsAreValid: userDetailsAreValid,
-	emailIsConfirmed: emailIsConfirmed
+	emailIsConfirmed: emailIsConfirmed,
+	passwordIsConfirmed: passwordIsConfirmed
 };

@@ -2,12 +2,42 @@ const User = require('../models/auth.model');
 
 const authUtil = require('../util/authentication');
 const validationUtil = require('../util/validation');
+const sessionFlashUtil = require('../util/session-flash');
+const session = require('express-session');
 
 function getSignup(req, res) {
-	res.render('customer/auth/signup');
+	let flashedData = sessionFlashUtil.getSessionData(req);
+
+	// First get request to signup page
+	if(!flashedData) {
+		flashedData = {
+			errorMessage: '',
+			email: '',
+			confirmEmail: '',
+			password: '',
+			confirmPassword: '',
+			fullname: '',
+			postalCode: '',
+			address: '',
+			addressDetail: ''
+		}
+	};
+	res.render('customer/auth/signup', {flashedData: flashedData});
 };
 
 async function signup(req, res, next) {
+		enteredData = {
+			email: req.body.email,
+			confirmEmail: req.body['confirm-email'],
+			password: req.body.password,
+			confirmPassword: req.body['confirm-password'],
+			fullname: req.body.fullname,
+			postalCode: req.body.postalCode,
+			address: req.body.address,
+			addressDetail: req.body.addressDetail
+		}
+
+		// 입력 데이터가 공백이거나 비밀번호가 7자리 미만인지 혹은 이메일, 비밀번호와 confirm-email, confirm-password의 값이 같은지 확인
 		if(!validationUtil.userDetailsAreValid(
 			req.body.email,
 			req.body.password,
@@ -18,9 +48,17 @@ async function signup(req, res, next) {
 		) || !validationUtil.emailIsConfirmed(
 			req.body.email,
 			req.body['confirm-email']
+		) || !validationUtil.passwordIsConfirmed(
+			req.body.password,
+			req.body['confirm-password']
 		)
 		) {
-			res.redirect('/signup')
+			sessionFlashUtil.flashDataToSession(req, {
+				errorMessage: '이메일 및 비밀번호, 개인정보 입력을 확인하세요!',
+				...enteredData	
+			}, function() {
+				res.redirect('/signup')
+			})
 			return;
 		}
 
@@ -32,8 +70,20 @@ async function signup(req, res, next) {
 			req.body.address,
 			req.body.addressDetail);
 
-
 		try {
+			// DB의 users 컬렉션에 입력한 이메일이 이미 존재하는지 확인.
+			const existsAlready = await user.existsAlready();
+			if(existsAlready) {
+				sessionFlashUtil.flashDataToSession(req, {
+					errorMessage: '이미 존재하는 이메일 입니다.',
+					...enteredData	
+				}, function() {
+					res.redirect('/signup')
+				})
+				return;
+			}
+
+			// 입력한 데이터를 DB의 users 컬렉션에 삽입.
 			await user.signup();
 		} catch (error) {
 			next(error); // Activate error handler middleware
@@ -44,7 +94,15 @@ async function signup(req, res, next) {
 };
 
 function getLogin(req, res) {
-	res.render('customer/auth/login');
+	let flashedData = sessionFlashUtil.getSessionData(req);
+
+	if(!flashedData) {
+		flashedData = {
+			email: '',
+			password: '',
+		}
+	};
+	res.render('customer/auth/login', {flashedData: flashedData});
 };
 
 // 이메일 중복확인 with Ajax
@@ -78,10 +136,17 @@ async function login(req, res, next) {
 		return;		
 	};
 
+	const sessionErrorData = {
+		errorMessage: '이메일 및 비밀번호를 확인하세요!',
+		email: user.email,
+		password: user.password
+	};
 
 	// Check the entered email exists in the database. // i.e Validation test for email.
 	if(!existingUser) {
-		res.redirect('/login');
+		sessionFlashUtil.flashDataToSession(req, sessionErrorData, function() {
+			res.redirect('/login');
+		})
 		return;
 	};
 
@@ -89,7 +154,9 @@ async function login(req, res, next) {
 	const passwordIsCorrect = await user.hasMatchingPassword(existingUser.password);
 
 	if(!passwordIsCorrect) {
-		res.redirect('/login');
+		sessionFlashUtil.flashDataToSession(req, sessionErrorData, function() {
+			res.redirect('/login');
+		})
 		return;
 	};
 

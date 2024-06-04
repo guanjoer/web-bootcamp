@@ -15,8 +15,7 @@ form {
 }
 
 form a {
-	
-
+	color: #4856a7;
 }
 
 form a:hover,
@@ -42,3 +41,12 @@ form a:active {
 	text-decoration: underline;
 	
 }
+
+#pwd-guide {
+	margin-top: 0.25rem;
+	color: rgb(0, 0, 0, 0.3);
+	font-size: 1rem;
+}
+
+
+
