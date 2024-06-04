@@ -1,6 +1,7 @@
 function checkAuthStatus(req, res, next) {
 	const uid = req.session.uid;
 	const userName = req.session.name;
+	const isAdmin = req.session.isAdmin;
 
 
 	// i.e. User is authenticated!
@@ -10,6 +11,7 @@ function checkAuthStatus(req, res, next) {
 
 	res.locals.uid = uid;
 	res.locals.name = userName;
+	res.locals.isAdmin = isAdmin;
 	res.locals.isAuthenticated = true;
 	next();
 };
