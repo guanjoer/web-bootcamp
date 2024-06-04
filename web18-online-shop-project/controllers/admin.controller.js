@@ -1,0 +1,21 @@
+// 물품 목록 가져오기
+function getProducts(req, res) {
+	res.render('admin/products/all-products');
+};
+
+// 새로운 물품 추가할 페이지 가져오기
+function getNewProduct(req, res) {
+	res.render('admin/products/new-product')
+};
+
+// 작성한 새로운 물품 추가
+function createNewProduct() {
+
+};
+
+
+module.exports = {
+	getProducts: getProducts,
+	getNewProduct: getNewProduct,
+	createNewProduct, createNewProduct
+};

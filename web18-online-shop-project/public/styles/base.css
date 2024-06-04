@@ -81,6 +81,16 @@ a {
 	border-color: var(--color-primary-350);
 }
 
+.btn-alt {
+	background-color: transparent;
+	color: var(--color-primary-300);
+}
+
+.btn-alt:hover,
+.btn-alt:active {
+	background-color: #e4edf5;
+}
+
 .error-message {
 	text-align: center;
 	border-radius: var(--border-radius-small);
