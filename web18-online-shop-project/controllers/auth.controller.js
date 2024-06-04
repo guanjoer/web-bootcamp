@@ -1,19 +1,37 @@
 const User = require('../models/auth.model');
 
 const authUtil = require('../util/authentication');
+const validationUtil = require('../util/validation');
 
 function getSignup(req, res) {
 	res.render('customer/auth/signup');
 };
 
 async function signup(req, res, next) {
-	const user = new User(
-		req.body.email,
-		req.body.password,
-		req.body.fullname,
-		req.body.postalCode,
-		req.body.address,
-		req.body.addressDetail);
+		if(!validationUtil.userDetailsAreValid(
+			req.body.email,
+			req.body.password,
+			req.body.fullname,
+			req.body.postalCode,
+			req.body.address,
+			req.body.addressDetail
+		) || !validationUtil.emailIsConfirmed(
+			req.body.email,
+			req.body['confirm-email']
+		)
+		) {
+			res.redirect('/signup')
+			return;
+		}
+
+		const user = new User(
+			req.body.email,
+			req.body.password,
+			req.body.fullname,
+			req.body.postalCode,
+			req.body.address,
+			req.body.addressDetail);
+
 
 		try {
 			await user.signup();
@@ -27,6 +45,26 @@ async function signup(req, res, next) {
 
 function getLogin(req, res) {
 	res.render('customer/auth/login');
+};
+
+// 이메일 중복확인 with Ajax
+async function emailIsExisted(req, res, next) {
+	const user = new User(req.body.email);
+
+	let existingUser;
+	try {
+		existingUser = await user.getUserWithEmail();
+	} catch (error) {
+		next(error);
+		return;
+	};
+
+	if(existingUser) {
+		// res.redirect('/signup')
+		res.json({exists: true})
+	} else {
+		res.json({exists: false});
+	}
 };
 
 async function login(req, res, next) {
@@ -69,6 +107,7 @@ function logout(req, res) {
 
 module.exports = {
 	getSignup: getSignup,
+	emailIsExisted: emailIsExisted,
 	getLogin: getLogin,
 	signup:signup,
 	login: login,

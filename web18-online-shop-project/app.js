@@ -22,6 +22,7 @@ app.set('views', path.join(__dirname, 'views')); // ejs엔진을 사용해 rende
 
 app.use(express.static('public')); // public/* 파일들을 정적파일로 브라우저에 제공
 app.use(express.urlencoded({extended: false})); // For attached Request datas in req.body
+app.use(express.json()); // JSON 파싱 미들웨어
 
 app.use(expressSession(createSessionConfig()));
 app.use(csrf());

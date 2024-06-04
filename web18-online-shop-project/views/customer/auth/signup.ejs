@@ -2,6 +2,8 @@
 
 <link rel="stylesheet" href="/styles/forms.css">
 <link rel="stylesheet" href="/styles/auth.css">
+
+<script src="/scripts/check-email.js" defer></script>
 </head>
 
 <body>
@@ -12,11 +14,10 @@
 		<form action="/signup" method="POST">
 			<input type="hidden" name="_csrf" value="<%= locals.csrfToken  %>">
 			<p>
-				<!-- Users 테이블 혹은 컬렉션 내 document의 email 값이 이미 존재하는지 체크 필요 -->
-				<!-- Ajax로 처리 -->
 				<label for="email">E-Mail</label>
 				<input type="email" id="email" name="email" required>
-				<span><a href="" id="check-email">Check Email</a></span>
+				<!-- 이메일 중복확인 with Ajax -->
+				<button type="button" id="check-email">Check Email</button>
 			</p>
 			<p>
 				<label for="confirm-email">Confirm Email</label>
@@ -55,7 +56,7 @@
 				<label for="addr-detail">Address Detail</label>
 				<input type="text" id="addr-detail" name="addressDetail" required>
 			</p>
-			<button class="btn">Create Accout</button>
+			<button class="btn" type="submit">Create Accout</button>
 			<p id="switch-form"><a href="/login">You have already an account?</a></p>
 		</form>
 	</main>

@@ -15,7 +15,7 @@ form {
 }
 
 form a {
-	color: #4856a7;
+	
 
 }
 
@@ -24,3 +24,21 @@ form a:active {
 	color: #d68c43;
 	text-decoration: underline;
 	}
+
+
+#check-email {
+	background: none;
+	border: none;
+	padding: 0;
+	color: #4856a7;
+	cursor: pointer;
+	font-size: 0.85rem;
+	margin-top: 0.5rem;
+}
+
+#check-email:hover,
+#check-email:active {
+	color: #d68c43;
+	text-decoration: underline;
+	
+}

@@ -9,6 +9,8 @@ router.get('/signup', authController.getSignup);
 
 router.post('/signup', authController.signup);
 
+router.post('/check-email', authController.emailIsExisted);
+
 router.get('/login', authController.getLogin);
 
 router.post('/login', authController.login);
