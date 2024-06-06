@@ -107,7 +107,15 @@ function getLogin(req, res) {
 
 // 이메일 중복확인 with Ajax
 async function emailIsExisted(req, res, next) {
-	const user = new User(req.body.email);
+	const email = req.body.email.trim();
+
+	if(!email) {
+		return res.json({exists: null, message: '이메일을 입력해주세요.'});
+	} else if (!email.includes('@')) {
+		return res.json({ exists: null, message: '@를 포함하여 이메일을 입력해주세요.' });
+	};
+
+	const user = new User(email);
 
 	let existingUser;
 	try {
@@ -116,6 +124,8 @@ async function emailIsExisted(req, res, next) {
 		next(error);
 		return;
 	};
+
+
 
 	if(existingUser) {
 		// res.redirect('/signup')

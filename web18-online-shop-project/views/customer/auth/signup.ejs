@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/styles/forms.css">
 <link rel="stylesheet" href="/styles/auth.css">
 
-<script src="/scripts/check-email.js" defer></script>
+<script src="/scripts/check-email-pwd.js" defer></script>
 </head>
 
 <body>
@@ -37,6 +37,7 @@
 			<p>
 				<label for="confirm-pwd">Confirm Password</label>
 				<input type="password" id="confirm-pwd" name="confirm-password" minlength="7" value="<%= flashedData.confirmPassword  %>" required>
+				<button type="button" id="check-password">Check Password</button>
 			</p>
 			<hr>
 			<p>
