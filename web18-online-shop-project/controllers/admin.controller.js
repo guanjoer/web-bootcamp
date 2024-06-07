@@ -2,8 +2,15 @@ const Product = require('../models/product.model');
 
 
 // 물품 목록 가져오기
-function getProducts(req, res) {
-	res.render('admin/products/all-products');
+async function getProducts(req, res, next) {
+	try {
+		const products = await Product.findAll();
+		console.log(products);
+		res.render('admin/products/all-products', {products: products});
+	} catch (error) {
+		next(error)
+		return;
+	}
 };
 
 // 새로운 물품 추가할 페이지 가져오기
