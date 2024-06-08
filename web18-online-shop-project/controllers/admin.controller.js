@@ -24,7 +24,7 @@ function getNewProduct(req, res) {
 	res.render('admin/products/new-product', {product: product})
 };
 
-// 작성한 새로운 물품 추가
+// 작성한 새로운 물품 추가하기
 async function createNewProduct(req, res, next) {
 	// console.log(req.body);
 	// console.log(req.file);
@@ -44,6 +44,7 @@ async function createNewProduct(req, res, next) {
 	res.redirect('/admin/products')
 };
 
+// 관리자 물품 업데이트 페이지 가져오기
 async function getUpdateProduct(req, res, next) {
 	try {
 		const product = await Product.findById(req.params.id);
@@ -54,8 +55,26 @@ async function getUpdateProduct(req, res, next) {
 	}
 }
 
-function updateProduct() {
+// 물품 업데이트 진행하기
+async function updateProduct(req, res, next) {
+	const product = new Product({
+		...req.body,
+		_id: req.params.id
+	})
+	// console.log(product);
 
+	if(req.file) {
+		product.replaceImage(req.file.filename);
+	}
+
+	try {
+		await product.save();
+	} catch (error) {
+		next(error)
+		return;		
+	}
+
+	res.redirect('/admin/products')
 }
 
 
