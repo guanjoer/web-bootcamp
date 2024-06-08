@@ -15,7 +15,13 @@ async function getProducts(req, res, next) {
 
 // 새로운 물품 추가할 페이지 가져오기
 function getNewProduct(req, res) {
-	res.render('admin/products/new-product')
+	const product = {
+		title: '',
+		summary: '',
+		price: null,
+		description: ''
+	};
+	res.render('admin/products/new-product', {product: product})
 };
 
 // 작성한 새로운 물품 추가
@@ -38,9 +44,25 @@ async function createNewProduct(req, res, next) {
 	res.redirect('/admin/products')
 };
 
+async function getUpdateProduct(req, res, next) {
+	try {
+		const product = await Product.findById(req.params.id);
+		// console.log(product);
+		res.render('admin/products/update-product', {product: product})
+	} catch (error) {
+		next(error);
+	}
+}
+
+function updateProduct() {
+
+}
+
 
 module.exports = {
 	getProducts: getProducts,
 	getNewProduct: getNewProduct,
-	createNewProduct, createNewProduct
+	createNewProduct, createNewProduct,
+	getUpdateProduct: getUpdateProduct,
+	updateProduct: updateProduct
 };

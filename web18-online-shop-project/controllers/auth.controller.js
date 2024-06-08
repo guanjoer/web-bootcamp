@@ -3,7 +3,6 @@ const User = require('../models/auth.model');
 const authUtil = require('../util/authentication');
 const validationUtil = require('../util/validation');
 const sessionFlashUtil = require('../util/session-flash');
-const session = require('express-session');
 
 function getSignup(req, res) {
 	let flashedData = sessionFlashUtil.getSessionData(req);

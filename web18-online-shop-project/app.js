@@ -1,14 +1,19 @@
+// Built-in Modules
 const path = require('path');
 
+// Third-parties
 const express = require('express');
 const csrf = require('csurf');
 const expressSession = require('express-session');
 
+// Custom modules
 const db = require('./data/database');
 const createSessionConfig = require('./config/session');
+// Middlewares
 const addCsrfTokenMiddleware = require('./middlewares/csrf-token');
 const errorHandlerMiddleware = require('./middlewares/error-handler');
 const checkAuthStatusMiddleware = require('./middlewares/check-auth');
+// Routes
 const authRoutes = require('./routes/auth.routes');
 const adminRoutes = require('./routes/admin.routes');
 const baseRoutes = require('./routes/base.routes');
@@ -27,8 +32,8 @@ app.use(express.urlencoded({extended: false})); // For attached Request datas in
 app.use(express.json()); // JSON 파싱 미들웨어
 
 app.use(expressSession(createSessionConfig()));
-app.use(csrf());
-app.use(addCsrfTokenMiddleware);
+app.use(csrf()); // csrfToken 생성 및 유효성 검사 패키지
+app.use(addCsrfTokenMiddleware); 
 
 app.use(checkAuthStatusMiddleware);
 

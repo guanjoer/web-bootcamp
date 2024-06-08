@@ -1,4 +1,4 @@
-<%- include('../../shared/includes/head', {pageTitle: 'Add New Product'})  %>
+<%- include('../../shared/includes/head', {pageTitle: 'Update a Product'})  %>
 
 
 <link rel="stylesheet" href="/styles/forms.css">
@@ -9,8 +9,8 @@
 	<%- include('../../shared/includes/header')  %>
 
 	<main>
-		<h1>Add New Product</h1>
-		<%- include('includes/product-form', {submitPath: '/admin/products', product: product})  %>
+		<h1>Update a Product</h1>
+		<%- include('includes/product-form', {submitPath: '/admin/products/' + product._id, product: product})  %>
 
 	</main>
 
