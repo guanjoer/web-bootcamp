@@ -33,3 +33,21 @@ textarea:focus {
 	background-color: #dbeeff;
 	border: 2px solid rgba(77, 77, 77, 0.2);
 }
+
+#image-preview-control {
+	display: flex;
+	align-items: center;
+}
+
+
+#image-preview-control input {
+	max-width: 15rem;
+}
+
+#image-preview-control img {
+	display: none;
+	width: 5rem;
+	/* height: 5rem; */
+	object-fit: cover;
+	border-radius: var(--border-radius-small);
+}
