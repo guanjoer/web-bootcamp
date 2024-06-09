@@ -48,7 +48,7 @@ class Product {
 		return products.map(function(productDocument) {
 			return new Product(productDocument);
 		});
-	}
+	};
 
 	updateImage() {
 		this.imagePath = `product-data/images/${this.image}`;
