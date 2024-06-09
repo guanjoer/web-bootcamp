@@ -8,6 +8,7 @@ async function getProducts(req, res, next) {
 		// console.log(products);
 		res.render('admin/products/all-products', {products: products});
 	} catch (error) {
+		error.code = 500;
 		next(error)
 		return;
 	}
@@ -37,6 +38,7 @@ async function createNewProduct(req, res, next) {
 	try {
 		await product.save();
 	} catch (error) {
+		error.code = 500;
 		next(error);
 		return;
 	}
@@ -51,6 +53,7 @@ async function getUpdateProduct(req, res, next) {
 		// console.log(product);
 		res.render('admin/products/update-product', {product: product})
 	} catch (error) {
+		error.code = 404;
 		next(error);
 	}
 }
@@ -70,11 +73,28 @@ async function updateProduct(req, res, next) {
 	try {
 		await product.save();
 	} catch (error) {
+		error.code = 500;
 		next(error)
 		return;		
 	}
 
 	res.redirect('/admin/products')
+}
+
+// 물품 삭제 진행하기
+async function deleteProduct(req, res, next) {
+	const productId = req.params.id;
+
+	const product = new Product({_id: productId});
+	try {
+		await product.remove();
+	} catch (error) {
+		error.code = 404;
+		next(error);		
+	};
+
+	// Ajax는 데이터 교환이 일어나야 하기 때문에, res.json()을 통해, front-end로 응답을 보내주도록 하자.
+	res.json({message: 'Deleted Product!'});
 }
 
 
@@ -83,5 +103,6 @@ module.exports = {
 	getNewProduct: getNewProduct,
 	createNewProduct, createNewProduct,
 	getUpdateProduct: getUpdateProduct,
-	updateProduct: updateProduct
+	updateProduct: updateProduct,
+	deleteProduct: deleteProduct
 };

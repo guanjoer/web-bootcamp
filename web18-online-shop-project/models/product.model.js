@@ -15,7 +15,7 @@ class Product {
 		if(productData._id) {
 			this.id = productData._id.toString();
 		};
-	}
+	};
 
 	static async findById(productId) {
 		// productId는 16진수 문자열이므로, DB에 실제적으로 저장된 id의 값인 12바이트의 이진 데이터로 변환하기 위해서는,
@@ -37,7 +37,7 @@ class Product {
 			throw error;
 		}
 		return product;
-	}
+	};
 
 	// static 사용시, 인스턴스화를 커지지 않고, 클래스에 바로 접근이 가능함.
 	static async findAll() {
@@ -76,12 +76,18 @@ class Product {
 			await db.getDb().collection('products').insertOne(productData);
 		}
 
-	}
+	};
 
 	replaceImage(newImage) {
 		this.image = newImage;
 		this.updateImage();
-	}
+	};
+
+	// 단일 제품 삭제
+	async remove() {
+		const productId = new mongodb.ObjectId(this.id);
+		await db.getDb().collection('products').deleteOne({_id: productId});
+	};
 }
 
 module.exports = Product;

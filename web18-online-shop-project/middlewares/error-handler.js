@@ -20,9 +20,9 @@ function handleErrors(error, req, res, next) {
 	  let statusCode = 500; // 기본값: 서버 오류
 	  let errorMessage = 'Internal Server Error';
 
-	  if (error.status === 404) {
+	  if (error.code === 404) {
 		error = new NotFoundError(error.message); // NotFoundError 객체로 변환
-	  } else if (error.status === 400) {
+	  } else if (error.code === 400) {
 		error = new ValidationError(error.message)
 	  }
 	
