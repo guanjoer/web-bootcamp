@@ -14,11 +14,13 @@ const addCsrfTokenMiddleware = require('./middlewares/csrf-token');
 const errorHandlerMiddleware = require('./middlewares/error-handler');
 const checkAuthStatusMiddleware = require('./middlewares/check-auth');
 const protectRoutesMiddleware = require('./middlewares/protect-routes');
+const cartMiddleware = require('./middlewares/cart');
 // Routes
 const authRoutes = require('./routes/auth.routes');
 const adminRoutes = require('./routes/admin.routes');
 const baseRoutes = require('./routes/base.routes');
 const productsRoutes = require('./routes/products.routes');
+const cartRoutes = require('./routes/cart.routes');
 
 
 const app = express();
@@ -34,6 +36,8 @@ app.use(express.json()); // JSON 파싱 미들웨어
 
 app.use(expressSession(createSessionConfig()));
 app.use(csrf()); // csrfToken 생성 및 유효성 검사 패키지
+
+app.use(cartMiddleware);
 app.use(addCsrfTokenMiddleware); 
 
 app.use(checkAuthStatusMiddleware);
@@ -41,6 +45,7 @@ app.use(checkAuthStatusMiddleware);
 app.use(baseRoutes);
 app.use(productsRoutes);
 app.use(authRoutes);
+app.use('/cart', cartRoutes);
 app.use(protectRoutesMiddleware); // 관리자 페이지 보호 미들웨어
 app.use('/admin', adminRoutes);
 

@@ -1,0 +1,11 @@
+<article class="cart-item">
+	<div class="cart-item-info">
+		<h2><%= cartItem.product.title  %></h2>
+		<p><%= cartItem.totalPrice %> KRW <span class="cart-product-price">(<%= cartItem.product.price  %> KRW)</span></p>
+	</div>
+
+	<div class="cart-item-management">
+		<input name="cart-product-quantity" type="number" value="<%= cartItem.quantity %>" required>
+		<button class="btn btn-alt">Update</button>
+	</div>
+</article>

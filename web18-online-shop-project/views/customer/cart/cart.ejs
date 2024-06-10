@@ -1,0 +1,27 @@
+<%- include('../../shared/includes/head', {pageTitle: 'Your Cart'})  %>
+
+<link rel="stylesheet" href="/styles/cart.css">
+</head>
+
+<body>
+	<%- include('../../shared/includes/header')  %>
+
+	<main>
+		<h1>Your cart</h1>
+		<ul id="cart-items">
+			<% for(const cartItem of locals.cart.items) { %>
+			<li>
+				<%- include('./includes/cart-item', {cartItem: cartItem})  %>
+			</li>
+			<% } %>
+		</ul>
+
+		<div id="cart-total">
+			<!-- 소수점 이하 2자리 반올림: .toFixed(2) -->
+			<p>Total: <%= locals.cart.totalPrice  %> KRW</p> 
+
+			<button>Buy Products</button>
+		</div>
+	</main>
+
+<%- include('../../shared/includes/footer')  %>
