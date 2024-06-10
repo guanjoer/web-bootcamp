@@ -21,6 +21,7 @@ async function addToCart(req, res, next) {
 
 function getCart(req, res, next) {
 	const cart = res.locals.cart;
+	console.log(cart);
 	const formattedItems = cart.getFormattedItems();
 	const formattedTotalPrice = cart.getFormattedTotalPrice();
 	res.render('customer/cart/cart', {

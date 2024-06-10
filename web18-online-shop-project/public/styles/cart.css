@@ -23,12 +23,31 @@
 
 .cart-product-price {
 	font-style: italic;
+	color: rgb(151 151 151);
+}
+
+#cart-total {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#cart-total p {
+	font-size: 1.25rem;
+	font-weight: bold;
+	/* margin: 0; */
 }
  
 
 
 @media(min-width: 48rem) {
 	.cart-item {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	#cart-total {
 		flex-direction: row;
 		justify-content: space-between;
 	}

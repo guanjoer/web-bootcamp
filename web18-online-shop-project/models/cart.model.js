@@ -13,7 +13,6 @@ class Cart {
 			if(item.product._id.toString() === product._id.toString()) {
 				item.quantity++;
 				item.totalPrice += product.price;
-				// this.items[i] = cartItem;
 				this.totalQuantity += 1;
 				this.totalPrice += product.price;
 				return;
