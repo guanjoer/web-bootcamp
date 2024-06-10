@@ -5,6 +5,9 @@ const Product = require('../models/product.model');
 async function getProducts(req, res, next) {
 	try {
 		const products = await Product.findAll();
+		products.forEach(product => {
+			product.formattedPrice = product.formatPrice();
+		});
 		// console.log(products);
 		res.render('admin/products/all-products', {products: products});
 	} catch (error) {

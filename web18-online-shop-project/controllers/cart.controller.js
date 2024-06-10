@@ -20,7 +20,13 @@ async function addToCart(req, res, next) {
 };
 
 function getCart(req, res, next) {
-	res.render('customer/cart/cart');
+	const cart = res.locals.cart;
+	const formattedItems = cart.getFormattedItems();
+	const formattedTotalPrice = cart.getFormattedTotalPrice();
+	res.render('customer/cart/cart', {
+		cartItems: formattedItems,
+		formattedTotalPrice: formattedTotalPrice
+	});
 }
 
 

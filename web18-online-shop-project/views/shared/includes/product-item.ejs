@@ -3,7 +3,7 @@
 
 	<div class="product-item-content">
 		<h2><%= product.title %></h2>
-		<p><%= product.price  %> KRW</p>
+		<p><%= product.formattedPrice  %> KRW</p>
 	</div>
 	<div class="product-item-actions">
 		<% if(locals.isAdmin) { %>

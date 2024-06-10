@@ -31,6 +31,29 @@ class Cart {
 		this.totalQuantity += 1;
 		this.totalPrice += product.price;
 	};
+
+	// 한국 화폐로 변환
+	formatPrice(price) {
+		return new Intl.NumberFormat('ko-KR', {
+			style: 'currency',
+			currency: 'KRW'
+		}).format(price);
+	}
+
+	getFormattedItems() {
+		return this.items.map(item => ({
+			...item,
+			formattedTotalPrice: this.formatPrice(item.totalPrice),
+			product: {
+				...item.product,
+				formattedPrice: this.formatPrice(item.product.price)
+			}
+		}));
+	}
+
+	getFormattedTotalPrice() {
+		return this.formatPrice(this.totalPrice);
+	}
 };
 
 module.exports = Cart;

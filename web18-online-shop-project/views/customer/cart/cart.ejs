@@ -9,7 +9,7 @@
 	<main>
 		<h1>Your cart</h1>
 		<ul id="cart-items">
-			<% for(const cartItem of locals.cart.items) { %>
+			<% for(const cartItem of cartItems) { %>
 			<li>
 				<%- include('./includes/cart-item', {cartItem: cartItem})  %>
 			</li>
@@ -18,9 +18,9 @@
 
 		<div id="cart-total">
 			<!-- 소수점 이하 2자리 반올림: .toFixed(2) -->
-			<p>Total: <%= locals.cart.totalPrice  %> KRW</p> 
+			<p>Total: <%= formattedTotalPrice  %> KRW</p> 
 
-			<button>Buy Products</button>
+			<button class="btn">Buy Products</button>
 		</div>
 	</main>
 

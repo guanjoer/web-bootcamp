@@ -55,7 +55,15 @@ class Product {
 		this.imageUrl = `/products/assets/images/${this.image}`;
 	};
 
+	formatPrice() {
+		return new Intl.NumberFormat('ko-KR', {
+			style: 'currency',
+			currency: 'KRW'
+		}).format(this.price);
+	};
+
 	async save() {
+
 		const productData = {
 			title: this.title,
 			summary: this.summary,
