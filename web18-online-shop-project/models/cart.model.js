@@ -31,6 +31,30 @@ class Cart {
 		this.totalPrice += product.price;
 	};
 
+	updateItem(productId, newQuantity) {
+		for(let i = 0; i < this.items.length; i++) {
+			const item = this.items[i];
+			if(item.product._id.toString() === productId && newQuantity > 0) {
+				const cartItem = {...item};
+				const quantityDelta = newQuantity - item.quantity;
+				cartItem.quantity = newQuantity;
+				cartItem.totalPrice = newQuantity * product.price;
+				this.items[i] = cartItem;
+
+				this.totalQuantity += quantityDelta;
+				this.totalPrice += quantityDelta * product.price;
+
+				return {updatedItemPrice: cartItem.totalPrice};
+			} else if(item.product._id.toString() === productId && newQuantity <= 0) {
+				this.items.splice(i, 1);
+				this.totalQuantity -= item.quantity;
+				this.totalPrice -= item.totalPrice;
+
+				return {updatedItemPrice: 0};
+			}
+		};
+	}
+
 	// 한국 화폐로 변환
 	formatPrice(price) {
 		return new Intl.NumberFormat('ko-KR', {

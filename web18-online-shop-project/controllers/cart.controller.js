@@ -21,17 +21,39 @@ async function addToCart(req, res, next) {
 
 function getCart(req, res, next) {
 	const cart = res.locals.cart;
-	console.log(cart);
+	// console.log(cart);
 	const formattedItems = cart.getFormattedItems();
 	const formattedTotalPrice = cart.getFormattedTotalPrice();
+	// const changedProductId = formattedItems.map(item => {
+	// 	item.product._id.toString()
+	// });
+	// console.log(changedProductId);
 	res.render('customer/cart/cart', {
 		cartItems: formattedItems,
-		formattedTotalPrice: formattedTotalPrice
+		formattedTotalPrice: formattedTotalPrice,
+	});
+}
+
+function updateCart(req, res, next) {
+	const cart = res.locals.cart;
+	const updatedItemData = cart.updateItem(req.body.productId, req.body,quantity);
+
+	req.session.cart = cart;
+
+	res.json({
+		message: 'Updated Item!',
+		updatedCartData: {
+			newTotalQuantity: cart.totalQuantity,
+			newTotalPrice: cart.totalPrice,
+			updatedItemPrice: updatedItemData.updatedItemPrice
+		}
+		
 	});
 }
 
 
 module.exports = {
 	addToCart: addToCart,
-	getCart: getCart
+	getCart: getCart,
+	updateCart: updateCart
 }
