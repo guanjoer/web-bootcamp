@@ -1,4 +1,6 @@
 const cartItemUpdateForm = document.querySelectorAll('.cart-item-management');
+const cartTotalPrice = document.getElementById('cart-total-price');
+const cartBadge = document.querySelector('.nav-items .badge'); // 클래스 임으로 모바일 뱃지에서도 표시하기 위해, 반복문 사용(querySelectorAll)
 
 
 async function updateCartItem(event) {
@@ -33,8 +35,22 @@ async function updateCartItem(event) {
 	};
 
 	// 업데이트 후 디스플레이 변경 로직
-	const responseData = response.json();
-	
+	const responseData = await response.json();
+
+	if(responseData.updatedCartData.updatedItemPrice === 0) {
+		form.parentElement.parentElement.remove(); // li Element
+	};
+
+	// 특정 항목에 대한 총 금액
+	const cartItemTotalPrice = form.parentElement.querySelector('.cart-item-total-price');
+	cartItemTotalPrice.textContent = responseData.updatedCartData.updatedItemPrice;
+
+	// 전체 물품 총 금액
+	cartTotalPrice.textContent = responseData.updatedCartData.newTotalPrice;
+
+	// 장바구니 뱃지 업데이트
+	cartBadge.textContent = responseData.updatedCartData.newTotalQuantity;
+
 };
 
 for(const formElemnt of cartItemUpdateForm) {

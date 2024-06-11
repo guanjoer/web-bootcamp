@@ -24,10 +24,6 @@ function getCart(req, res, next) {
 	// console.log(cart);
 	const formattedItems = cart.getFormattedItems();
 	const formattedTotalPrice = cart.getFormattedTotalPrice();
-	// const changedProductId = formattedItems.map(item => {
-	// 	item.product._id.toString()
-	// });
-	// console.log(changedProductId);
 	res.render('customer/cart/cart', {
 		cartItems: formattedItems,
 		formattedTotalPrice: formattedTotalPrice,
@@ -36,7 +32,7 @@ function getCart(req, res, next) {
 
 function updateCart(req, res, next) {
 	const cart = res.locals.cart;
-	const updatedItemData = cart.updateItem(req.body.productId, req.body,quantity);
+	const updatedItemData = cart.updateItem(req.body.productId, req.body.quantity);
 
 	req.session.cart = cart;
 
