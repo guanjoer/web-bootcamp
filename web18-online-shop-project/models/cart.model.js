@@ -53,6 +53,21 @@ class Cart {
 				return {updatedItemPrice: 0};
 			}
 		};
+	};
+
+	// 물품 삭제
+	removeItem(productId) {
+		for(let i = 0; i < this.items.length; i++) {
+			const item = this.items[i];
+			if(item.product._id.toString() === productId) {
+				this.items.splice(i, 1);
+				this.totalQuantity -= item.quantity; // 장바구니 뱃지 업데이트 용
+				this.totalPrice -= item.totalPrice; // 전체 물품 가격 표시 용
+
+				return;
+				// return {removedItemPrice: item.totalPrice};
+			}
+		}
 	}
 
 	// 한국 화폐로 변환

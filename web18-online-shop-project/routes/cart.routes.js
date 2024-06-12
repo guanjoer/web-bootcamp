@@ -12,4 +12,6 @@ router.post('/items', cartController.addToCart); // path: /cart/items
 
 router.patch('/items', cartController.updateCart);
 
+router.delete('/items', cartController.deleteCart);
+
 module.exports = router;

@@ -38,8 +38,30 @@
 	font-weight: bold;
 	/* margin: 0; */
 }
- 
 
+.cart-item-btn {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+#delete-item-btn {
+	background: none;
+	border: none;
+	text-align: right;
+	margin-top: 0.5rem;
+	cursor: pointer;
+}
+
+#delete-item-btn img {
+	filter: invert(50%);
+	padding: 0.25rem;
+	border-radius: 4px;
+}
+
+#delete-item-btn:hover img{
+	background-color: #000000;
+	filter: invert(90%);
+}
 
 @media(min-width: 48rem) {
 	.cart-item {
@@ -52,3 +74,4 @@
 		justify-content: space-between;
 	}
 }
+

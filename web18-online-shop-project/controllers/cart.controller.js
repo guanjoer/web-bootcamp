@@ -30,16 +30,14 @@ function getCart(req, res, next) {
 	});
 }
 
-function updateCart(req, res, next) {
+async function updateCart(req, res, next) {
 	const cart = res.locals.cart;
-	const updatedItemData = cart.updateItem(req.body.productId, req.body.quantity);
+	const updatedItemData = await cart.updateItem(req.body.productId, req.body.quantity);
 
 	req.session.cart = cart;
 
 	const formattedTotalPrice = cart.getFormattedTotalPrice();
 
-	console.log(formattedTotalPrice);
-	console.log(updatedItemData.updatedItemPrice);
 
 	res.json({
 		message: 'Updated Item!',
@@ -53,9 +51,27 @@ function updateCart(req, res, next) {
 	});
 }
 
+function deleteCart(req, res, next) {
+	const cart = res.locals.cart;
+	cart.removeItem(req.body.productId); // Cart 객체 업데이트(물품 삭제 진행한 후로)
+
+	req.session.cart = cart; // 변경된 장바구니의 내용을 세션에 저장
+
+	const formattedTotalPrice = cart.getFormattedTotalPrice(); // Cart 객체의 totalPrice에 저장된 총 물품 금액을 한국 화폐로 변환
+
+	res.json({
+		message: 'Deleted Item!',
+		updatedCartData: {
+			newTotalQuantity: cart.totalQuantity, // 장바구니 뱃지 업데이트 용
+			formattedTotalPrice: formattedTotalPrice // 전체 물품 총 금액
+		}
+	});
+}
+
 
 module.exports = {
 	addToCart: addToCart,
 	getCart: getCart,
-	updateCart: updateCart
-}
+	updateCart: updateCart,
+	deleteCart: deleteCart
+};
