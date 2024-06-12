@@ -36,12 +36,18 @@ function updateCart(req, res, next) {
 
 	req.session.cart = cart;
 
+	const formattedTotalPrice = cart.getFormattedTotalPrice();
+
+	console.log(formattedTotalPrice);
+	console.log(updatedItemData.updatedItemPrice);
+
 	res.json({
 		message: 'Updated Item!',
 		updatedCartData: {
 			newTotalQuantity: cart.totalQuantity,
 			newTotalPrice: cart.totalPrice,
-			updatedItemPrice: updatedItemData.updatedItemPrice
+			updatedItemPrice: updatedItemData.updatedItemPrice,
+			formattedTotalPrice: formattedTotalPrice // 전체 물품 총 금액
 		}
 		
 	});

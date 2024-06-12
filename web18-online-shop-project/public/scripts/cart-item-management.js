@@ -39,14 +39,15 @@ async function updateCartItem(event) {
 
 	if(responseData.updatedCartData.updatedItemPrice === 0) {
 		form.parentElement.parentElement.remove(); // li Element
+	} else {
+		// 특정 항목에 대한 총 금액
+		const cartItemTotalPrice = form.parentElement.querySelector('.cart-item-total-price');
+		cartItemTotalPrice.textContent = responseData.updatedCartData.updatedItemPrice;
 	};
 
-	// 특정 항목에 대한 총 금액
-	const cartItemTotalPrice = form.parentElement.querySelector('.cart-item-total-price');
-	cartItemTotalPrice.textContent = responseData.updatedCartData.updatedItemPrice;
 
 	// 전체 물품 총 금액
-	cartTotalPrice.textContent = responseData.updatedCartData.newTotalPrice;
+	cartTotalPrice.textContent = responseData.updatedCartData.formattedTotalPrice;
 
 	// 장바구니 뱃지 업데이트
 	cartBadge.textContent = responseData.updatedCartData.newTotalQuantity;

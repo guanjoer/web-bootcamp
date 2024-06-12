@@ -44,7 +44,7 @@ class Cart {
 				this.totalQuantity += quantityDelta;
 				this.totalPrice += quantityDelta * item.product.price;
 
-				return {updatedItemPrice: cartItem.totalPrice};
+				return {updatedItemPrice: this.formatPrice(cartItem.totalPrice)};
 			} else if(item.product._id.toString() === productId && newQuantity <= 0) {
 				this.items.splice(i, 1);
 				this.totalQuantity -= item.quantity;
@@ -63,6 +63,7 @@ class Cart {
 		}).format(price);
 	}
 
+	// items 배열 내, 각 item이라는 객체에 저장된 price의 값을 한국 화폐로 변환
 	getFormattedItems() {
 		return this.items.map(item => ({
 			...item,
