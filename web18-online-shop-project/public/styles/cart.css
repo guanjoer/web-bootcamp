@@ -63,6 +63,12 @@
 	filter: invert(90%);
 }
 
+
+#cart-total #cart-item-fallback {
+	font-size: 1rem;
+	font-weight: normal;
+}
+
 @media(min-width: 48rem) {
 	.cart-item {
 		flex-direction: row;

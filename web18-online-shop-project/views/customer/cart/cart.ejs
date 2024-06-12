@@ -23,7 +23,11 @@
 			<!-- 소수점 이하 2자리 반올림: .toFixed(2) -->
 			<p>Total: <span id="cart-total-price"><%= formattedTotalPrice  %></span> KRW</p> 
 
-			<button class="btn">Buy Products</button>
+			<% if(locals.isAuthenticated) { %>
+				<button class="btn">Buy Products</button>
+			<% } else { %>
+				<p id="cart-item-fallback">Log in to proceed and purchase the items.</p>
+			<% } %>
 		</div>
 	</main>
 
