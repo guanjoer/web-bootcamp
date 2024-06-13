@@ -1,4 +1,5 @@
 const Product = require('../models/product.model');
+const Order = require('../models/orders.model');
 
 
 // 물품 목록 가져오기
@@ -100,6 +101,36 @@ async function deleteProduct(req, res, next) {
 	res.json({message: 'Deleted Product!'});
 }
 
+// Manage Orders 페이지 가져오기
+async function getOrders(req, res, next) {
+	try {
+	  const orders = await Order.findAll(); // 유저에 상관없이 orders 컬렉션의 모든 문서들을 인스턴스화
+	//   console.log(orders);
+	  res.render('admin/orders/admin-orders', { 
+		orders: orders
+	  });
+	} catch (error) {
+	  next(error);
+	}
+  }
+
+  async function updateOrder(req, res, next) {
+	const orderId = req.params.id;
+	const newStatus = req.body.newStatus;
+	console.log(orderId);
+	try {
+	  const order = await Order.findById(orderId);
+  
+	  order.status = newStatus;
+  
+	  await order.save();
+  
+	  res.json({ message: 'Order updated', newStatus: newStatus });
+	} catch (error) {
+	  next(error);
+	}
+  };
+
 
 module.exports = {
 	getProducts: getProducts,
@@ -107,5 +138,7 @@ module.exports = {
 	createNewProduct, createNewProduct,
 	getUpdateProduct: getUpdateProduct,
 	updateProduct: updateProduct,
-	deleteProduct: deleteProduct
+	deleteProduct: deleteProduct,
+	getOrders: getOrders,
+	updateOrder: updateOrder
 };

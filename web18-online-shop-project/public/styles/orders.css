@@ -49,6 +49,10 @@
 	padding: var(--space-2);
 	border-radius: var(--border-radius-small);
   }
+
+.order-user-name {
+	color: #737373;
+}
   
   @media (min-width: 48rem) {
 	.order-summary {

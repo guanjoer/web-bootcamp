@@ -22,5 +22,10 @@ router.post('/products/:id', imageUploadMiddleware, adminController.updateProduc
 // router.post('/products/:id/delete', adminController.deleteProduct);
 router.delete('/products/:id', adminController.deleteProduct);
 
+// Manage Orders 페이지 가져오기
+router.get('/orders', adminController.getOrders);
+
+// Manage Orders의 주문 status 업데이트
+router.patch('/orders/:id', adminController.updateOrder);
 
 module.exports = router;

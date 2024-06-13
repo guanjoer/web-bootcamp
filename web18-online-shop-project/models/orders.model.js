@@ -32,7 +32,18 @@ class Order {
 		return orderDocs.map(this.transformOrderDocument);
 	  };
 
-	static async findAllForUser(userId) {
+	  static async findAll() { // 유저에 상관없이 orders 컬렉션 내 모든 문서.
+		const orders = await db
+		  .getDb()
+		  .collection('orders')
+		  .find()
+		  .sort({ _id: -1 }) // 최신순 정렬
+		  .toArray();
+	
+		return this.transformOrderDocuments(orders);
+	  }
+
+	static async findAllForUser(userId) { // UserId로 필터링 한 documents만. 즉 특정 유저가 주문한 물품에 대해서만.
 		const uid = new mongodb.ObjectId(userId);
 	
 		const orders = await db
@@ -43,13 +54,26 @@ class Order {
 		  .toArray();
 
 		return this.transformOrderDocuments(orders);
-	  }
+	  };
+
+	  static async findById(orderId) {
+		const order = await db
+		  .getDb()
+		  .collection('orders')
+		  .findOne({ _id: new mongodb.ObjectId(orderId) });
+	
+		return this.transformOrderDocument(order);
+	  };
 
 	async save() {
 		if(this.id) {
-			// Update orders
+			const orderId = new mongodb.ObjectId(this.id);
+			return db
+			  .getDb()
+			  .collection('orders')
+			  .updateOne({ _id: orderId }, { $set: { status: this.status } });
 		} else {
-			const orderDocument = {
+			const orderDocument = { // orders 컬렉션의 id가 존재하지 않을 때.
 				userData: this.userData,
 				productData: this.productData,
 				date: new Date(),

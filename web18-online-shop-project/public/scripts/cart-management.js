@@ -9,7 +9,7 @@ async function addTocart() {
 	try {
 		response = await fetch('/cart/items', {
 			method: 'POST',
-			body: JSON.stringify({
+			body: JSON.stringify({ // 서버와의 통신시, 데이터 교환은, json data format으로.
 				productId: productId,
 				_csrf: csrfToken
 			}),
