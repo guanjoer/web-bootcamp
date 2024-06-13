@@ -24,7 +24,10 @@
 			<p>Total: <span id="cart-total-price"><%= formattedTotalPrice  %></span> KRW</p> 
 
 			<% if(locals.isAuthenticated) { %>
-				<button class="btn">Buy Products</button>
+				<form action="/orders" method="POST">
+					<input type="hidden" name="_csrf" value="<%= locals.csrfToken  %>">
+					<button class="btn">Buy Products</button>
+				</form>
 			<% } else { %>
 				<p id="cart-item-fallback">Log in to proceed and purchase the items.</p>
 			<% } %>

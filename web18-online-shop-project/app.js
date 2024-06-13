@@ -21,6 +21,7 @@ const adminRoutes = require('./routes/admin.routes');
 const baseRoutes = require('./routes/base.routes');
 const productsRoutes = require('./routes/products.routes');
 const cartRoutes = require('./routes/cart.routes');
+const ordersRoutes = require('./routes/orders.routes');
 
 
 const app = express();
@@ -47,6 +48,7 @@ app.use(productsRoutes);
 app.use(authRoutes);
 app.use('/cart', cartRoutes);
 app.use(protectRoutesMiddleware); // 관리자 페이지 보호 미들웨어
+app.use('/orders', ordersRoutes);
 app.use('/admin', adminRoutes);
 
 app.use(errorHandlerMiddleware);

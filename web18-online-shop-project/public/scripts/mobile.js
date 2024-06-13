@@ -1,13 +1,13 @@
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenuElement = document.getElementById('mobile-menu');
-const deleteItemButtons = document.querySelectorAll('#delete-item-btn');
+const deleteItemBtns = document.querySelectorAll('#delete-item-btn');
 const deleteItemIcons = document.querySelectorAll('#delete-item-btn img');
 
 function toggleMobileMenu() {
 	mobileMenuElement.classList.toggle('open');
 
 	if(mobileMenuElement.classList.contains('open')) {
-		deleteItemButtons.forEach(button => {
+		deleteItemBtns.forEach(button => {
 			button.style.display = 'none';
 		});
 
@@ -16,7 +16,7 @@ function toggleMobileMenu() {
 		});
 
 	} else {
-		deleteItemButtons.forEach(button => {
+		deleteItemBtns.forEach(button => {
 			button.style.display = 'inline';
 		});
 
