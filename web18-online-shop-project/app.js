@@ -16,6 +16,7 @@ const checkAuthStatusMiddleware = require('./middlewares/check-auth');
 const protectRoutesMiddleware = require('./middlewares/protect-routes');
 const cartMiddleware = require('./middlewares/cart');
 const updateCartPricesMiddleware = require('./middlewares/update-cart-prices');
+const notFoundHandlerMiddleware = require('./middlewares/not-found');
 // Routes
 const authRoutes = require('./routes/auth.routes');
 const adminRoutes = require('./routes/admin.routes');
@@ -49,11 +50,13 @@ app.use(baseRoutes);
 app.use(productsRoutes);
 app.use(authRoutes);
 app.use('/cart', cartRoutes);
-app.use(protectRoutesMiddleware); // 관리자 페이지 보호 미들웨어
-app.use('/orders', ordersRoutes);
-app.use('/admin', adminRoutes);
+app.use('/orders', protectRoutesMiddleware, ordersRoutes); // 관리자 페이지 보호 미들웨어
+app.use('/admin', protectRoutesMiddleware, adminRoutes); // 관리자 페이지 보호 미들웨어
+
+app.use(notFoundHandlerMiddleware);
 
 app.use(errorHandlerMiddleware);
+
 
 db.connectToDatabase()
 	.then(function() {

@@ -1,6 +1,6 @@
 const cartItemUpdateForm = document.querySelectorAll('.cart-item-management');
 const cartTotalPrice = document.getElementById('cart-total-price');
-const cartBadge = document.querySelector('.nav-items .badge'); // 클래스 임으로 모바일 뱃지에서도 표시하기 위해, 반복문 사용(querySelectorAll)
+const cartBadges = document.querySelectorAll('.nav-items .badge'); // 모바일 뱃지 포함
 
 const deleteItemButtons = document.querySelectorAll('#delete-item-btn');
 
@@ -52,7 +52,9 @@ async function updateCartItem(event) {
 	cartTotalPrice.textContent = responseData.updatedCartData.formattedTotalPrice;
 
 	// 장바구니 뱃지 업데이트
-	cartBadge.textContent = responseData.updatedCartData.newTotalQuantity;
+	for(const cartBadge of cartBadges) {
+		cartBadge.textContent = responseData.updatedCartData.newTotalQuantity;
+	}
 
 };
 

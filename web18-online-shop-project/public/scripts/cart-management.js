@@ -1,5 +1,5 @@
 const addToCartBtn = document.querySelector('#product-details button');
-const cartBadge = document.querySelector('.nav-items .badge');
+const cartBadges = document.querySelectorAll('.nav-items .badge'); // 모바일 뱃지 포함
 
 async function addTocart() {
 	const productId = addToCartBtn.dataset.productid;
@@ -32,7 +32,9 @@ async function addTocart() {
 
 	const newTotalItems = responseData.newTotalItems;
 
-	cartBadge.textContent = newTotalItems;
+	for(const cartBadge of cartBadges) {
+		cartBadge.textContent = newTotalItems;
+	};
 }
 
 addToCartBtn.addEventListener('click', addTocart);
