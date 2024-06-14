@@ -18,7 +18,6 @@ async function getAllProducts(req, res, next) {
 async function getProductDetails(req, res, next) {
 	try {
 		let product = await Product.findById(req.params.id);
-		product = new Product(product);
 		// 한국 화폐로 표시
 		product.formattedPrice = product.formatPrice();
 		res.render('customer/products/product-details', {product: product});

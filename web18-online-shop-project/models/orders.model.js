@@ -9,7 +9,7 @@ class Order {
 		this.status = status;
 		this.date = new Date(date);
 		if(this.date) {
-			this.formattedDate = this.date.toLocaleDateString('ko-KR', { // 2024-01-01
+			this.formattedDate = this.date.toLocaleDateString('ko-KR', { // 2024. 01. 01
 				year: 'numeric',
 				month: '2-digit',
 				day: '2-digit'
@@ -62,7 +62,7 @@ class Order {
 		  .collection('orders')
 		  .findOne({ _id: new mongodb.ObjectId(orderId) });
 	
-		return this.transformOrderDocument(order);
+		return this.transformOrderDocument(order); // Order class를 이용하여 인스턴스화 진행
 	  };
 
 	async save() {

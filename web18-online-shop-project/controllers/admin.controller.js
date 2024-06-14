@@ -87,10 +87,9 @@ async function updateProduct(req, res, next) {
 
 // 물품 삭제 진행하기
 async function deleteProduct(req, res, next) {
-	const productId = req.params.id;
-
-	const product = new Product({_id: productId});
+	let product;
 	try {
+		product = await Product.findById(req.params.id);
 		await product.remove();
 	} catch (error) {
 		error.code = 404;
@@ -117,13 +116,13 @@ async function getOrders(req, res, next) {
   async function updateOrder(req, res, next) {
 	const orderId = req.params.id;
 	const newStatus = req.body.newStatus;
-	console.log(orderId);
+	// console.log(orderId);
 	try {
 	  const order = await Order.findById(orderId);
   
 	  order.status = newStatus;
   
-	  await order.save();
+	  await order.save(); // DB의 orders 내용을 최신화. 즉 변경된 인스턴스의 정보를 DB에 저장
   
 	  res.json({ message: 'Order updated', newStatus: newStatus });
 	} catch (error) {

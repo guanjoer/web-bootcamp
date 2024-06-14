@@ -4,7 +4,7 @@
 		<p><span class="cart-item-total-price"><%= cartItem.formattedTotalPrice  %></span> KRW <span class="cart-product-price">(<%= cartItem.product.formattedPrice  %> KRW)</span></p>
 	</div>
 	<div class="cart-item-btn">
-		<form class="cart-item-management" data-productid="<%= cartItem.product._id %>" data-csrf="<%= locals.csrfToken  %>">
+		<form class="cart-item-management" data-productid="<%= cartItem.product.id %>" data-csrf="<%= locals.csrfToken  %>">
 			<input name="cart-product-quantity" type="number" value="<%= cartItem.quantity %>" required>
 			<button class="btn btn-alt">Update</button>
 		</form>

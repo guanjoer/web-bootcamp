@@ -37,7 +37,7 @@ async function getOrder(req, res, next) {
 	try {
 		const orders = await Order.findAllForUser(res.locals.uid); // res.locals.uid = 로그인 한 유저의 고유 아이디
 		
-		console.log(orders);
+		// console.log(orders);
 		res.render('customer/orders/all-orders', {
 		  orders: orders,
 		});

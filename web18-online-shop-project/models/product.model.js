@@ -36,7 +36,7 @@ class Product {
 
 			throw error;
 		}
-		return product;
+		return new Product(product);
 	};
 
 	// static 사용시, 인스턴스화를 커지지 않고, 클래스에 바로 접근이 가능함.
@@ -49,6 +49,22 @@ class Product {
 			return new Product(productDocument);
 		});
 	};
+
+	static async findMultiple(ids) {
+		const productIds = ids.map(function(id) {
+		  return new mongodb.ObjectId(id);
+		})
+		
+		const products = await db
+		  .getDb()
+		  .collection('products')
+		  .find({ _id: { $in: productIds } }) // 배열 내에 존재하는 product id와 일치하는 모든 products 내, 문서들
+		  .toArray(); // [{_id: ..., title: ..., summary: ..., ...}, {_id: ..., title: ..., summary: ..., ...}, ...]
+	
+		return products.map(function (productDocument) { // 배열 내, 각각의 요소에 대해서, 새로운 배열 반환(기존 배열 유지)
+		  return new Product(productDocument); // Product 클래스를 이용하여 인스턴스화
+		});
+	  };
 
 	updateImage() {
 		this.imagePath = `product-data/images/${this.image}`;

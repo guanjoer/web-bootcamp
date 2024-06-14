@@ -10,8 +10,8 @@ function intializeCart(req, res, next) {
 		const sessionCart = req.session.cart;
 		cart = new Cart(
 			sessionCart.items,
-			sessionCart.totalQuantity,
-			sessionCart.totalPrice
+			+sessionCart.totalQuantity,
+			+sessionCart.totalPrice
 		)
 		// console.log(sessionCart)
 		// console.log(cart)

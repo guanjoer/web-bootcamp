@@ -3,7 +3,7 @@ const Product = require('../models/product.model');
 async function addToCart(req, res, next) {
 	let product;
 	try {
-		product = await Product.findById(req.body.productId);
+		product = await Product.findById(req.body.productId); // Product 인스턴스
 	} catch (error) {
 		error.code = 404;
 		next(error);
@@ -19,11 +19,13 @@ async function addToCart(req, res, next) {
 	});
 };
 
-function getCart(req, res, next) {
+async function getCart(req, res, next) {
+	// console.log(req.session.cart);
 	const cart = res.locals.cart;
-	// console.log(cart);
+	// console.log(cart.items);
 	const formattedItems = cart.getFormattedItems();
 	const formattedTotalPrice = cart.getFormattedTotalPrice();
+
 	res.render('customer/cart/cart', {
 		cartItems: formattedItems,
 		formattedTotalPrice: formattedTotalPrice,
@@ -32,7 +34,7 @@ function getCart(req, res, next) {
 
 async function updateCart(req, res, next) {
 	const cart = res.locals.cart;
-	const updatedItemData = await cart.updateItem(req.body.productId, req.body.quantity);
+	const updatedItemData = await cart.updateItem(req.body.productId, +req.body.quantity);
 
 	req.session.cart = cart;
 
