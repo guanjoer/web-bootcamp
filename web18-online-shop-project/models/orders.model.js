@@ -18,7 +18,7 @@ class Order {
 		this.id = orderId;
 	};
 
-	static transformOrderDocument(orderDoc) { // 데이터 베이스의 내용을 인스턴스화
+	static transformOrderDocument(orderDoc) { // 데이터베이스의 내용을 인스턴스화
 		return new Order(
 		  orderDoc.productData,
 		  orderDoc.userData,
@@ -66,7 +66,7 @@ class Order {
 	  };
 
 	async save() {
-		if(this.id) {
+		if(this.id) { // status 업데이트
 			const orderId = new mongodb.ObjectId(this.id);
 			return db
 			  .getDb()

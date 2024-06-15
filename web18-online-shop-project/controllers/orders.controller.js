@@ -57,8 +57,28 @@ async function getOrder(req, res, next) {
 
 };
 
+// 주문 취소; order.status = "pending" 일때만
+async function cancelOrder(req, res, next) {
+	const orderId = req.params.id;
+	try {
+		const order = await Order.findById(orderId);
+
+		if (order.userData._id.toString() !== res.locals.uid || order.status !== 'pending') {
+			return res.redirect('/orders');
+		};
+
+		order.status = 'cancelled';
+		await order.save(); // DB 업데이트
+
+		res.redirect('/orders');
+	} catch (error) {
+		next(error);
+	}
+}
+
 
 module.exports = {
 	addOrder: addOrder,
-	getOrder: getOrder
+	getOrder: getOrder,
+	cancelOrder: cancelOrder
 };

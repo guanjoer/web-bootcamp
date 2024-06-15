@@ -32,4 +32,12 @@
 		</form>
 	  </section>
 	<% } %>
+
+	<!-- order.status = "pending 일때만 표시" -->
+	 <% if(order.status === 'pending') { %>
+		<form action="/orders/cancel/<%= order.id %>" method="POST">
+			<input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+			<button class="btn">Cancel Order</button>
+		</form>
+	  <% } %>
   </article>

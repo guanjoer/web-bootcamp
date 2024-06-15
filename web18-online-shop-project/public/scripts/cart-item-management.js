@@ -1,7 +1,6 @@
 const cartItemUpdateForm = document.querySelectorAll('.cart-item-management');
 const cartTotalPrice = document.getElementById('cart-total-price');
 const cartBadges = document.querySelectorAll('.nav-items .badge'); // 모바일 뱃지 포함
-const cartList = document.querySelectorAll('.cart-list');
 
 const deleteItemButtons = document.querySelectorAll('#delete-item-btn');
 const buyButton = document.querySelector('#cart-total button');
