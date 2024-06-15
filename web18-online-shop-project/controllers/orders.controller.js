@@ -1,6 +1,7 @@
 const Product = require('../models/product.model');
 const Order = require('../models/orders.model');
 const User = require('../models/user.model');
+const Cart = require('../models/cart.model');
 
 
 async function addOrder(req, res, next) {
@@ -37,9 +38,18 @@ async function getOrder(req, res, next) {
 	try {
 		const orders = await Order.findAllForUser(res.locals.uid); // res.locals.uid = 로그인 한 유저의 고유 아이디
 		
-		// console.log(orders);
+		const formattedOrders = orders.map(order => {
+			const cart = new Cart(order.productData.items, order.productData.totalQuantity, order.productData.totalPrice);
+			return {
+				...order,
+				formattedItems: cart.getFormattedItems(),
+				formattedTotalPrice: cart.getFormattedTotalPrice()
+			};
+		});
+
+		// console.log(formattedOrders);
 		res.render('customer/orders/all-orders', {
-		  orders: orders,
+		  orders: formattedOrders
 		});
 	  } catch (error) {
 		next(error);

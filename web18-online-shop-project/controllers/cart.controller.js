@@ -26,9 +26,11 @@ async function getCart(req, res, next) {
 	const formattedItems = cart.getFormattedItems();
 	const formattedTotalPrice = cart.getFormattedTotalPrice();
 
+	// console.log(cart);
 	res.render('customer/cart/cart', {
 		cartItems: formattedItems,
 		formattedTotalPrice: formattedTotalPrice,
+		cartIsEmpty: cart.totalQuantity === 0
 	});
 }
 
@@ -65,7 +67,8 @@ function deleteCart(req, res, next) {
 		message: 'Deleted Item!',
 		updatedCartData: {
 			newTotalQuantity: cart.totalQuantity, // 장바구니 뱃지 업데이트 용
-			formattedTotalPrice: formattedTotalPrice // 전체 물품 총 금액
+			formattedTotalPrice: formattedTotalPrice, // 전체 물품 총 금액
+			isEmpty: cart.totalQuantity === 0
 		}
 	});
 }

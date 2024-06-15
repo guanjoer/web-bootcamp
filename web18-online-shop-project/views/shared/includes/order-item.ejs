@@ -1,6 +1,6 @@
 <article class="order-item">
 	<header class="order-summary">
-	  <h2><span class="order-item-price"><%= order.productData.totalPrice %> KRW</span> - <%= order.formattedDate %></h2>
+	  <h2><span class="order-item-price"><%= order.formattedTotalPrice %> KRW</span> - <%= order.formattedDate %></h2>
 	  <p><span class="badge"><%= order.status.toUpperCase() %></span></p>
 	</header>
   
@@ -12,8 +12,8 @@
 		</address>
 	  <% } %>
 	  <ul>
-		<% for (const item of order.productData.items) { %>
-		  <li><%= item.product.title %> - <%= item.totalPrice %> KRW(<%= item.product.price %> x <%= item.quantity %>)</li>
+		<% for (const item of order.formattedItems) { %>
+		  <li><%= item.product.title %> - <%= item.formattedTotalPrice %> KRW(<%= item.product.formattedPrice %> x <%= item.quantity %>)</li>
 		<% } %>
 	  </ul>
 	</section>

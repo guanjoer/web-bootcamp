@@ -13,7 +13,7 @@
 		<h1>Your cart</h1>
 		<ul id="cart-items">
 			<% for(const cartItem of cartItems) { %>
-			<li>
+			<li class="cart-list">
 				<%- include('./includes/cart-item', {cartItem: cartItem})  %>
 			</li>
 			<% } %>
@@ -24,12 +24,17 @@
 			<p>Total: <span id="cart-total-price"><%= formattedTotalPrice  %></span> KRW</p> 
 
 			<% if(locals.isAuthenticated) { %>
-				<form action="/orders" method="POST">
-					<input type="hidden" name="_csrf" value="<%= locals.csrfToken  %>">
-					<button class="btn">Buy Products</button>
-				</form>
+				<% if(cartIsEmpty) { %>
+					<p class="cart-item-fallback">Please add items to your cart before proceeding to buy.</p>
+				<% } else { %>
+					<p id="cart-fallback-after-delete"></p>
+					<form action="/orders" method="POST">
+						<input type="hidden" name="_csrf" value="<%= locals.csrfToken  %>">
+						<button class="btn">Buy Products</button>
+					</form>
+				<% } %>
 			<% } else { %>
-				<p id="cart-item-fallback">Log in to proceed and purchase the items.</p>
+				<p class="cart-item-fallback">Log in to proceed and purchase the items.</p>
 			<% } %>
 		</div>
 	</main>

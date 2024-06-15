@@ -1,5 +1,6 @@
 const Product = require('../models/product.model');
 const Order = require('../models/orders.model');
+const Cart = require('../models/cart.model');
 
 
 // 물품 목록 가져오기
@@ -104,9 +105,18 @@ async function deleteProduct(req, res, next) {
 async function getOrders(req, res, next) {
 	try {
 	  const orders = await Order.findAll(); // 유저에 상관없이 orders 컬렉션의 모든 문서들을 인스턴스화
+
+	  const formattedOrders = orders.map(order => {
+		const cart = new Cart(order.productData.items, order.productData.totalQuantity, order.productData.totalPrice);
+		return {
+			...order,
+			formattedItems: cart.getFormattedItems(),
+			formattedTotalPrice: cart.getFormattedTotalPrice()
+		};
+	});
 	//   console.log(orders);
 	  res.render('admin/orders/admin-orders', { 
-		orders: orders
+		orders: formattedOrders
 	  });
 	} catch (error) {
 	  next(error);

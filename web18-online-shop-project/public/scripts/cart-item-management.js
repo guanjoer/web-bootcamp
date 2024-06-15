@@ -1,8 +1,10 @@
 const cartItemUpdateForm = document.querySelectorAll('.cart-item-management');
 const cartTotalPrice = document.getElementById('cart-total-price');
 const cartBadges = document.querySelectorAll('.nav-items .badge'); // 모바일 뱃지 포함
+const cartList = document.querySelectorAll('.cart-list');
 
 const deleteItemButtons = document.querySelectorAll('#delete-item-btn');
+const buyButton = document.querySelector('#cart-total button');
 
 
 async function updateCartItem(event) {
@@ -98,7 +100,15 @@ async function deleteCartItem(event) {
 	cartTotalPrice.textContent = responseData.updatedCartData.formattedTotalPrice;
 
 	// 장바구니 뱃지 업데이트
-	cartBadge.textContent = responseData.updatedCartData.newTotalQuantity;
+	for(const cartBadge of cartBadges) {
+		cartBadge.textContent = responseData.updatedCartData.newTotalQuantity;
+	}
+
+	if (responseData.updatedCartData.isEmpty) {
+		buyButton.style.display = 'none';
+		const fallbackElement = document.getElementById('cart-fallback-after-delete');
+		fallbackElement.textContent = 'Please add items to your cart before proceeding to buy.';
+	}
 };
 
 for(const formElement of cartItemUpdateForm) {

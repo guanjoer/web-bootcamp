@@ -64,7 +64,7 @@
 }
 
 
-#cart-total #cart-item-fallback {
+#cart-total .cart-item-fallback {
 	font-size: 1rem;
 	font-weight: normal;
 }
