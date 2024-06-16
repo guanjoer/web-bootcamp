@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 const Product = require('../models/product.model');
 const Order = require('../models/orders.model');
 const User = require('../models/user.model');
@@ -5,6 +7,7 @@ const Cart = require('../models/cart.model');
 
 
 async function addOrder(req, res, next) {
+	const { imp_uid, merchant_uid } = req.body;
 	const cart = res.locals.cart; // 세션에 저장된 카트(req.session.cart)정보를 기반으로 Cart 클래스를 거쳐 생성된 Cart 객체의 정보
 
 	let userDocument;
@@ -15,6 +18,52 @@ async function addOrder(req, res, next) {
 		return next(error); // Go to error handling middleware
 	}
 
+	    // 2. 포트원 인증 토큰 발급
+		let getToken;
+		try {
+			getToken = await axios({
+				url: "https://api.iamport.kr/users/getToken",
+				method: "POST", // POST method
+				headers: { "Content-Type": "application/json" },
+				data: {
+					imp_key: "0401840441043566", // REST API 키
+					imp_secret: "CZNCO8yFB4ckWrgNQeLqANJc4sdB9sxfiS2lxSsiOmkJfOxmIxxU3Lqj4xWAxQxODa5HYV1KpG3LmBB5" // REST API Secret
+				}
+			});
+		} catch (error) {
+			error.code = 500;
+			return next(error);
+		}
+
+		const { access_token } = getToken.data.response; // 인증 토큰
+
+		// 3. imp_uid로 아임포트 서버에서 결제 정보 조회
+		let getPaymentData;
+		try {
+			getPaymentData = await axios({
+				url: `https://api.iamport.kr/payments/${imp_uid}`,
+				method: "get", // GET method
+				headers: { "Authorization": access_token } // 인증 토큰 Authorization header에 추가
+			});
+		} catch (error) {
+			error.code = 500;
+			return next(error);
+		}
+	
+		const paymentData = getPaymentData.data.response; // 조회한 결제 정보
+
+		// 4. 결제 금액 검증
+		const amountToBePaid = cart.totalPrice; // 서버 측에서 계산한 장바구니 총 금액
+		if (paymentData.amount !== amountToBePaid) {
+			return res.status(400).json({ success: false, message: "결제 금액 불일치" });
+		}
+	
+		// 5. 결제 상태 확인
+		if (paymentData.status !== "paid") {
+			return res.status(400).json({ success: false, message: "결제가 완료되지 않았습니다." });
+		}
+		
+		 // 6. 결제 검증 완료 후 주문 저장
 	const order = new Order(cart, userDocument);
 
 	try {
@@ -31,7 +80,8 @@ async function addOrder(req, res, next) {
 
 	req.session.cart = null;
 
-	res.redirect('/orders');
+	res.status(201).json({ success: true });
+	// res.redirect('/orders');
 };
 
 async function getOrder(req, res, next) {

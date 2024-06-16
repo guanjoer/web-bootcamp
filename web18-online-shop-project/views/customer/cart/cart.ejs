@@ -3,6 +3,8 @@
 
 <link rel="stylesheet" href="/styles/cart.css">
 
+
+<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script src="/scripts/cart-item-management.js" defer></script>
 </head>
 
@@ -28,10 +30,10 @@
 					<p class="cart-item-fallback">Please add items to your cart before proceeding to buy.</p>
 				<% } else { %>
 					<p id="cart-fallback-after-delete"></p>
-					<form action="/orders" method="POST">
-						<input type="hidden" name="_csrf" value="<%= locals.csrfToken  %>">
-						<button class="btn">Buy Products</button>
-					</form>
+					<!-- <form action="/orders" method="POST"> -->
+						<!-- <input type="hidden" name="_csrf" value="<%= /*locals.csrfToken*/  %>"> -->
+						<button class="btn" onclick="handlePayment()">Buy Products</button>
+					<!-- </form> -->
 				<% } %>
 			<% } else { %>
 				<p class="cart-item-fallback">Log in to proceed and purchase the items.</p>
