@@ -112,9 +112,41 @@ async function deleteCartItem(event) {
 
 // V2 Logic
 async function handlePayment() {
+		const userName = buyButton.dataset.username;
 	    const totalAmount = document.getElementById('cart-total-price').textContent.replace(' KRW', '').replace(',', '').replace('₩', '');
 		const itemTitle = document.querySelector('#cart-items h2').textContent;
 		const paymentId = `${crypto.randomUUID()}`;
+		const csrfToken = document.querySelector('input[name="_csrf"]').value; // CSRF 토큰 가져오기
+
+		// 서버 측에서 금액 검증 수행
+		try {
+			const validateResponse = await fetch('/orders/validate', {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"CSRF-Token": csrfToken // CSRF 토큰 추가
+				},
+				body: JSON.stringify({
+					paymentId: paymentId,
+					totalAmount: totalAmount
+				})
+			});
+	
+			if (!validateResponse.ok) {
+				const errorResponse = await validateResponse.json(); // From JSON to JS Object
+				throw new Error('Failed to validate payment amount: ' + errorResponse.message);
+			}
+	
+			const validateData = await validateResponse.json();
+			if (!validateData.success) {
+				return alert('결제 금액 불일치: ' + validateData.message);
+			}
+		} catch (error) {
+			console.error('Error:', error);
+			return alert('결제 금액 검증 중 오류가 발생했습니다: ' + error.message);
+		}
+
+		// 가격 검증 완료 시
 	const PortOne = window.PortOne;
 	const response = await PortOne.requestPayment({
 		// Store ID 설정
@@ -129,7 +161,7 @@ async function handlePayment() {
 		isTestChannel: true,
 		redirectUrl: 'http://localhost:3000/orders',
 		customer: {
-			fullName: '홍길동',
+			fullName: userName,
 			phoneNumber: '010-1234-5678',
 			email: 'user@test.com',
 			address: {
@@ -146,7 +178,6 @@ async function handlePayment() {
 	
 	  // 고객사 서버에서 /payment/complete 엔드포인트를 구현해야 합니다.
 	  // (다음 목차에서 설명합니다)
-	  const csrfToken = document.querySelector('input[name="_csrf"]').value; // CSRF 토큰 가져오기
 	  const notified = await fetch('/orders', {
 		method: "POST",
 		headers: { "Content-Type": "application/json",
@@ -155,7 +186,6 @@ async function handlePayment() {
 		// paymentId와 주문 정보를 서버에 전달합니다
 		body: JSON.stringify({
 		  paymentId: paymentId,
-		  totalAmount: totalAmount
 		  // 주문 정보...
 		}),
 	  });

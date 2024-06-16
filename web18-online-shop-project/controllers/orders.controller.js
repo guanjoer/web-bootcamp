@@ -5,16 +5,30 @@ const Order = require('../models/orders.model');
 const User = require('../models/user.model');
 const Cart = require('../models/cart.model');
 
+// 가격 일치 검증(고객이 실제 결제하는 금액과 DB의 저장된 장바구니 내 총 금액이 일치하는지)
+async function validateOrder(req, res, next) {
+    const { paymentId, totalAmount } = req.body;
+    const cart = res.locals.cart;
 
+    const totalPrice = cart.totalPrice; // 장바구니의 실제 총 금액(DB에 저장된)
+
+	console.log(totalPrice);
+	console.log(+totalAmount);
+    if (totalPrice !== +totalAmount) {
+        return res.status(400).json({ success: false, message: "결제 금액 불일치" });
+    }
+
+    return res.status(200).json({ success: true, message: "금액 검증 성공" });
+};
 
 async function addOrder(req, res, next) {
 	// V2
 	try {
 		// 요청의 body로 paymentId가 전달되기를 기대합니다.
-		const { paymentId, totalAmount } = await req.body;
+		const { paymentId } = await req.body;
 
 		const cart = res.locals.cart; // 세션에 저장된 카트(req.session.cart)정보를 기반으로 Cart 클래스를 거쳐 생성된 Cart 객체의 정보
-
+		const totalPrice = cart.totalPrice;
 		let userDocument;
 		try {
 			userDocument = await User.findById(res.locals.uid); // 로그인 시 세션에 저장된 uid 값을 매개변수로 넣어, 일치하는 user의 값 반환 // 패스워드 제외
@@ -33,8 +47,7 @@ async function addOrder(req, res, next) {
 			return;
 		};
 		
-		const PORTONE_API_SECRET = 'vSWZqFWKe8VDnuhZATuChJGOApsPInWfeI54DtBtqfZqyRabpgCDVdESa0Rtu2Mu9PxlVbAIsFwDpb36'; // yourPortOneAPISecret
-		// const totalPrice = order.productData.totalPrice;
+		const PORTONE_API_SECRET = 'UBqniGkKEX7aNNZBG6U0c0GycYCbmJMMFjny3ix20UHe5oxDFXVHEC5isJANHADGA2JtciKVbdPvrhX2'; // yourPortOneAPISecret
 
 		let paymentResponse;
 		try {
@@ -49,19 +62,19 @@ async function addOrder(req, res, next) {
 
 		if (!paymentResponse.ok) {
 			const errorResponse = await paymentResponse.json();
-			throw new Error(`paymentResponse: ${errorResponse.message}`);
+			throw new Error(`paymentResponse: ${errorResponse.message}`); // 디버깅
 		}
 		
 		const payment = await paymentResponse.json();
 
+
 		// 2. 고객사 내부 주문 데이터의 가격과 실제 지불된 금액을 비교합니다.
-		if (totalAmount == payment.amount.total) {
-		  if (payment.status === "PAID") {
+		// DB 내 장바구니의 총 금액과 결제한 금액 비교 및 금액 지불 완료 여부 확인
+		if (totalPrice === +payment.amount.total && payment.status === "PAID") {
 			  // 모든 금액을 지불했습니다! 완료 시 원하는 로직을 구성하세요.
 				req.session.cart = null;
                 return res.status(201).json({ success: true });
 			//   res.redirect('/orders');
-			}
 		  } else {
 				return res.status(400).json({ success: false, message: "결제 금액 불일치" });
 				// 결제 금액이 불일치하여 위/변조 시도가 의심됩니다.
@@ -176,5 +189,6 @@ async function cancelOrder(req, res, next) {
 module.exports = {
 	addOrder: addOrder,
 	getOrder: getOrder,
-	cancelOrder: cancelOrder
+	cancelOrder: cancelOrder,
+	validateOrder, validateOrder
 };
