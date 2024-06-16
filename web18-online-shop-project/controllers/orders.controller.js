@@ -11,7 +11,7 @@ async function addOrder(req, res, next) {
 	// V2
 	try {
 		// 요청의 body로 paymentId가 전달되기를 기대합니다.
-		const { paymentId} = req.body;
+		const { paymentId, totalAmount } = await req.body;
 
 		const cart = res.locals.cart; // 세션에 저장된 카트(req.session.cart)정보를 기반으로 Cart 클래스를 거쳐 생성된 Cart 객체의 정보
 
@@ -33,41 +33,43 @@ async function addOrder(req, res, next) {
 			return;
 		};
 		
-		const PORTONE_API_SECRET = 'yourPortOneAPISecret';
-		const totalPrice = order.productData.totalPrice;
-		// 1. 포트원 결제내역 단건조회 API 호출
-		const paymentResponse = await fetch(
-		  `https://api.portone.io/payments/${paymentId}`,
-		  { headers: { Authorization: `PortOne ${PORTONE_API_SECRET}` } },
-		);
-		if (!paymentResponse.ok)
-		  throw new Error(`paymentResponse: ${await paymentResponse.json()}`);
-		const payment = await paymentResponse.json();
-	
-		// 2. 고객사 내부 주문 데이터의 가격과 실제 지불된 금액을 비교합니다.
-		if (totalPrice === payment.amount.total) {
-		  switch (payment.status) {
-			case "VIRTUAL_ACCOUNT_ISSUED": {
-			  // 가상 계좌가 발급된 상태입니다.
-			  // 계좌 정보를 이용해 원하는 로직을 구성하세요.
-			  break;
-			}
-			case "PAID": {
-			  // 모든 금액을 지불했습니다! 완료 시 원하는 로직을 구성하세요.
-			  req.session.cart = null;
+		const PORTONE_API_SECRET = 'vSWZqFWKe8VDnuhZATuChJGOApsPInWfeI54DtBtqfZqyRabpgCDVdESa0Rtu2Mu9PxlVbAIsFwDpb36'; // yourPortOneAPISecret
+		// const totalPrice = order.productData.totalPrice;
 
-			  res.status(201).json({ success: true });
-			  res.redirect('/orders');
-			  break;
+		let paymentResponse;
+		try {
+		// 1. 포트원 결제내역 단건조회 API 호출
+			paymentResponse = await fetch(
+				`https://api.portone.io/payments/${paymentId}`,
+				{ headers: { Authorization: `PortOne ${PORTONE_API_SECRET}` } },
+			  );
+		} catch (error) {
+			return res.status(400).json({ success: false, message: error.message });
+		}
+
+		if (!paymentResponse.ok) {
+			const errorResponse = await paymentResponse.json();
+			throw new Error(`paymentResponse: ${errorResponse.message}`);
+		}
+		
+		const payment = await paymentResponse.json();
+
+		// 2. 고객사 내부 주문 데이터의 가격과 실제 지불된 금액을 비교합니다.
+		if (totalAmount == payment.amount.total) {
+		  if (payment.status === "PAID") {
+			  // 모든 금액을 지불했습니다! 완료 시 원하는 로직을 구성하세요.
+				req.session.cart = null;
+                return res.status(201).json({ success: true });
+			//   res.redirect('/orders');
 			}
-		  }
-		} else {
-		  // 결제 금액이 불일치하여 위/변조 시도가 의심됩니다.
-		  res.redirect('/cart');
+		  } else {
+				return res.status(400).json({ success: false, message: "결제 금액 불일치" });
+				// 결제 금액이 불일치하여 위/변조 시도가 의심됩니다.
+				//   res.redirect('/cart');
 		}
 	  } catch (e) {
 		// 결제 검증에 실패했습니다.
-		res.status(400).send(e);
+		return res.status(400).json({ success: false, message: e.message });
 	  }
 
 	  

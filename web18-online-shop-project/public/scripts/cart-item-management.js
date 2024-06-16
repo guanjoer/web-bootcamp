@@ -112,15 +112,18 @@ async function deleteCartItem(event) {
 
 // V2 Logic
 async function handlePayment() {
+	    const totalAmount = document.getElementById('cart-total-price').textContent.replace(' KRW', '').replace(',', '').replace('₩', '');
+		const itemTitle = document.querySelector('#cart-items h2').textContent;
+		const paymentId = `${crypto.randomUUID()}`;
 	const PortOne = window.PortOne;
 	const response = await PortOne.requestPayment({
 		// Store ID 설정
 		storeId: "store-4f904854-4a91-4eeb-a14c-3266c9e0c3a7",
 		// 채널 키 설정
 		channelKey: "channel-key-53a845d1-4048-4fb5-ae2f-46e676266598",
-		paymentId: 'payment_' + new Date().getTime(),
-		orderName: "나이키 와플 트레이너 2 SD",
-		totalAmount: 1000,
+		paymentId: paymentId,
+		orderName: itemTitle,
+		totalAmount: totalAmount,
 		currency: "CURRENCY_KRW",
 		payMethod: "CARD",
 		isTestChannel: true,
@@ -143,9 +146,12 @@ async function handlePayment() {
 	
 	  // 고객사 서버에서 /payment/complete 엔드포인트를 구현해야 합니다.
 	  // (다음 목차에서 설명합니다)
-	  const notified = await fetch(`/orders`, {
+	  const csrfToken = document.querySelector('input[name="_csrf"]').value; // CSRF 토큰 가져오기
+	  const notified = await fetch('/orders', {
 		method: "POST",
-		headers: { "Content-Type": "application/json" },
+		headers: { "Content-Type": "application/json",
+					"CSRF-Token": csrfToken // CSRF 토큰 추가
+		 },
 		// paymentId와 주문 정보를 서버에 전달합니다
 		body: JSON.stringify({
 		  paymentId: paymentId,
@@ -153,6 +159,26 @@ async function handlePayment() {
 		  // 주문 정보...
 		}),
 	  });
+
+	  if (!notified.ok) {
+		const errorResponse = await notified.json();
+		throw new Error('Failed to notify server about payment: ' + errorResponse.message);
+	}
+
+		let resData;
+	try {
+		resData = await notified.json();
+	} catch (error) {
+		console.error('Error:', error);
+		alert('결제 처리 중 오류가 발생했습니다: ' + error.message);
+	};
+
+	if (resData.success) {
+		window.location.href = '/orders';
+	} else {
+		alert('결제 처리 중 오류가 발생했습니다: ' + resData.message);
+	};
+
 };
 
 // V1 Logic
