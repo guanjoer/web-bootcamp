@@ -47,7 +47,7 @@ async function addOrder(req, res, next) {
 			return;
 		};
 		
-		const PORTONE_API_SECRET = 'UBqniGkKEX7aNNZBG6U0c0GycYCbmJMMFjny3ix20UHe5oxDFXVHEC5isJANHADGA2JtciKVbdPvrhX2'; // yourPortOneAPISecret
+		const PORTONE_API_SECRET = 'yourPortOneAPISecret'; // yourPortOneAPISecret
 
 		let paymentResponse;
 		try {
@@ -96,8 +96,8 @@ async function addOrder(req, res, next) {
 		// 		method: "POST", // POST method
 		// 		headers: { "Content-Type": "application/json" },
 		// 		data: {
-		// 			imp_key: "0401840441043566", // REST API 키
-		// 			imp_secret: "CZNCO8yFB4ckWrgNQeLqANJc4sdB9sxfiS2lxSsiOmkJfOxmIxxU3Lqj4xWAxQxODa5HYV1KpG3LmBB5" // REST API Secret
+		// 			imp_key: "youIMPKey", // REST API 키
+		// 			imp_secret: "yourIMPSecret" // REST API Secret
 		// 		}
 		// 	});
 		// } catch (error) {
