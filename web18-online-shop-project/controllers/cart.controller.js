@@ -22,7 +22,7 @@ async function addToCart(req, res, next) {
 async function getCart(req, res, next) {
 	// console.log(req.session.cart);
 	const cart = res.locals.cart;
-	// console.log(cart.items);
+	// console.log(cart);
 	const formattedItems = cart.getFormattedItems();
 	const formattedTotalPrice = cart.getFormattedTotalPrice();
 

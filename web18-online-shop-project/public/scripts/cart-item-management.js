@@ -110,55 +110,100 @@ async function deleteCartItem(event) {
 	}
 };
 
-function handlePayment() {
-    const IMP = window.IMP; // 생략해도 괜찮습니다.
-    IMP.init('imp06230627'); // 'iamport' 대신 자신이 발급받은 가맹점 식별코드를 사용합니다.
+// V2 Logic
+async function handlePayment() {
+	const PortOne = window.PortOne;
+	const response = await PortOne.requestPayment({
+		// Store ID 설정
+		storeId: "store-4f904854-4a91-4eeb-a14c-3266c9e0c3a7",
+		// 채널 키 설정
+		channelKey: "channel-key-53a845d1-4048-4fb5-ae2f-46e676266598",
+		paymentId: 'payment_' + new Date().getTime(),
+		orderName: "나이키 와플 트레이너 2 SD",
+		totalAmount: 1000,
+		currency: "CURRENCY_KRW",
+		payMethod: "CARD",
+		isTestChannel: true,
+		redirectUrl: 'http://localhost:3000/orders',
+		customer: {
+			fullName: '홍길동',
+			phoneNumber: '010-1234-5678',
+			email: 'user@test.com',
+			address: {
+					country: 'KR',
+					addressLine1: '서울특별시 강남구 압구정동',
+					addressLine2: '현대아파트 707호'}
+		}
+	  });
 
-    const totalAmount = document.getElementById('cart-total-price').textContent.replace(' KRW', '').replace(',', '').replace('₩', '');
+	  if (response.code != null) {
+		// 오류 발생
+		return alert(response.message);
+	  }
+	
+	  // 고객사 서버에서 /payment/complete 엔드포인트를 구현해야 합니다.
+	  // (다음 목차에서 설명합니다)
+	  const notified = await fetch(`/orders`, {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		// paymentId와 주문 정보를 서버에 전달합니다
+		body: JSON.stringify({
+		  paymentId: paymentId,
+		  totalAmount: totalAmount
+		  // 주문 정보...
+		}),
+	  });
+};
+
+// V1 Logic
+// function handlePayment() {
+//     const IMP = window.IMP; // 생략해도 괜찮습니다.
+//     IMP.init('imp06230627'); // 'iamport' 대신 자신이 발급받은 가맹점 식별코드를 사용합니다.
+
+//     const totalAmount = document.getElementById('cart-total-price').textContent.replace(' KRW', '').replace(',', '').replace('₩', '');
 
 
-    IMP.request_pay({
-        pg: 'html5_inicis', // 사용할 PG사를 입력합니다.
-        pay_method: 'card',
-        merchant_uid: 'merchant_' + new Date().getTime(),
-        name: '주문명: 결제 테스트',
-        amount: totalAmount,
-        buyer_email: 'buyer@example.com',
-        buyer_name: '구매자 이름',
-        buyer_tel: '010-1234-5678',
-        buyer_addr: '서울특별시 강남구 삼성동',
-        buyer_postcode: '123-456',
+//     IMP.request_pay({
+//         pg: 'html5_inicis', // 사용할 PG사를 입력합니다.
+//         pay_method: 'card',
+//         merchant_uid: 'merchant_' + new Date().getTime(),
+//         name: '주문명: 결제 테스트',
+//         amount: totalAmount,
+//         buyer_email: 'buyer@example.com',
+//         buyer_name: '구매자 이름',
+//         buyer_tel: '010-1234-5678',
+//         buyer_addr: '서울특별시 강남구 삼성동',
+//         buyer_postcode: '123-456',
 
-        // m_redirect_url: 'http:localhost:3000/orders' // 모바일에서 결제 완료 후 리디렉션될 URL
-    }, function (rsp) {
-        if (rsp.success) {
-            // 결제 성공 시 서버로 결제 정보 전송
-            fetch('/orders', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'CSRF-Token': document.querySelector('input[name="_csrf"]').value
-                },
-                body: JSON.stringify({
-                    imp_uid: rsp.imp_uid,
-                    merchant_uid: rsp.merchant_uid,
-					amount: totalAmount // 총 금액을 함께 보냄
-                })
-            }).then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                if (data.success) {
-                    alert('결제가 완료되었습니다.');
-                    window.location.href = '/orders';
-                } else {
-                    alert('결제 처리 중 오류가 발생했습니다.');
-                }
-            });
-        } else {
-            alert('결제에 실패하였습니다. 에러 내용: ' + rsp.error_msg);
-        }
-    });
-}
+//         // m_redirect_url: 'http:localhost:3000/orders' // 모바일에서 결제 완료 후 리디렉션될 URL
+//     }, function (rsp) {
+//         if (rsp.success) {
+//             // 결제 성공 시 서버로 결제 정보 전송
+//             fetch('/orders', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'CSRF-Token': document.querySelector('input[name="_csrf"]').value
+//                 },
+//                 body: JSON.stringify({
+//                     imp_uid: rsp.imp_uid,
+//                     merchant_uid: rsp.merchant_uid,
+//                 })
+//             }).then(function (response) {
+//                 return response.json();
+//             }).then(function (data) {
+//                 if (data.success) {
+//                     alert('결제가 완료되었습니다.');
+//                     window.location.href = '/orders';
+//                 } else {
+//                     alert('결제 처리 중 오류가 발생했습니다.');
+//                 }
+//             });
+//         } else {
+//             alert('결제에 실패하였습니다. 에러 내용: ' + rsp.error_msg);
+//         }
+//     });
+// }
 
 for(const formElement of cartItemUpdateForm) {
 	formElement.addEventListener('submit', updateCartItem);
@@ -167,3 +212,5 @@ for(const formElement of cartItemUpdateForm) {
 for(const deleteBtn of deleteItemButtons) {
 	deleteBtn.addEventListener('click', deleteCartItem);
 };
+
+buyButton.addEventListener('click', handlePayment);

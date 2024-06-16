@@ -3,8 +3,10 @@
 
 <link rel="stylesheet" href="/styles/cart.css">
 
-
-<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+<!-- V1 -->
+<!-- <script src="https://cdn.iamport.kr/v1/iamport.js"></script> --> 
+ <!-- V2 -->
+<script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
 <script src="/scripts/cart-item-management.js" defer></script>
 </head>
 
@@ -32,7 +34,7 @@
 					<p id="cart-fallback-after-delete"></p>
 					<!-- <form action="/orders" method="POST"> -->
 						<!-- <input type="hidden" name="_csrf" value="<%= /*locals.csrfToken*/  %>"> -->
-						<button class="btn" onclick="handlePayment()">Buy Products</button>
+						<button class="btn">Buy Products</button>
 					<!-- </form> -->
 				<% } %>
 			<% } else { %>
