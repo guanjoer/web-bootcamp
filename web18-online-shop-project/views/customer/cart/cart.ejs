@@ -34,7 +34,7 @@
 					<p id="cart-fallback-after-delete"></p>
 					<!-- <form action="/orders" method="POST"> -->
 						<!-- <input type="hidden" name="_csrf" value="<%= /*locals.csrfToken*/  %>"> -->
-						<button class="btn" data-username="<%= locals.name %>">Buy Products</button>
+						<button class="btn" data-username="<%= locals.name %>" data-useremail="<%= user.email %>" data-addr1="<%= user.address.addressBasic %>" data-addr2="<%= user.address.addressDetail %>" data-postalcode="<%= user.address.postalCode %>">Buy Products</button>
 					<!-- </form> -->
 				<% } %>
 			<% } else { %>

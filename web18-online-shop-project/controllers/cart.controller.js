@@ -1,4 +1,5 @@
 const Product = require('../models/product.model');
+const User = require('../models/user.model');
 
 async function addToCart(req, res, next) {
 	let product;
@@ -22,15 +23,19 @@ async function addToCart(req, res, next) {
 async function getCart(req, res, next) {
 	// console.log(req.session.cart);
 	const cart = res.locals.cart;
-	// console.log(cart.totalPrice);
+	// console.log(cart);
 	const formattedItems = cart.getFormattedItems();
 	const formattedTotalPrice = cart.getFormattedTotalPrice();
 
-	// console.log(cart);
+	// 유저 정보 가져오기
+	const user = await User.findById(res.locals.uid);
+	// console.log(user);
+
 	res.render('customer/cart/cart', {
 		cartItems: formattedItems,
 		formattedTotalPrice: formattedTotalPrice,
-		cartIsEmpty: cart.totalQuantity === 0
+		cartIsEmpty: cart.totalQuantity === 0,
+		user: user
 	});
 }
 

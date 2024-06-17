@@ -13,4 +13,8 @@ router.post('/cancel/:id', ordersController.cancelOrder);
 
 router.post('/validate', ordersController.validateOrder);
 
+router.get('/success', ordersController.getOrderSuccess);
+
+router.get('/failure', ordersController.getOrderFailure);
+
 module.exports = router;

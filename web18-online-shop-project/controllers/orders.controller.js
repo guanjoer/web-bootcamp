@@ -12,8 +12,8 @@ async function validateOrder(req, res, next) {
 
     const totalPrice = cart.totalPrice; // 장바구니의 실제 총 금액(DB에 저장된)
 
-	console.log(totalPrice);
-	console.log(+totalAmount);
+	// console.log(totalPrice);
+	// console.log(+totalAmount);
     if (totalPrice !== +totalAmount) {
         return res.status(400).json({ success: false, message: "결제 금액 불일치" });
     }
@@ -28,7 +28,7 @@ async function addOrder(req, res, next) {
 		const { paymentId } = await req.body;
 
 		const cart = res.locals.cart; // 세션에 저장된 카트(req.session.cart)정보를 기반으로 Cart 클래스를 거쳐 생성된 Cart 객체의 정보
-		const totalPrice = cart.totalPrice;
+		const totalPrice = cart.totalPrice; // 결제 가격 검증 시 필요
 		let userDocument;
 		try {
 			userDocument = await User.findById(res.locals.uid); // 로그인 시 세션에 저장된 uid 값을 매개변수로 넣어, 일치하는 user의 값 반환 // 패스워드 제외
@@ -47,7 +47,7 @@ async function addOrder(req, res, next) {
 			return;
 		};
 		
-		const PORTONE_API_SECRET = 'yourPortOneAPISecret'; // yourPortOneAPISecret
+		const PORTONE_API_SECRET = 'EK7aJig45ZhjqyVMzcFKaBuza0iUNmtmIFZu3QzXqEGa2oXv955V58J7XnCc4mki8AVaYOATnlT9kS6R'; // yourPortOneAPISecret
 
 		let paymentResponse;
 		try {
@@ -69,7 +69,7 @@ async function addOrder(req, res, next) {
 
 
 		// 2. 고객사 내부 주문 데이터의 가격과 실제 지불된 금액을 비교합니다.
-		// DB 내 장바구니의 총 금액과 결제한 금액 비교 및 금액 지불 완료 여부 확인
+		// 즉 DB 내 고객의 장바구니의 총 금액과 결제한 금액 비교 및 금액 지불 완료 여부 확인
 		if (totalPrice === +payment.amount.total && payment.status === "PAID") {
 			  // 모든 금액을 지불했습니다! 완료 시 원하는 로직을 구성하세요.
 				req.session.cart = null;
@@ -183,6 +183,18 @@ async function cancelOrder(req, res, next) {
 	} catch (error) {
 		next(error);
 	}
+};
+
+function getOrderSuccess(req, res, next) {
+	res.render('customer/orders/success');
+
+	next()
+}
+
+function getOrderFailure(req, res, next) {
+	res.render('customer/orders/failure');
+
+	next()
 }
 
 
@@ -190,5 +202,7 @@ module.exports = {
 	addOrder: addOrder,
 	getOrder: getOrder,
 	cancelOrder: cancelOrder,
-	validateOrder, validateOrder
+	validateOrder, validateOrder,
+	getOrderSuccess: getOrderSuccess,
+	getOrderFailure: getOrderFailure
 };

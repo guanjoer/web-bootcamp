@@ -113,8 +113,17 @@ async function deleteCartItem(event) {
 // V2 Logic
 async function handlePayment() {
 		const userName = buyButton.dataset.username;
-	    const totalAmount = document.getElementById('cart-total-price').textContent.replace(' KRW', '').replace(',', '').replace('₩', '');
-		const itemTitle = document.querySelector('#cart-items h2').textContent;
+		const userEmail = buyButton.dataset.useremail;
+		const userAddr1 = buyButton.dataset.addr1;
+		const userAddr2 = buyButton.dataset.addr2;
+		const userPostalCode = buyButton.dataset.postalcode;
+		const userAddrLine2 = `${userAddr2} ${userPostalCode}`;
+	    const totalAmount = document.getElementById('cart-total-price').textContent.replace(' KRW', '').replace(/,/g, '').replace('₩', '');
+		const itemTitleElements = document.querySelectorAll('#cart-items h2');
+		let itemTitles = [];
+		itemTitleElements.forEach((title) => {
+			itemTitles.push(title.textContent);
+		})
 		const paymentId = `${crypto.randomUUID()}`;
 		const csrfToken = document.querySelector('input[name="_csrf"]').value; // CSRF 토큰 가져오기
 
@@ -145,6 +154,12 @@ async function handlePayment() {
 			console.error('Error:', error);
 			return alert('결제 금액 검증 중 오류가 발생했습니다: ' + error.message);
 		}
+		let orderName;
+		if(itemTitles.length === 1) {
+			orderName = itemTitles[0];
+		} else {
+			orderName = `${itemTitles[0]} 외 ${itemTitles.length - 1}`;
+		}
 
 		// 가격 검증 완료 시
 	const PortOne = window.PortOne;
@@ -154,7 +169,7 @@ async function handlePayment() {
 		// 채널 키 설정
 		channelKey: "channel-key-53a845d1-4048-4fb5-ae2f-46e676266598",
 		paymentId: paymentId,
-		orderName: itemTitle,
+		orderName: orderName,
 		totalAmount: totalAmount,
 		currency: "CURRENCY_KRW",
 		payMethod: "CARD",
@@ -163,11 +178,11 @@ async function handlePayment() {
 		customer: {
 			fullName: userName,
 			phoneNumber: '010-1234-5678',
-			email: 'user@test.com',
+			email: userEmail,
 			address: {
 					country: 'KR',
-					addressLine1: '서울특별시 강남구 압구정동',
-					addressLine2: '현대아파트 707호'}
+					addressLine1: userAddr1,
+					addressLine2: userAddrLine2}
 		}
 	  });
 
@@ -184,18 +199,18 @@ async function handlePayment() {
 					"CSRF-Token": csrfToken // CSRF 토큰 추가
 		 },
 		// paymentId와 주문 정보를 서버에 전달합니다
-		body: JSON.stringify({
+		body: JSON.stringify({ // 서버와의 통신은 JSON으로 합니다(Not JS Object)
 		  paymentId: paymentId,
 		  // 주문 정보...
 		}),
 	  });
 
-	  if (!notified.ok) {
+	  if (!notified.ok) { // 서버에서의 응답 오류
 		const errorResponse = await notified.json();
 		throw new Error('Failed to notify server about payment: ' + errorResponse.message);
 	}
 
-		let resData;
+	let resData;
 	try {
 		resData = await notified.json();
 	} catch (error) {
@@ -204,8 +219,9 @@ async function handlePayment() {
 	};
 
 	if (resData.success) {
-		window.location.href = '/orders';
+		window.location.href = '/orders/success'; // /orders/success
 	} else {
+		window.location.href = '/orders/failure'; // orders/failure
 		alert('결제 처리 중 오류가 발생했습니다: ' + resData.message);
 	};
 
