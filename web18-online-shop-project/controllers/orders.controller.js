@@ -47,7 +47,7 @@ async function addOrder(req, res, next) {
 			return;
 		};
 		
-		const PORTONE_API_SECRET = 'EK7aJig45ZhjqyVMzcFKaBuza0iUNmtmIFZu3QzXqEGa2oXv955V58J7XnCc4mki8AVaYOATnlT9kS6R'; // yourPortOneAPISecret
+		const PORTONE_API_SECRET = 'yourPortOneAPISecret'; // yourPortOneAPISecret
 
 		let paymentResponse;
 		try {
