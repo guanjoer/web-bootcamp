@@ -1,33 +1,37 @@
-중복을 제거하고, 유지 보수를 용이하게 하는 것. 앞선 행위들로 인해, 오류가 발생할 가능성을 낮춰준다.
+# 개념 정리
 
-메타 데이터란 브라우저에는 영향을 미치지만, 사용자에게는 보이지 않는 정보를 말한다. 즉 브라우저 스크린에는 표시 되지 않는 정보를 말한다.
-예를 들면, style element의 정보들은 브라우저에서 표시되지 않아, 사용자에게 보이지 않지만, 백그라운드 컬러 라든지 텍스트 정렬과 같은 영향을 브라우저에게 끼치고 있다.
-이러한 메타 데이터는 보통 head element 안에 존재하고, 브라우저에 표시되는 정보들은 body element 안에 존재하게 된다. 
+## 코드는 어떤 방식으로 작성해 나가야 하는가?
+
+    중복을 제거하고, 유지 보수를 용이하게 하는 것. 앞선 행위들로 인해, 오류가 발생할 가능성을 낮춰준다.
+    
+    메타 데이터란 브라우저에는 영향을 미치지만, 사용자에게는 보이지 않는 정보를 말한다. 즉 브라우저 스크린에는 표시 되지 않는 정보를 말한다.
+    예를 들면, style element의 정보들은 브라우저에서 표시되지 않아, 사용자에게 보이지 않지만, 백그라운드 컬러 라든지 텍스트 정렬과 같은 영향을 브라우저에게 끼치고 있다.
+    이러한 메타 데이터는 보통 head element 안에 존재하고, 브라우저에 표시되는 정보들은 body element 안에 존재하게 된다. 
 
 
-# VS Code Shortcut(Do you want to More information about vscode shorcut? Visit website below)
+## VS Code Shortcut
 
-	https://academind.com/tutorials/visual-studio-code-introduction/
+	 **Video Ref.** [VS Code Shortcut-Related Video](https://academind.com/tutorials/visual-studio-code-introduction/)
 
-# 정렬과 관련하여.
+## 정렬과 관련하여.
 
 	CSS에서, text-align: center;와 같은 특성과 값은, html 요소 안에 존재하는 컨텐츠에 대해 작용하는 것이므로, 즉 <p>test</p>에서 p element 안에 "test"라는 컨텐츠에 대해 작용한다. 따라서, 빈 요소, 즉 void element의 경우, element 내에 컨텐츠가 존재하지 않으므로, 부모 element를 이용하여, 부모 element 내에 존재하는 컨텐츠로 작동하도록 하여, 빈 요소를 중앙으로 정렬시키는 특성을 적용할 수 있다. 빈요소의 예는, <img src="" alt"">가 존재한다.
 
-# 이미지 alt="" 속성과 관련하여.
+## 이미지 alt="" 속성과 관련하여.
 
 	alt="" 속성에는 이미지가 브라우저에 로드되지 않았을때, 표시하는 텍스트로, 이미지에 대한 설명을 추가하면 된다.
 
-# 상속, 계단식, 우선순위
+## 상속, 계단식, 우선순위
 
 	CSS의 경우, 부모의 특성을 자식이 상속 받고, 하지만, 자식에 직접적으로 스타일이 적용되어 있다면, 좀 더 구체적인 요소가 더 높은 우선순위를 가지므로, 자식에 직접적으로 정의된 스타일이 적용된다. 또한, 하나의 요소에 여러 특성을 적용할 경우, 가장 최신 규칙이 적용된다. 위에서 아래로 적용됨으로.
 
-# inline & block level
+## inline & block level
 
 	인라인 레벨의 요소는 다른 요소에 영향을 미치고, 마진 top, bottom과 padding에 제한이 존재한다. 또한, header에 인라인 레벨의 요소가 존재하면, 전체가 영역으로 지정되지 않는다. 이러한 한계는, display: inline-block을 사용함으로써, 극복이 가능하다.
 
 	inline level의 경우, text-aline: center 가 작동하지만, block level의 경우, 위 특성이 작동하지 않는다. 따라서, block level의 경우, margin의 left & right을 auto로 지정함으로써, 컨텐츠를 중앙으로 정렬시킬 수 있다.
 
-# github repository remote update
+## github repository remote update
 
 	1. Checking: git status
 	2. add: git add . (all files in pwd)
@@ -47,13 +51,13 @@
 	git remote add origin [repository url]
 	git push -u origin +main(push files forced)
 
-# innitializing personal access token from github(windows)
+## innitializing personal access token from github(windows)
 
 	git credential reject
 	host=github.com
 	protocol=https
 
-# More informations about CSS
+## More informations about CSS
 
 	위치 속성에 대한 추가 정보
 	=>https://academind.com/tutorials/the-position-property/
@@ -64,15 +68,15 @@
 
 	플렉스박스와 그리드 비교 => https://academind.com/tutorials/css-grid-vs-flexbox/
 
-#mobile first
+## mobile first
 
 	@media(min-width: value) {}
 
-#Desktop first
+## Desktop first
 
 	@media(max-width: value) {}
 
-#Units
+## Units
 
 	px: fixed value(not responsive)
 
@@ -82,21 +86,21 @@
 
 	rem : inherited from root elemnt(i.e. inherited from choice of User's font-size setting)
 
-# Object, Property, Method
+## Object, Property, Method
 
 	Object is a like a container that can contain variables, functions.
 	The function inside object, We called 'Methods';
 	also, The variable inside object, We called 'Property';
 
-# True, False
+## True, False
 
 	In the case of need boolean value like 'If statement's condition', if the value was empty string or number of 0, then the boolean is False.
 
-# Node Js - express pakage
+## Node Js - express pakage
 
 	express is mainly use for routing request.
 
-# Git Management
+## Git Management
 
 	git branch -D branch-name  // local branch 제거
 	git push origin :branch-name // 원격 저장소 remote branch 제거
@@ -118,27 +122,27 @@
 	git switch -c [branch-name] // 브랜치 생성 후 변경
 
 
-# function is object.
+## function is object.
 
 	함수는 기본적으로 함수 내부에 존재하는 코드를 실행하는 역할을 하지만, func()이 아닌, func을 사용하여, property 혹은 function을 추가할 수 있다. 객체에 존재하는 정보들은 console.dir(function)을 통해 브라우저 console창에서 알 수 있다.
 	즉, test()라는 function에 greeting이라는 key에 Welcome이라는 value를 추가하고 싶으면,
 		test.greeting = 'Welcome';
 	을 작성하면 된다.
 
-# Rest Parameter & Spread Operator
+## Rest Parameter & Spread Operator
 
 	Rest parameter는 func(...parameter){//Some logics}에서 파라미터의 입력을 받는 곳에서, ...을 통해, 여러 개의 콤마로 분리된 값들을 배열로 만들어 준다. 그럼으로써, 반복문을 통한 여러 작업이 가능해진다.
 
 	Spread Operator의 경우, 함수를 실행하는 쪽에서 파라미터에 할당해주는 값을 배열 -> 콤마로 분리된 각각의 값으로 변환해 준다.
 	표기법은 Rest parameter와 동일.
 
-# class & blueprint & constructor function & new & object
+## class & blueprint & constructor function & new & object
 
 	class를 통해 정의한 blueprint를 new [className]을 통해 blueprint에 기반한 새 object를 만들고, 비슷한 유형의 객체를 생성하는데 유용하다.
 
 	class에서의 키와 값은 consturctor function 안에서 정의가 가능하다.
 
-# const
+## const
 
 	const의 경우, 실제로 상수에 저장하는 것은 값이 아닌, 해당 값이 저장되는 메모리의 주소이다.
 	따라서, const something = [arr1, arr2]일 경우, somthing.push(arr3)이 작동하여, something인 상수에 arr3이라는 값을
@@ -146,7 +150,7 @@
 
 	하지만, const something = [newArr1, newArr2]와 같이, equal sign을 통해 정의하는 것은 불가능하다. equal sign은 값을 저장하는 것이 아닌, 메모리에 주소를 새로 할당하는 것이기 때문에 불가능하다.
 
-# Database, RDBMS(SQL DB), NoSQL DB
+## Database, RDBMS(SQL DB), NoSQL DB
 
 	파일시스템을 통해 파일을 읽어오거나 수정하거나 해당 사항의 경우, 항상 전체 파일의 내용을 읽어오고 그 다음 작업(업데이트, 삭제)을 수행할 수 있다, 이는 항상 전체 파일의 내용을 읽어와야 하므로, 비효율적일 뿐더러, 동일한 시각에 동일한 파일에 대해 여러 요청이 들어오는 경우, 한 요청이 다른 요청을 덮어쓰거나 하는, 즉 파일 시스템이 overwhelm 될 확률이 높으므로, 이러한 파일 시스템이 overwhelm 될 확률을 제거하고, 수많은 데이터 내에서 특정 데이터 조각을 쉽게 찾을 수 있게끔, Query language를 지원하고 더욱 효율적으로 데이터를 저장하고, 제어하기 위한 software system이 DataBase Management System이다.
 	즉 DBMS를 통해 데이터의 저장 및 관리 및 검색을 최적화 시킬 수 있다.
@@ -158,13 +162,13 @@
 
 	NoSQL DB의 경우, 더 적은 테이블 내에, JSON형식으로 저장된 동일한 포맷의 여러 객체가 존재한다. 이러한 형식의 이점은 더 적은 쿼리를 통해 데이터를 볼러올 수 있다는 이점이 있다. 즉 병목현상은 주로 데이터 쿼리에서 나오는데, 데이터 쿼리를 적게함으로써, 병목현상을 줄일 수 있다는 이점이 존재한다. 즉 관계형 DB와는 다르게, 테이블에 고정된 schema가 존재하지 않으므로, 좀 더 유연하고, 쿼리를 적게 사용하여 데이터를 제어할 수 있다는 이점이 존재한다. 
 
-# Ajax(Asynchronous JavaScript and XML) & Http request
+## Ajax(Asynchronous JavaScript and XML) & Http request
 
 	Http request는 기본적으로 GET과 POST request가 존재하고, URL에 데이터가 표시되는, 즉 서버에서 브라우저로 데이터를 로드할 때, GET 요청을 url에 보내고, url에 대응되는 서버 측에서 해당 요청에 관한 응답으로 새 페이지를 반환한다. POST 요청의 경우, 브라우저 측에서 데이터를 입력 후, 해당 데이터를 서버 측(데이터베이스)에 저장할 때 사용하는 HTTP 메서드이다. 이 둘의 Request의 경우, 서버에서 응답으로 새 페이지를 로드(즉 모든 HTML코드를 전부 로드)한다는 것이다.
 
 	하지만, Ajax를 이용할 경우, JavaScript에서 Request 뿐만이 아닌, Response 또한 제어하여, 응답으로, 일부 데이터 조각만 업데이트 하여 보여줄 수 있다는 것이다. 즉 응답으로 새 페이지를 로드하여 HTML 코드를 전부 새로 가져오는 것이 아닌, 기존 HTML 코드에서 일부 HTML 코드의 업데이트만 일어나게끔 하는 것이 가능하다.
 
-# HTTP Methods
+## HTTP Methods
 
 	// Default Browser Http Methods
 
@@ -177,7 +181,7 @@
 		PATCH: Update some data
 		DELETE: Delete some data
 
-# CSRF(Cross Site Request Forgery) Attack
+## CSRF(Cross Site Request Forgery) Attack
 
 	CSRF 공격은, 사용자가 자신의 의지와는 무관하게 공격자가 의도한 행위들을 특정 웹사이트에 요청하게 만드는 공격을 말한다. 예를들어, 뱅킹에서의 송금 요청 관련해서는  CSRF 공격은 사용자가 이미 은행 페이지에 로그인 되어 있다는 가정하에, 공격자의 피싱 이메일의 링크를 통해, 은행 웹사이트의 정상적인 송금 페이지와 동일한 외형을 갖춘 공격자의 송금 페이지에 접속하여, 사용자가 송금에 관련된 정보를 입력하고, 송금 요청(정상적인 홈페이지로의 요청)을 보내면, 사용자가 입력한 정보가 아닌, input의 type이 hidden으로 이미 공격자가 설정한 값으로 피싱을 수행한 공격자의 계좌로 돈이 빠져나가게 되는 공격 방법을 말한다.
 
@@ -185,7 +189,7 @@
 
 	node-express에서의 경우, csrf-csrf package 사용.(csurf는 2022년 9월경 취약점 보고서가 배포되었고, 저자는 더이상 해당 패키지에 대해 업데이트 하지 않음으로(또한 저자도 다른 패키지 사용을 권하고 있다.), 즉 deprecated 이므로, 대안으로 csrf-csrf npm 패키지를 사용할 것.)
 
-# XSS(Cross Site Scripting)
+## XSS(Cross Site Scripting)
 
 	사용자가 글과 같은 생성할 수 있는 공간(form)이 존재하고, 이를 출력하는 공간이 존재한다면, 악의적 목적을 수행하는 자바스크립트 코드를 form에 입력하고, 해당 코드가 출력됨으로써 실행되어, 공격자가 자신이 의도한 것을 완료하여 특정한 이득을 취하는 것.
 
@@ -195,7 +199,7 @@
 
 	혹은 npm 패키지 중, xss를 사용하여, 사용자 컨텐츠 생성이 가능한 인풋 필드에 입력한 값을 라우트에서 post요청으로 받을 때, 해당 데이터, 즉 req.body에서 해당 name에 xss 패키지를 적용시킨다. 그러면 사용자가 입력한 스크립트 태그 안의 코드는 sanitizing 되어 출력된다.
 
-# SQL Injection
+## SQL Injection
 
 	SQL문을 DB에 주입하여, 공격자가 악의적 이득을 취하는 공격을 말한다.
 
@@ -203,13 +207,13 @@
 
 	대응 방안: 이스케이프 처리. VALUES나 WHERE 뒤에 값을 입력하는 곳에 ?를 입력하여, 직접적으로 값을 전달하는 것이 아닌, db.query(query, `[${?에 들어갈 값}]`)와 같은 방식으로 처리한다.
 
-# Class 및 인스턴스화
+## Class 및 인스턴스화
 
 	Class는 객체 생성 시 Blueprint(청사진)이 들어있는 곳이라 보면 된다. 즉 객체 안에 생성자 함수를 통해 정의할 property가 존재하고 또한 객체에 정의한 프로퍼티를 사용할 method 또한 존재하는 곳이다. 
 
 	이렇게 객체화 시킬 청사진들이 들어있는 Class들을 실제로 객체화 시키는 작업을 인스턴스화라고 하며, 인스턴스화는 "new [Classname]"을 통해 가능하다.
 
-# SQL 및 NoSQL
+## SQL 및 NoSQL
 
 	SQL의 경우 NoSQL에 비해 DB내 테이블의 명료성을 가진다. 하지만 그로 인해, 유연성이 많이 떨어진다. 즉 SQL의 경우, 개발 시, 코드를 작성하기 전에, 테이블의 설계가 필요하다. 그리고 테이블의 분리가 명확하여, 많은 테이블 수를 가질 수 밖에 없고(Nested object라는 개념이 존재하지 않는다), 그로 인해, 쿼리문이 길어질 수 밖에 없다.
 
