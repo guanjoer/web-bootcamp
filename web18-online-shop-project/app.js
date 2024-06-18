@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Built-in Modules
 const path = require('path');
 
@@ -61,7 +63,7 @@ app.use(errorHandlerMiddleware);
 
 db.connectToDatabase()
 	.then(function() {
-		app.listen(8080);
+		app.listen(process.env.PORT);
 	})
 	.catch(function(error) {
 		console.log('데이터베이스와의 연결이 실패하였습니다!');

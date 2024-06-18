@@ -5,8 +5,8 @@ function createSessionStore() {
 	const MongoDBStore = mongodbStore(expressSession);
 
 	const store = new MongoDBStore({
-		uri: 'mongodb://localhost:27017',
-		databaseName: 'online-shop',
+		uri: process.env.MONGODB_URL,
+		databaseName: process.env.DB_NAME,
 		collection: 'sessions'
 	});
 
@@ -15,7 +15,7 @@ function createSessionStore() {
 
 function createSessionConfig() {
 	return {
-		secret: 'secret-key',
+		secret: process.env.SESSION_SECRET,
 		resave: false,
 		saveUninitialized: false,
 		store: createSessionStore(),
