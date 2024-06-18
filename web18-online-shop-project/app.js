@@ -61,7 +61,7 @@ app.use(errorHandlerMiddleware);
 
 db.connectToDatabase()
 	.then(function() {
-		app.listen(3000);
+		app.listen(8080);
 	})
 	.catch(function(error) {
 		console.log('데이터베이스와의 연결이 실패하였습니다!');

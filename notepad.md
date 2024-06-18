@@ -16,13 +16,13 @@
 
 ## CSS
 
-### 정렬과 관련하여.
+### 정렬과 관련하여
 
 **CSS**에서, `text-align: center;`와 같은 특성과 값은, **html 요소** 안에 존재하는 컨텐츠에 대해 작용하는 것이므로,
 즉 `<p>test</p>`에서 **p element** 안에 **test**라는 컨텐츠에 대해 작용한다. 따라서, 빈 요소, 즉 `void element`의 경우, element 내에 컨텐츠가 존재하지 않으므로, **부모 element**를 이용하여, 부모 element 내에 존재하는 컨텐츠로 작동하도록 하여, 빈 요소를 중앙으로 정렬시키는 특성을 적용할 수 있다.
 빈요소의 예는, `<img src="" alt"">`가 존재한다.
 
-### 이미지 alt="" 속성과 관련하여.
+### 이미지 alt="" 속성과 관련하여
 
 `alt=""` 속성에는 이미지가 브라우저에 로드되지 않았을때, 표시하는 텍스트로, 이미지에 대한 설명을 추가하면 된다.
 
@@ -139,7 +139,7 @@ In the case of need boolean value like 'If statement's condition', if the value 
 express is mainly use for **routing request**.
 
 
-## Function is object.
+## Function is object
 
 함수는 기본적으로 함수 내부에 존재하는 코드를 실행하는 역할을 하지만, ```func()```이 아닌, ```func```을 사용하여, **property** 혹은 **function**을 추가할 수 있다. 객체에 존재하는 정보들은 ```console.dir(function)```을 통해 브라우저 console창에서 알 수 있다.
 
@@ -257,7 +257,7 @@ SQL문을 DB에 주입하여, 공격자가 악의적 이득을 취하는 공격�
 
 이에 반해 `MongoDB`와 같은 **NoSQL**은 **collection**이 `JSON`형식으로 되어 있어, **JavaScript**를 다루는 개발자에게는 매우 익숙한 포맷이다. 또한 컬렉션의 설계가 크게 필요하지 않다. 왜냐하면, SQL의 테이블들이 테이블 내 포함시킬 데이터와 명확하게 연관된 것들로만 나눠져 있는데 반해, NoSQL의 경우, **중첩 객체**의 사용이 가능하여, 연관성이 명확하지 않아도, 다른 컬렉션에 분리시키지 않고, 하나의 컬렉션 안의, 중첩 객체의 형식으로 데이터 저장이 가능하다. 따라서 매우 큰 유연성을 가지는 DB의 형태이다. 또한 적은 컬렉션으로 인해, DB와의 통신에 필요한 쿼리 문의 양이 매우 적음을 알 수 있다.
 
-## MVC Patterns
+## MVC Pattern
 
 리팩토링 기법 중 하나로, `Model`, `View`, `Controller`로 나뉜다.
 
