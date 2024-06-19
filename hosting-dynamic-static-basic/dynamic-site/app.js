@@ -19,9 +19,11 @@ app.use(function(error, req, res, next) {
   res.status(500).render('500');
 })
 
+const PORT = process.env.PORT || 3030;
+
 db.initDatabase()
   .then(function () {
-    app.listen(3000);
+    app.listen(PORT);
   })
   .catch(function (error) {
     console.log('Connecting to the database failed!');
