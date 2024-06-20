@@ -1,3 +1,3 @@
-# GET Random Quotes API
+# Todo API
 
-/quote로 get 요청을 보내면, DB에 저장되어 있는 Quotes 중, 랜덤으로 하나의 Quote를 선택해서 데이터를 JSON 형태로 브라우저에 반환하는 API입니다.
+/todos 로의 GET, POST, PATCH(:id 포함), DELETE(:id), 요청을 통해, 할 일을 페이지에 보여주고, 작성하고, 수정하고, 삭제할 수 있는 기능을 담당하는 API입니다. 
