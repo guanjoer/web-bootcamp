@@ -60,10 +60,11 @@ app.use(notFoundHandlerMiddleware);
 
 app.use(errorHandlerMiddleware);
 
+const PORT = 3000 || process.env.PORT
 
 db.connectToDatabase()
 	.then(function() {
-		app.listen(process.env.PORT);
+		app.listen(PORT);
 	})
 	.catch(function(error) {
 		console.log('데이터베이스와의 연결이 실패하였습니다!');
