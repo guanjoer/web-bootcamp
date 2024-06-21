@@ -10,7 +10,7 @@ Hosted By Netlify
 
 ## Dynamic Website URL
 
-[Go To Dynamic Website](https://test-site-2nlk.onrender.com/)
+[Go To Dynamic Website](https://dynamic-hosting-test.onrender.com)
 
 Node.js는 Render에 의해 호스팅 되었으나, MongoDB의 경우, MongoDB Atlas에 의해 로컬 머신이 아닌, 클라우드로 MongoDB 서버에 연결하였습니다.
 

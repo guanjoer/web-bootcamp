@@ -300,3 +300,7 @@ URL기반의 API를 예로 들면, url 입력 탭에 https://news.naver.com/ 와
 Node.js에서의 대표적인 웹 프레임워크는 Express(주로 라우팅 처리)이며, Library의 경우, Express를 통해 앱을 개발하며 사용한 수많은 패키지(bcryptjs, mongodb, multer, etc.)들이 되겠다.
 
 Front-end JS의 대표적인 웹 프레임워크로는 React, Vue.js 등이 존재한다. 이들 모두는 복잡한 브라우저 측 사용자 인터페이스 구축을 쉽게해주는 특성을 가지고 있다. 즉 순수 Javascript 코드를 이용한, 로직의 전개인 Vanilla JS의 경우, 각 element를 선택하고, 각 element에 이벤트 수신기를 적용하고, 각 특정 이벤트가 일어날 때마다, 수행할 함수를 정의해야 한다. 즉 todo-api를 적용하는 front-end 측 JS 코드를 보듯이, 코드의 연관성을 한눈에 파악하기 힘들고, 에러 처리가 매우 힘들다는 단점이 존재한다. 따라서, 이러한 Front-end의 Vanilla JS의 단점을 보완하는 프레임워크들이 React, Vue.js 등인 것이다.
+
+## Next Steps After Completing Web Bootcamp Course
+
+[View Roadmap After Completing Web Bootcamp Course](https://100daysofwebdevelopment.com/next-steps)
