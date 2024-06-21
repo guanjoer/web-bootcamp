@@ -30,14 +30,14 @@ function createTodoListItem(todoText, todoId) {
   const newTodoItemElement = document.createElement('li');
   newTodoItemElement.dataset.todoid = todoId; // data-todoid
 
-  const todoTextElement = document.createElement('p');
+  const todoTextElement = document.createElement('p'); // 할 일 표현
   todoTextElement.textContent = todoText;
 
-  const editTodoButtonElement = document.createElement('button');
+  const editTodoButtonElement = document.createElement('button'); // 업데이트 버튼
   editTodoButtonElement.textContent = 'Edit';
   editTodoButtonElement.addEventListener('click', startTodoEditing);
 
-  const deleteTodoButtonElement = document.createElement('button');
+  const deleteTodoButtonElement = document.createElement('button'); // 삭제 버튼
   deleteTodoButtonElement.textContent = 'Delete';
   deleteTodoButtonElement.addEventListener('click', deleteTodo);
 
@@ -107,7 +107,7 @@ async function updateTodo(newTodoText) {
     return;
   }
 
-  editedTodoElement.firstElementChild.textContent = newTodoText;
+  editedTodoElement.firstElementChild.textContent = newTodoText; // <p>
 
   todoFormElement.querySelector('input').value = '';
   editedTodoElement = null;

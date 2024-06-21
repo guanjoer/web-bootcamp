@@ -16,16 +16,16 @@ class Todo {
 		})
 	};
 
-	static async getSingleTodo() {
-		if(!this.id) {
-			throw new Error('존재하지 않는 id로 읽어오려고 합니다!')
-		};
+	// static async getSingleTodo() {
+	// 	if(!this.id) {
+	// 		throw new Error('존재하지 않는 id로 읽어오려고 합니다!')
+	// 	};
 
-		const todoId = new mongodb.ObjectId(this.id);
-		const todoDocument = await db.getDb().collection('todos').findOne({_id: todoId});
+	// 	const todoId = new mongodb.ObjectId(this.id);
+	// 	const todoDocument = await db.getDb().collection('todos').findOne({_id: todoId});
 
-		return new Todo(todoDocument.text, todoDocument._id); // DB의 값을 인스턴스화
-	}
+	// 	return new Todo(todoDocument.text, todoDocument._id); // DB의 값을 인스턴스화
+	// }
 
 	async save() {
 		if(this.id) {

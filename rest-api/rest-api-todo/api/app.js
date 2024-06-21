@@ -5,7 +5,8 @@ const db = require('./data/database');
 // Routes
 const todoRoutes = require('./routes/todo.routes');
 
-const enableCorsMiddleware = require('./middlewares/cors');
+
+const enableCorsMiddleware = require('./middlewares/enable-cors');
 
 const app = express();
 

@@ -65,14 +65,9 @@ async function deleteTodo(req, res, next) {
 	res.json({message: '성공적으로 할 일을 삭제하였습니다!'})
 }
 
-function getSingleTodo(req, res, next) {
-
-}
-
 module.exports = {
 	getAllTodos: getAllTodos,
 	addTodo: addTodo,
 	updateTodo: updateTodo,
 	deleteTodo: deleteTodo,
-	getSingleTodo: getSingleTodo
 };

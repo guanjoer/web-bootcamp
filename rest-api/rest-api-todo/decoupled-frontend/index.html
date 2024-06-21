@@ -6,23 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todos</title>
     <link rel="stylesheet" href="styles/main.css" />
-    <script src="scripts/todos.js" defer></script>
+
+    <!-- Vue.js framework below -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <script src="scripts/todos-vue.js" defer></script>
+
+    <!-- Built with Vanilla JS below -->
+    <!-- <script src="scripts/todos.js" defer></script> -->
   </head>
   <body>
     <header>
       <h1>Todo Management</h1>
       <p>Manage your (daily) todos with ease!</p>
     </header>
-    <main>
+    <main id="todos-app">
+      <!-- 데이터 바인딩 {{ [key] }}-->
       <section id="todo-management">
-        <form>
+        <form @submit="saveTodo">
           <label for="text">Todo text</label>
-          <input type="text" id="text" name="text" required />
+          <input type="text" id="text" v-model="enteredTodoText" required/>
           <button>Save</button>
         </form>
       </section>
       <section id="todos">
-        <ul id="todos-list">
+        <p v-if="isLoading">로딩중...</p>
+        <p v-else-if="todos.length === 0">아직 할 일이 없습니다 - 할 일을 추가해보세요!</p>
+        <ul v-else id="todos-list">
+          <li v-for="todo in todos">
+            <p>{{ todo.text }}</p>
+            <div>
+              <button @click="editTodo(todo.id)">Edit</button>
+              <button @click="deleteTodo(todo.id)">Delete</button>
+            </div>
+          </li>
         </ul>
       </section>
     </main>
