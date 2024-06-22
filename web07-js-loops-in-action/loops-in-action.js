@@ -1,4 +1,5 @@
 //JavaScript Calculator
+// 0부터 사용자가 입력한 값까지 1씩 증가하여 더합니다.
 
 const sumButton = document.querySelector('#calculator button');
 const sumResult = document.getElementById('calculated-sum');
@@ -21,7 +22,9 @@ function sumNumbers() {
 
 sumButton.addEventListener('click', sumNumbers);
 
+
 // Highlight Links
+// #highlight Section 내 존재하는 모든 <a> Element를 하이라이팅 처리합니다
 
 const highlightButton = document.querySelector('#highlight-links button');
 
@@ -40,7 +43,9 @@ function hightlightAnchor() {
 
 highlightButton.addEventListener('click', hightlightAnchor)
 
+
 // User Information
+// 유저의 정보를 보여줍니다
 
 const userData = {
 	name: 'MrGuanJo',
@@ -65,13 +70,14 @@ function outputUserData() {
 
 userDataButton.addEventListener('click', outputUserData)
 
+
 // Statistics (Roll the Dice)
+// 1 ~ 6까지의 숫자 중 사용자가 정한 숫자가 주사위를 돌려 몇번째에 나오는지 확인합니다.
 
 const rollDiceButton = document.querySelector('#statistics button');
 
-
 function rollDice() {
-	return Math.floor(Math.random()*6) + 1;
+	return Math.floor(Math.random()*6) + 1; // 1 ~ 6
 }
 
 function deriveNumber() {
@@ -93,8 +99,9 @@ function deriveNumber() {
 		const outputText = 'Roll ' + numberOfRolls + ': ' + rolledNumber;
 		newRollList.textContent = outputText;
 		rollUnorderedList.append(newRollList);
-		hasRolledTargetNumber = rolledNumber == enteredNumber;
-	}
+		hasRolledTargetNumber = rolledNumber == enteredNumber; // true or false // 사용자가 입력한 값과 랜덤 값이 같을 때 true
+	};
+	
 	const outputTotalRolls = document.getElementById('output-total-rolls');
 	const outputTargetNumber = document.getElementById('output-target-number');
 
