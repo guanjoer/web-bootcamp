@@ -169,4 +169,34 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 - `/posts/:id/delete`로의 `GET`요청을 통해, 사용자가 **선택한 게시물**을 **삭제** 합니다.
 
 
-## WEB 12 | 
+## WEB 12 | Blog With MongoDB
+
+`WEB 11`과 **동일한 기능**을 수행하는 풀스택 블로그 웹 사이트 이지만, Node.js와의 연결된 `DB`를 **MongoDB**로 대체하여 사용하였습니다.
+
+- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web12-node.js-mongodb-blog-crud" target="_blank">WEB 12 Codes</a>
+
+
+## WEB13 | File Upload | Profile Image
+
+`npm`패키지 중 하나인 `multer`라이브러리를 프로필 웹 사이트인, 해당 웹 사이트(Node.js, Express.js, MongoDB)에 적용하여, 프로필 이름, **이미지**(acceptable formats: png, jpg, jpeg) 생성 시, DB 및 **서버 컴퓨터**에 저장하여 **메인 홈페이지에 로드**합니다.
+
+또한, **Frontend Javscript**를 이용하여, 프로필 생성 페이지에서, **이미지 선택 시**, 프로필 **이미지 미리보기** 기능을 구현하였습니다.
+
+- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web13-file-upload" target="_blank">WEB 13 Codes</a>
+
+
+## WEB 14 | Ajax
+
+`WEB12`의 풀스택 블로그 웹 사이트에 **댓글 관련 페이지** 및 **기능**을 추가하여, **댓글을 생성**하고 **로드**할 때, **클라이언트**와 **서버** 간의 통신을 **비동기 통신** 방법 중 하나인, `Ajax`로 처리하여, 페이지가 **새로고침** 되어, 페이지의 **모든 내용**을 브라우저가 **다시 읽어들이는 것**이 아닌, Ajax 비동기 통신 통해 일어난 **데이터 교환**(JSON)을 가지고, 특정 부분의 `DOM`만 **업데이트** 하도록 하였습니다.
+
+- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web14-ajax-handling-comments" target="_blank">WEB 14 Codes</a>
+
+---
+
+**주요 기능**:
+
+- **클라이언트 Javscript**에서 `fetch`함수를 이용하여, `/posts/${postId}/comments`로의 `GET`요청 시, **클라이언트**에서 `postId`를 **JSON 형태**로 전달하고, **서버**에서는 해당 ID를 가지고 적합한 `comments`의 내용을 **JSON 포맷**으로 클라이언트에 **반환**하여, 해당 내용을 가지고 **DOM을 업데이트**하여, 해당 글에 생성된 **모든 댓글**을 보여줍니다.
+- `fetch`함수를 이용하여, `/posts/${postId}/comments`로의 `POST` 요청 시, **사용자가 입력한 댓글 관련 데이터**를 `body`에 담아, **JSON** 형태로 **서버**에 보내고, 서버에서는 해당 데이터를 받아, **DB에 저장**시킨 후, 성공 message를 **JSON 형식**으로 반환하고, **프로미스** 반환이 정상적으로 완료 되면, 프론트엔드에서 **DOM을 업데이트** 하여, **추가된 댓글을 포함**하여 해당 글에 작성된 **모든 댓글**을 보여줍니다.
+
+
+## WEB 15 | 

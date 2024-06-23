@@ -20,13 +20,12 @@ router.get('/posts', async function(req, res) {
   .project({title: 1, summary: 1, 'author.name': 1})
   .toArray();
 
-  // console.log(posts);
   res.render('posts-list', {posts: posts});
 });
 
 router.get('/new-post', async function(req, res) {
   const authors =  await db.getDb().collection('authors').find().toArray();
-  // console.log(authors);
+
   res.render('create-post', {authors: authors});
 });
 
@@ -60,7 +59,6 @@ router.get('/posts/:id', async function(req, res) {
   };
 
   const post = await db.getDb().collection('posts').findOne({_id: postId}, {summary: 0});
-  console.log(post);
 
   if(!post) {
     return res.status(404).render('404');
