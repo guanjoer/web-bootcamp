@@ -24,8 +24,8 @@ router.get('/restaurants', function(req, res) {
 
 	storedRestaurants.sort(function(resA, resB) {
 		if(
-			(order === 'desc' && resA.date < resB.date) ||
-			(order === 'asc' && resA.date > resB.date)
+			(order === 'desc' && resA.date < resB.date) || // 최신 날짜 순으로
+			(order === 'asc' && resA.date > resB.date) // 오래 된 날짜 순으로
 		) {
 			return 1;
 		}

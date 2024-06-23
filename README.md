@@ -23,7 +23,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 📕**생각 정리**: https://github.com/mrguanjo/web-bootcamp/blob/main/notepad.md
 
 
-## WEB 01 ~ WEB 02| HTML & CSS BASIC
+## WEB 01 ~ WEB 02 | HTML & CSS BASIC
 
 - **WEB 01**: 기본적인 HTML & CSS 지식을 학습하여, 해당 코스와 관련된 목표가 무엇인지를 나타내는 웹 페이지들을 만들었습니다. ([WEB 01 Codes](https://github.com/mrguanjo/web-bootcamp/tree/main/web01-challenges))
 - **WEB 02**: 학습한 HTML & CSS 지식을 요약 정리한 내용들을 나타내는 웹 페이지를 만들었습니다. ([WEB 02 Codes](https://github.com/mrguanjo/web-bootcamp/tree/main/web02-html-css-summary))
@@ -31,7 +31,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 **배운 개념들**: 기본적인 HTML & CSS 지식과 해당 지식들을 이용한 웹 페이지들
 
 
-## WEB 03| TRAVEL
+## WEB 03 | TRAVEL
 
 조금 더 HTML & CSS 지식들을 진보시켜나가, 여행 목적지 리스트가 포함되어 있는 **여행 프론트엔드 웹사이트**를 구축하였습니다.
 
@@ -39,7 +39,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 - 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web03-travel" target="_blank">WEB 03 Codes</a>
 
 
-## WEB 04| Responsive CSS Design | Food Order
+## WEB 04 | Responsive CSS Design | Food Order
 
 **Food Order** 웹 사이트를 만들어, **반응형 CSS**를 구현하여하도록 하였습니다.
 
@@ -67,7 +67,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 - 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web04-food-order" target="_blank">WEB 04 Codes</a>
 
 
-## WEB05| Contact us Form
+## WEB 05 | Contact us Form
 
 주로 `text`, `radio`, `checkbox`로 이루어진 `Input type`들과 `select` 및 `option`, `textarea`를 이용하여 **Contact us** Form을 만들었습니다.
 
@@ -77,7 +77,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 - 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web05-forms" target="_blank">WEB 05 Codes</a>
 
 
-## WEB06| JS Input Event
+## WEB 06 | JS Input Event
 
 주로 `JavaScript`를 이용하여, **input field**에 **input event**가 일어 날 때, 입력된 글자 만큼 **최대 허용 글자 수**에서 **차감** 하도록 하고, 허용 글자 수가 **10 미만** 이 되면, `warning` `class`를 추가하여 인풋 필드와 입력 가능 글자 수에 **연분홍**으로 스타일링을 하여, 허용 가능 글자 수가 얼마 남지 않았다는 것을 **시각적**으로 알려주고, 허용 글자 수가 **0**이 되면, `error`클래스를 추가하여, 더이상 입력이 **불가능**하다는 것을 **빨간색** 스타일링을 통해 시각적으로 보여주는 기능을 구현하였습니다.
 
@@ -86,7 +86,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 - 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web06-js-input-event" target="_blank">WEB 06 Codes</a>
 
 
-## WEB07| JS Loops in Action
+## WEB 07 | JS Loops in Action
 
 반복문을 이용한, **총 4가지**의 `click`이벤트가 존재합니다.
 
@@ -101,7 +101,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 - 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web07-js-loops-in-action" target="_blank">WEB 07 Codes</a>
 
 
-## WEB08| Tic Tac Toe Game
+## WEB 08 | Tic Tac Toe Game
 
 마일스톤 프로젝트로, 오직 **프론트엔드 자바스크립트**만을 이용하여, **틱 택 토 게임**을 구현하였습니다.
 
@@ -117,16 +117,56 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 - 플레이어의 이름이 **공백** 인 경우 혹은 두 플레이어의 **이름이 같은 경우** 경고 메시지를 추가하고 설정하지 못하도록 하였습니다.
 - 설정이 정상적으로 완료되어 게임을 시작하는 버튼을 누르면, **3 X 3**의 틱 택 토 게임을 할 수 있는 **보드**가 나타납니다.
 - 플레이어 1부터 게임을 시작하고, **현재 턴**인 플레이어의 이름을 **화면에서 확인**할 수 있습니다.
-- 보드를 누르면 **플레이어의 심볼(X 혹은 O)**이 표시가 되고, 해당 영역은 더 이상 **클릭이 불가능**합니다.
+- 보드를 누르면 **플레이어의 심볼**(X 혹은 O)이 표시가 되고, 해당 영역은 더 이상 **클릭이 불가능**합니다.
 - 만약 플레이어가 **이미 선택된 영역**을 클릭하면, **경고 메시지**가 출력됩니다.
 - **게임 도중**, 게임 시작 버튼을 누르면, **게임이 리셋**되어 처음부터 시작하게 됩니다.
 - 3 X 3 보드에서 먼저 가로, 세로 혹은 대각선으로 **먼저 한 줄을 완성한 유저**가 **승리**하게 되고, **승리 메시지**가 화면에 출력됩니다.
-- **게임이 끝난 후**, **클릭 가능 한 보드가 남아도, 클릭이 불가능**하도록 하였습니다.
+- **게임이 끝난 후**, 클릭 가능 한 보드가 **남아도**, **클릭이 불가능**하도록 하였습니다.
 - 게임이 끝난 후, 게임 시작 버튼을 누를 시, 게임이 리셋되어, **처음부터 게임**이 가능합니다.
 
 
-## WEB09| Styling Third Parties
+## WEB 09 | Styling Third Parties
 
 스타일링과 관련된 제 3자 서비스인 **Bootstrap**, **Simple Parallax**을 코드에 통합하여 사용하는 방법에 관해 알아보았습니다.
 
 - 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web09-third-parties" target="_blank">WEB 09 Codes</a>
+
+
+## WEB 10 | Share & Browse Restaurants
+
+**맛집을 공유하고, 공유한 맛집들을 탐색**할 수 있는 주로 `Node.js`및 `Express.js` 프레임워크로 구축한 **풀스택**웹 사이트 입니다.
+
+- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web10-node.js-restaurant" target="_blank">WEB 10 Codes</a>
+
+---
+
+**주요 기능**:
+
+- `/restaurants`로의 `GET` 요청을 통해, 사용자가 공유한 **모든 맛집** 데이터(**JSON**)을 가져와 보여줍니다.
+- `/recommend`로의 `GET` 요청을 통해, 사용자가 맛집 데이터를 **공유** 할 수 있는 **Form**이 로드됩니다.
+- `/recommend`로의 `POST` 요청을 통해, 사용자가 입력한 맛집에 대한 데이터가 `JSON` 포맷으로 **로컬 컴퓨터에 저장 및 업데이트**가 됩니다.
+- `/restaurants/:id`로의 `GET` 요청을 통해, 사용자가 보고 싶은 특정 맛집에 대한 **자세히 보기**가 로드됩니다.
+- `/restaurants`로의 `GET` 요청을 통해 가져온 모든 맛집 목록에서 **Change Order** `button`을 누르면, 사용자가 추가한 **날짜**를 기준으로, **오름차 순**, **내림차 순**으로 보여지는 맛집 목록의 **순서를 변경**할 수 있습니다.
+- **반응형 CSS 디자인**을 구현하였습니다.
+
+
+## WEB11 | Blog With MySQL
+
+주로 `Node.js`, `Express.js`, `MySQL`을 이용하여 기본적인 `CRUD` 기능이 포함된 **풀스택 블로그** 웹사이트를 구현하였습니다.
+
+- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web11-node.js-mysql-blog-crud" target="_blank">WEB 11 Codes</a>
+
+---
+
+**주요 기능**: 
+
+- `/posts`로의 `GET`요청이 오면 **라우트**를 통해 **DB**에 저장되어 있는 **모든 블로그 게시물**을 보여줍니다.
+- `/new-post`로의 `GET`요청을 통해, 블로그 게시물을 **생성**할 수 있는 **Form** 및 **저자 정보**가 로드됩니다.
+- `/posts`로의 `POST`요청을 통해, **사용자가 입력한** 게시물 관련 **데이터를 DB에 저장**합니다.
+-  `/posts/:id`로의 `GET`요청을 통해 사용자가 **선택한 게시물**에 대한 정보를 **자세히** 보여줍니다.
+- `/posts/:id/edit`로의 `GET`요청을 통해, 사용자가 선택한 게시물에 대한 데이터를 **업데이트** 할 수 있는 **미리 데이터가 채워진 Form**을 가져옵니다.
+- `/posts/:id/edit`로의 `POST`요청을 통해, 사용자가 **수정한 데이터**로 **게시물을 업데이트** 합니다.
+- `/posts/:id/delete`로의 `GET`요청을 통해, 사용자가 **선택한 게시물**을 **삭제** 합니다.
+
+
+## WEB 12 | 
