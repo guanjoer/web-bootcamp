@@ -33,7 +33,7 @@ function handleErrors(error, req, res, next) {
 		statusCode = 400;
 		errorMessage = 'Bad Request';
 	  }
-	  // ... 다른 에러 유형에 대한 조건 추가
+	  
 
 	// 에러 응답
 	res.status(statusCode).render('shared/error', {

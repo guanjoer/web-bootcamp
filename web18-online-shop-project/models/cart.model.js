@@ -52,7 +52,6 @@ class Cart {
 	  }
 
 	addItem(product) {
-		
 		// 이미 장바구니에 동일한 항목이 존재할 때
 		for(let i = 0; i < this.items.length; i++) {
 			const item = this.items[i];

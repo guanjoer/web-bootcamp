@@ -23,7 +23,7 @@ async function addToCart(req, res, next) {
 async function getCart(req, res, next) {
 	// console.log(req.session.cart);
 	const cart = res.locals.cart;
-	// console.log(cart);
+	console.log(cart);
 	const formattedItems = cart.getFormattedItems();
 	const formattedTotalPrice = cart.getFormattedTotalPrice();
 
@@ -34,7 +34,7 @@ async function getCart(req, res, next) {
 	res.render('customer/cart/cart', {
 		cartItems: formattedItems,
 		formattedTotalPrice: formattedTotalPrice,
-		cartIsEmpty: cart.totalQuantity === 0,
+		cartIsEmpty: cart.totalQuantity === 0, // True or False
 		user: user
 	});
 }

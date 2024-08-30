@@ -2,6 +2,9 @@ const mongodb = require('mongodb');
 
 const db = require('../data/database');
 
+const fs = require('fs');
+const path = require('path');
+
 
 class Product {
 	// Input is a object.
@@ -58,7 +61,7 @@ class Product {
 		const products = await db
 		  .getDb()
 		  .collection('products')
-		  .find({ _id: { $in: productIds } }) // 배열 내에 존재하는 product id와 일치하는 모든 products 내, 문서들
+		  .find({ _id: { $in: productIds } }) // 배열 내에 존재하는 product id와 일치하는 모든 products 내 문서들
 		  .toArray(); // [{_id: ..., title: ..., summary: ..., ...}, {_id: ..., title: ..., summary: ..., ...}, ...]
 	
 		return products.map(function (productDocument) { // 배열 내, 각각의 요소에 대해서, 새로운 배열 반환(기존 배열 유지)
@@ -67,8 +70,8 @@ class Product {
 	  };
 
 	updateImage() {
-		this.imagePath = `product-data/images/${this.image}`;
-		this.imageUrl = `/products/assets/images/${this.image}`;
+		this.imagePath = `product-data/images/${this.image}`; // 실제 파일 시스템 내 image들의 경로
+		this.imageUrl = `/products/assets/images/${this.image}`; // 클라이언트가 요청하는 경로
 	};
 
 	formatPrice() {
@@ -110,8 +113,28 @@ class Product {
 	// 단일 제품 삭제
 	async remove() {
 		const productId = new mongodb.ObjectId(this.id);
-		await db.getDb().collection('products').deleteOne({_id: productId});
-	};
+		
+		const product = await Product.findById(this.id);
+		
+		// 이미지 파일 절대 경로
+		const imagePath = path.join(__dirname,'..', product.imagePath);
+	
+		await db.getDb().collection('products').deleteOne({ _id: productId });
+	
+		// 파일 시스템에서 이미지 파일 삭제
+		fs.unlink(imagePath, (err) => {
+		  if (err) {
+			console.error('이미지 파일을 삭제하는 중에 오류가 발생했습니다:', err);
+		  } else {
+			console.log('이미지 파일이 성공적으로 삭제되었습니다:', imagePath);
+		  }
+		});
+	  }
+
+// 	async remove() {
+// 		const productId = new mongodb.ObjectId(this.id);
+// 		await db.getDb().collection('products').deleteOne({_id: productId});
+// 	};
 }
 
 module.exports = Product;

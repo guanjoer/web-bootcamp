@@ -3,7 +3,7 @@ function protectRoutes(req, res, next) {
 		return res.redirect('/401');
 	};
 
-	// 로그인은 하였지만, 관리자가 아닌 경우에, 관리자 페이지에 접근하려고 할 때
+	// 로그인은 하였지만, 관리자가 아닌 경우에 관리자 페이지에 접근하려고 할 때
 	if(req.path.startsWith('/admin') && !res.locals.isAdmin) {
 		return res.redirect('/403');
 	};

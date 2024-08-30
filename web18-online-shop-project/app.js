@@ -52,9 +52,9 @@ app.use(baseRoutes);
 app.use(productsRoutes);
 app.use(authRoutes);
 app.use('/cart', cartRoutes);
-app.use(protectRoutesMiddleware);
-app.use('/orders', ordersRoutes); // 관리자 페이지 보호 미들웨어
-app.use('/admin', adminRoutes); // 관리자 페이지 보호 미들웨어
+app.use(protectRoutesMiddleware); // 관리자 페이지 보호 미들웨어
+app.use('/orders', ordersRoutes); 
+app.use('/admin', adminRoutes); 
 
 app.use(notFoundHandlerMiddleware);
 
