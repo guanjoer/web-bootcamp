@@ -25,8 +25,8 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 
 ## WEB 01 ~ WEB 02 | HTML & CSS BASIC
 
-- **WEB 01**: 기본적인 HTML & CSS 지식을 학습하여, 해당 코스와 관련된 목표가 무엇인지를 나타내는 웹 페이지들을 만들었습니다. ([WEB 01 Codes](https://github.com/mrguanjo/web-bootcamp/tree/main/web01-challenges))
-- **WEB 02**: 학습한 HTML & CSS 지식을 요약 정리한 내용들을 나타내는 웹 페이지를 만들었습니다. ([WEB 02 Codes](https://github.com/mrguanjo/web-bootcamp/tree/main/web02-html-css-summary))
+- **WEB 01**: 기본적인 HTML & CSS 지식을 학습하여, 해당 코스와 관련된 목표가 무엇인지를 나타내는 웹 페이지들을 만들었습니다. ([WEB 01 Codes](https://github.com/guanjoer/web-bootcamp/tree/main/web01-challenges))
+- **WEB 02**: 학습한 HTML & CSS 지식을 요약 정리한 내용들을 나타내는 웹 페이지를 만들었습니다. ([WEB 02 Codes](https://github.com/guanjoer/web-bootcamp/tree/main/web02-html-css-summary))
 
 **배운 개념들**: 기본적인 HTML & CSS 지식과 해당 지식들을 이용한 웹 페이지들
 
@@ -36,7 +36,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 조금 더 HTML & CSS 지식들을 진보시켜나가, 여행 목적지 리스트가 포함되어 있는 **여행 프론트엔드 웹사이트**를 구축하였습니다.
 
 - **웹사이트**: 🌎<a href="https://travel-guanjo.netlify.app/" target="_blank">GO TO TRAVEL WEBSITE</a>
-- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web03-travel" target="_blank">WEB 03 Codes</a>
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web03-travel" target="_blank">WEB 03 Codes</a>
 
 
 ## WEB 04 | Responsive CSS Design | Food Order
@@ -64,7 +64,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 그리고 모바일 메뉴는 `postion: fixed`를 통해 문서 흐름을 벗어나도록 하여, 기존 웹 페이지보다 레이어가 상승하게 하고, `top: 0`, `left: 0`를 통해 기존의 웹 페이지를 전부 가리고, 화면 전체에서 모바일 메뉴만 보이도록 하였습니다.
 
 - **웹사이트**: 🍟<a href="https://food-order-guanjo.netlify.app/" target="_blank">GO TO FOOD ORDER WEBSITE</a>
-- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web04-food-order" target="_blank">WEB 04 Codes</a>
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web04-food-order" target="_blank">WEB 04 Codes</a>
 
 
 ## WEB 05 | Contact us Form
@@ -74,7 +74,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 `CSS`의 `transform`, `transition`을 이용하여, **서비스 구독 페이지**를 구현하였습니다.
 
 
-- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web05-forms" target="_blank">WEB 05 Codes</a>
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web05-forms" target="_blank">WEB 05 Codes</a>
 
 
 ## WEB 06 | JS Input Event
@@ -83,7 +83,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 
 즉 최대 혀용 글자 수가 60인 `60/60`에서 입력 글자 수 만큼 차감, 즉 **(60 - 입력 글자 수)/60**가 되도록 하고, `9/60`이 되면, `warning`클래스를 추가하여 경고 표시를 시각적으로 보여줄 수 있게끔 스타일링을 하고, `0/60`이 되면, 더 이상 입력이 불가능 하다는 것을 알리는 스타일링을 `Javscript`를 통해 구현하였습니다.
 
-- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web06-js-input-event" target="_blank">WEB 06 Codes</a>
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web06-js-input-event" target="_blank">WEB 06 Codes</a>
 
 
 ## WEB 07 | JS Loops in Action
@@ -98,7 +98,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 
 4. **1 ~ 6까지의 숫자** 중, **유저가 선택한 숫자**와 주사위를 돌려, **랜덤으로 나오는 숫자**가 몇 번만에 **일치**하는 지 확인하는, 운을 테스트하는 요소가 가미 된 기능입니다. `while` 반복문을 통해, 유저가 입력한 값과, 랜덤으로 나오는 값이 일치할 때까지 주사위를 돌리도록 하여, 유저가 정한 숫자가 나오기 까지 **몇번의 시도**가 존재했는지 등을 화면에 표시합니다.
 
-- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web07-js-loops-in-action" target="_blank">WEB 07 Codes</a>
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web07-js-loops-in-action" target="_blank">WEB 07 Codes</a>
 
 
 ## WEB 08 | Tic Tac Toe Game
@@ -107,7 +107,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 
 
 - **웹사이트**: 🎲<a href="https://tictactoe-guanjo.netlify.app/" target="_blank">GO TO Tic Tac Toe</a>
-- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web08-tic-tac-toe" target="_blank">WEB 08 Codes</a>
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web08-tic-tac-toe" target="_blank">WEB 08 Codes</a>
 
 ---
 
@@ -129,14 +129,14 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 
 스타일링과 관련된 제 3자 서비스인 **Bootstrap**, **Simple Parallax**을 코드에 통합하여 사용하는 방법에 관해 알아보았습니다.
 
-- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web09-third-parties" target="_blank">WEB 09 Codes</a>
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web09-third-parties" target="_blank">WEB 09 Codes</a>
 
 
 ## WEB 10 | Share & Browse Restaurants
 
 **맛집을 공유하고, 공유한 맛집들을 탐색**할 수 있는 주로 `Node.js`및 `Express.js` 프레임워크로 구축한 **풀스택**웹 사이트 입니다.
 
-- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web10-node.js-restaurant" target="_blank">WEB 10 Codes</a>
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web10-node.js-restaurant" target="_blank">WEB 10 Codes</a>
 
 ---
 
@@ -154,7 +154,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 
 주로 `Node.js`, `Express.js`, `MySQL`을 이용하여 기본적인 `CRUD` 기능이 포함된 **풀스택 블로그** 웹사이트를 구현하였습니다.
 
-- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web11-node.js-mysql-blog-crud" target="_blank">WEB 11 Codes</a>
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web11-node.js-mysql-blog-crud" target="_blank">WEB 11 Codes</a>
 
 ---
 
@@ -173,7 +173,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 
 `WEB 11`과 **동일한 기능**을 수행하는 풀스택 블로그 웹 사이트 이지만, Node.js와의 연결된 `DB`를 **MongoDB**로 대체하여 사용하였습니다.
 
-- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web12-node.js-mongodb-blog-crud" target="_blank">WEB 12 Codes</a>
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web12-node.js-mongodb-blog-crud" target="_blank">WEB 12 Codes</a>
 
 
 ## WEB13 | File Upload | Profile Image
@@ -182,14 +182,14 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 
 또한, **Frontend Javscript**를 이용하여, 프로필 생성 페이지에서, **이미지 선택 시**, 프로필 **이미지 미리보기** 기능을 구현하였습니다.
 
-- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web13-file-upload" target="_blank">WEB 13 Codes</a>
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web13-file-upload-profile" target="_blank">WEB 13 Codes</a>
 
 
 ## WEB 14 | Ajax
 
 `WEB12`의 풀스택 블로그 웹 사이트에 **댓글 관련 페이지** 및 **기능**을 추가하여, **댓글을 생성**하고 **로드**할 때, **클라이언트**와 **서버** 간의 통신을 **비동기 통신** 방법 중 하나인, `Ajax`로 처리하여, 페이지가 **새로고침** 되어, 페이지의 **모든 내용**을 브라우저가 **다시 읽어들이는 것**이 아닌, Ajax 비동기 통신 통해 일어난 **데이터 교환**(JSON)을 가지고, 특정 부분의 `DOM`만 **업데이트** 하도록 하였습니다.
 
-- 👨‍💻<a href="https://github.com/mrguanjo/web-bootcamp/tree/main/web14-ajax-handling-comments" target="_blank">WEB 14 Codes</a>
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web14-ajax-handling-comments" target="_blank">WEB 14 Codes</a>
 
 ---
 
@@ -199,4 +199,29 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 - `fetch`함수를 이용하여, `/posts/${postId}/comments`로의 `POST` 요청 시, **사용자가 입력한 댓글 관련 데이터**를 `body`에 담아, **JSON** 형태로 **서버**에 보내고, 서버에서는 해당 데이터를 받아, **DB에 저장**시킨 후, 성공 message를 **JSON 형식**으로 반환하고, **프로미스** 반환이 정상적으로 완료 되면, 프론트엔드에서 **DOM을 업데이트** 하여, **추가된 댓글을 포함**하여 해당 글에 작성된 **모든 댓글**을 보여줍니다.
 
 
-## WEB 15 | 
+## WEB 15 | 인증 및 접근 제어
+
+
+**주요 기능:**
+
+- **회원 가입** 기능
+
+- **로그인** 기능
+
+- `isAuthenticated` 플래그를 통해 **일반 사용자 인증** 구현
+
+- `isAdmin` 플래그를 통해 **관리자 페이지 접근 제어*8 구현
+
+- `cookie` 유효 기간 설정 및 `httpOnly` 플래그 설정하여 **쿠키 재사용 공격 방지**
+
+- 회원 가입 및 로그인 시 잘못된 데이터를 입력하고 프로세스 진행 버튼을 눌렀을 때, **입력한 데이터를 세션에 저장**하여 처음부터 데이터를 입력하지 않도록 기능 구현
+
+- **이메일, 확인 이메일, 비밀번호 입력 서버 측 검증 로직** 구현 
+
+	- 공백 허용하지 않음
+	- 이메일과 확인 이메일이 같아야 함
+	- 이메일에 @ 사인 포함되어야 함
+	- 비밀번호 7자리 이상이여함
+
+
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web15-auth-session-cookie" target="_blank">WEB 15 Codes</a>

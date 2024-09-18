@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 
 const express = require('express');
@@ -24,12 +25,13 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 
 app.use(session({
-  secret: 'secret-key',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   store: sessionStore,
   cookie: {
-    maxAge: 60 * 1000 * 60 * 24 * 30 // 30 days // ms is default value unit
+    maxAge: 60 * 1000 * 60 * 24 * 30, // 30 days // ms is default value unit
+    httpOnly: true
   }
 }));
 
@@ -57,5 +59,5 @@ app.use(function(error, req, res, next) {
 })
 
 db.connectToDatabase().then(function () {
-  app.listen(8000);
+  app.listen(3000);
 });

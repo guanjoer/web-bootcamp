@@ -173,7 +173,7 @@ class에서의 키와 값은 **consturctor function** 안에서 정의가 가능
 
 즉 DBMS를 통해 데이터의 저장 및 관리 및 검색을 최적화 시킬 수 있다.
 
-DBMS에는, **Relational DB**인, **SQL DB**와 **Non-Relational DB`**인 **NoSQL DB**가 존재한다.
+DBMS에는, **Relational DB**인, **SQL DB**와 **Non-Relational DB**인 **NoSQL DB**가 존재한다.
 
 Relational DBMS인, **RDBMS**의 경우, 서로 다른 테이블을 고유한 `id`를 통해, 서로 연결 짓는 것이 가능해 진다.
 
@@ -231,7 +231,7 @@ SQL문을 DB에 주입하여, 공격자가 악의적 이득을 취하는 공격�
 예를들어, SQL DB 중 하나인, MySQL에서 글의 저자를 필터링하여 해당 저자가 쓴 글만 볼 수 있게 한다고 해보자. 저자를 필터링할 때, 찾는 저자는 url에 get 방식으로 받아오게 되고, 즉 `input`의 `name="author"`이면, `req.query.author`에 사용자가 입력한 저자의 값이 할당되어,
 
 
-	```SELECT * FROM ${tableName} WHERE author = "${req.query.author}"```
+	SELECT * FROM ${tableName} WHERE author = "${req.query.author}"
 
 
 의 값이 실행되어, 해당 저자와 매칭되는 행만 보여주게 되는데, 이때 검색하는 인풋 필드에 악의적인 SQL문을 삽입하여, 테이블을 삭제하거나 하는 등의 SQL문을 실행 시킬 수 있다.
@@ -239,7 +239,7 @@ SQL문을 DB에 주입하여, 공격자가 악의적 이득을 취하는 공격�
 **`대응 방안`**: 이스케이프 처리. `VALUES`나 `WHERE` 뒤에 값을 입력하는 곳에 ?를 입력하여,
 직접적으로 값을 전달하는 것이 아닌,
 
-	```db.query(query, `[${?에 들어갈 값}]`)```
+	db.query(query, `[${?에 들어갈 값}]`)
 
 와 같은 방식으로 처리한다.
 
