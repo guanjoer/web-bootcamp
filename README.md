@@ -210,7 +210,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 
 - `isAuthenticated` 플래그를 통해 **일반 사용자 인증** 구현
 
-- `isAdmin` 플래그를 통해 **관리자 페이지 접근 제어*8 구현
+- `isAdmin` 플래그를 통해 **관리자 페이지 접근 제어** 구현
 
 - `cookie` 유효 기간 설정 및 `httpOnly` 플래그 설정하여 **쿠키 재사용 공격 방지**
 
@@ -225,3 +225,42 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 
 
 - 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web15-auth-session-cookie" target="_blank">WEB 15 Codes</a>
+
+
+## WEB 16 | XSS, SQLi, CSRF Attack
+
+Node.js인 환경에서의 XSS, CSRF Attack에 대한 대응 로직을 구현하고, Node.js 및 MySQL에서의 SQLi 공격에 대한 대응 로직을 구현하였다.
+
+---
+
+**Node.js 환경에서의 XSS, CSRF Attack 대응 로직 구현:**
+
+- **XSS**의 대응 로직의 경우 `ejs`엔진을 사용하여 서버 측에서 처리한 데이터를 브라우저에 출력할 때 `views/` 폴더 내 파일들에, **= 사인**, 즉 `<%= comment.text %>` 형태로 사용자의 입력값을 출력하여, 공격자가 악성 스크립트를 삽입해도, 스크립트로써 기능하는 것이 아닌, **HTML 엔티티**로 변환하여 **단순 문자열로 기능**하도록 처리 로직 구현
+
+-  혹은 `xss` npm 패키지, 즉 라이브러리를 사용하여 DB에 공격자가 삽입한 글을 **이스케이프 처리**
+
+- **CSRF Token**을 이용하여 CSRF 공격에 대응. 즉 만약 뱅킹의 송금 프로세스에 적용하기 위해서는, 송금 페이지 요청 시에 서버 측에서 생성한 **CSRF Token을 첨부**하고, 송금 프로세스를 진행할 때, 해당 페이지에 첨부된 **CSRF Token을 서버 측에서 검증을 진행**한다. 
+
+
+**Node.js 및 MySQL에서의 SQL Injection 대응 로직 구현:**
+
+- 사용자가 전달하는 값을 SQL 쿼리에 직접 전달하는 것이 아닌, ? 플레이스 홀더를 사용하여 바인딩하는 **Prepared Statements**를 사용하여 사용자가 전달한 값이 단순 데이터로 취급되도록 처리. 아래의 두 로직이 Prepared Stements를 사용한 곳이며, 각각의 로직은 사용자가 author를 검색할 때, 댓글을 삽입할 때의 로직이다.
+
+```js
+let filter = '';
+
+if (req.query.author) {
+  filter = `WHERE author = ?`; 
+}
+
+const query = `SELECT * FROM comments ${filter}`;
+
+const [comments] = await db.query(query, [req.query.author]);
+```
+
+
+```js
+await db.query('INSERT INTO comments (author, text) VALUES (?)', [[req.body.name, req.body.comment]])
+```
+
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web16-security-csrf-xss-sqlinjection" target="_blank">WEB 16 Codes</a>
