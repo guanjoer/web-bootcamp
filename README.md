@@ -101,7 +101,7 @@ Udemy의 웹 부트캠프(<a href="https://www.udemy.com/course/100-2022-web-dev
 - 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web07-js-loops-in-action" target="_blank">WEB 07 Codes</a>
 
 
-## WEB 08 | Tic Tac Toe Game
+## WEB 08 | Tic Tac Toe Game | Milestone Project
 
 마일스톤 프로젝트로, 오직 **프론트엔드 자바스크립트**만을 이용하여, **틱 택 토 게임**을 구현하였습니다.
 
@@ -239,7 +239,7 @@ Node.js인 환경에서의 XSS, CSRF Attack에 대한 대응 로직을 구현하
 
 -  혹은 `xss` npm 패키지, 즉 라이브러리를 사용하여 DB에 공격자가 삽입한 글을 **이스케이프 처리**
 
-- **CSRF Token**을 이용하여 CSRF 공격에 대응. 즉 만약 뱅킹의 송금 프로세스에 적용하기 위해서는, 송금 페이지 요청 시에 서버 측에서 생성한 **CSRF Token을 첨부**하고, 송금 프로세스를 진행할 때, 해당 페이지에 첨부된 **CSRF Token을 서버 측에서 검증을 진행**한다. 
+- **CSRF Token**을 이용하여 CSRF 공격에 대응. 즉 만약 뱅킹의 송금 프로세스에 적용하기 위해서는, 송금 페이지 요청 시에 서버 측에서 생성한 **CSRF Token을 첨부**하고, 송금 프로세스를 진행할 때, 해당 페이지에 첨부된 **CSRF Token을 서버 측에서 검증을 진행**한다. 자세한 것은 [GuanJoer' CSRF Blog Posting](https://guanjo.tistory.com/62) 참조.
 
 
 **Node.js 및 MySQL에서의 SQL Injection 대응 로직 구현:**
@@ -268,3 +268,45 @@ await db.query('INSERT INTO comments (author, text) VALUES (?)', [[req.body.name
 ```
 
 - 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web16-security-csrf-xss-sqlinjection" target="_blank">WEB 16 Codes</a>
+
+
+## WEB 17 | MVC Pattern
+
+인증 및 접근 제어가 구현이 되었고 XSS, CSRF 공격에 대응 로직이 존재하고 CRUD 기능을 포함하는 단순한 블로그에 **MVC Pattern**을 이용하여 코드를 리팩토링하였다.
+
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web17-refactoring-blog" target="_blank">WEB 17 Codes</a>
+
+---
+
+**MVC Pattern**
+
+- **Model:** 데이터베이스와 통신하여 **데이터를 처리**하는 로직을 담당. Class를 이용하여 처리 로직 구현.
+
+- **View:** 데이터베이스에서 처리한 데이터를 클라이언트 측인 **브라우저에 표시**하는 역할. 즉 사용자에게 처리한 데이터를 보여주는 역할.
+
+- **Controller:** **Model과 View를 이어주는 역할**. 즉 사용자의 입력값을 Model에 전달해주고 Modle에서 처리한 데이터를 View에 전달해주는 역할.
+
+
+## WEB 18 | Online Shop | Final Milestone Project
+
+최종 마일스톤 프로젝트로, 이때까지 학습한 모든 개념과 포트원 API를 적용하여 결제 시스템을 구축한 온리인 쇼핑몰 웹 사이트이다. 해당 쇼핑몰을 구축하는데 사용한 주요 기술 스택은 `Node.js`, `Express.js`, `MongoDB`이다.
+
+- 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web18-online-shop-project" target="_blank">WEB 18 Codes</a>
+
+---
+
+**주요 기능:**
+
+- 회원 가입 및 로그인
+- 물품 CRUD
+- 장바구니
+- 포트원 API를 이용한 물품 결제
+- 물품 장바구니 추가, 수정, 삭제 시 Ajax 처리 및 DOM 업데이트
+- ROLE 기반 접근 제어
+
+	- 관리자 ROLE인 사용자의 경우에만 관리자 페이지에 접근 가능
+	- 관리자인 경우에만 물품의 추가, 수정, 삭제 가능.
+	- 관리자인 경우에만 개인 정보가 포함된 모든 사용자의 주문 정보 열람 가능
+	- 관리자인 경우에만 주문 정보 수정 가능
+	- 비 로그인 시에도 장바구니의 물품 추가 및 저장이 가능하나, 로그인을 해야만 물품 구매 진행이 가능하도록 구현
+	- 물품을 주문한 사용자 본인만이 자신의 물품 주문 정보 확인 가능
