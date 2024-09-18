@@ -289,7 +289,7 @@ await db.query('INSERT INTO comments (author, text) VALUES (?)', [[req.body.name
 
 ## WEB 18 | Online Shop | Final Milestone Project
 
-최종 마일스톤 프로젝트로, 이때까지 학습한 모든 개념과 포트원 API를 적용하여 결제 시스템을 구축한 온리인 쇼핑몰 웹 사이트이다. 해당 쇼핑몰을 구축하는데 사용한 주요 기술 스택은 `Node.js`, `Express.js`, `MongoDB`이다.
+최종 마일스톤 프로젝트로, 이때까지 학습한 모든 개념과 포트원 API를 적용하여 결제 시스템을 구축한 온라인 쇼핑몰 웹 사이트이다. 해당 쇼핑몰을 구축하는데 사용한 주요 기술 스택은 `Node.js`, `Express.js`, `MongoDB`이다.
 
 - 👨‍💻<a href="https://github.com/guanjoer/web-bootcamp/tree/main/web18-online-shop-project" target="_blank">WEB 18 Codes</a>
 
@@ -304,9 +304,9 @@ await db.query('INSERT INTO comments (author, text) VALUES (?)', [[req.body.name
 - 물품 장바구니 추가, 수정, 삭제 시 Ajax 처리 및 DOM 업데이트
 - ROLE 기반 접근 제어
 
-	- 관리자 ROLE인 사용자의 경우에만 관리자 페이지에 접근 가능
-	- 관리자인 경우에만 물품의 추가, 수정, 삭제 가능.
-	- 관리자인 경우에만 개인 정보가 포함된 모든 사용자의 주문 정보 열람 가능
-	- 관리자인 경우에만 주문 정보 수정 가능
-	- 비 로그인 시에도 장바구니의 물품 추가 및 저장이 가능하나, 로그인을 해야만 물품 구매 진행이 가능하도록 구현
+	- 관리자 ROLE인 사용자의 경우에만 **관리자 페이지에 접근** 가능
+	- 관리자인 경우에만 **물품의 추가, 수정, 삭제** 가능.
+	- 관리자인 경우에만 개인 정보가 포함된 **모든 사용자의 주문 정보 열람** 가능
+	- 관리자인 경우에만 **주문 정보 수정** 가능
+	- 비 로그인 시에도 장바구니의 물품 추가 및 저장이 가능하나, **로그인을 해야만 물품 구매 진행이 가능**하도록 구현
 	- 물품을 주문한 사용자 본인만이 자신의 물품 주문 정보 확인 가능
