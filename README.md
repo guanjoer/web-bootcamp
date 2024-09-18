@@ -244,7 +244,10 @@ Node.js인 환경에서의 XSS, CSRF Attack에 대한 대응 로직을 구현하
 
 **Node.js 및 MySQL에서의 SQL Injection 대응 로직 구현:**
 
-- 사용자가 전달하는 값을 SQL 쿼리에 직접 전달하는 것이 아닌, ? 플레이스 홀더를 사용하여 바인딩하는 **Prepared Statements**를 사용하여 사용자가 전달한 값이 단순 데이터로 취급되도록 처리. 아래의 두 로직이 Prepared Stements를 사용한 곳이며, 각각의 로직은 사용자가 author를 검색할 때, 댓글을 삽입할 때의 로직이다.
+- 사용자가 전달하는 값을 SQL 쿼리에 직접 전달하는 것이 아닌, ? 플레이스 홀더를 사용하여 바인딩하는 **Prepared Statements**를 사용하여 사용자가 전달한 값이 단순 데이터로 취급되도록 처리. 아래의 두 로직이 Prepared Stements를 사용한 곳이며, 각각의 로직은 사용자가 author를 검색할 때, 댓글을 삽입할 때의 로직이다. 
+
+
+**사용자가 Author를 검색 할 때:**
 
 ```js
 let filter = '';
@@ -258,6 +261,7 @@ const query = `SELECT * FROM comments ${filter}`;
 const [comments] = await db.query(query, [req.query.author]);
 ```
 
+**사용자가 댓글을 작성할 때:**
 
 ```js
 await db.query('INSERT INTO comments (author, text) VALUES (?)', [[req.body.name, req.body.comment]])
